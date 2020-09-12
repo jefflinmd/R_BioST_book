@@ -477,14 +477,13 @@ Splus
 ## [2,]  1.9
 ## [3,]  3.1
 ## [4,]  4.3
-pie(cellcode.tab)
-
-library(ggplot2)</code></pre>
+pie(cellcode.tab)</code></pre>
 <p><img src="R_BioST_book_files/figure-html/unnamed-chunk-45-2.png" width="432" /></p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="資料視覺化分析.html#cb65-1" aria-hidden="true"></a><span class="co">## bar chart</span></span>
-<span id="cb65-2"><a href="資料視覺化分析.html#cb65-2" aria-hidden="true"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> dd, <span class="kw">aes</span>(<span class="dt">x =</span> cellcode)) <span class="op">+</span></span>
-<span id="cb65-3"><a href="資料視覺化分析.html#cb65-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">treat =</span> <span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb65-4"><a href="資料視覺化分析.html#cb65-4" aria-hidden="true"></a><span class="co">## Warning: Ignoring unknown parameters: treat</span></span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="資料視覺化分析.html#cb65-1" aria-hidden="true"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb65-2"><a href="資料視覺化分析.html#cb65-2" aria-hidden="true"></a><span class="co">## bar chart</span></span>
+<span id="cb65-3"><a href="資料視覺化分析.html#cb65-3" aria-hidden="true"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> dd, <span class="kw">aes</span>(<span class="dt">x =</span> cellcode)) <span class="op">+</span></span>
+<span id="cb65-4"><a href="資料視覺化分析.html#cb65-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">treat =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb65-5"><a href="資料視覺化分析.html#cb65-5" aria-hidden="true"></a><span class="co">## Warning: Ignoring unknown parameters: treat</span></span></code></pre></div>
 <p><img src="R_BioST_book_files/figure-html/unnamed-chunk-45-3.png" width="432" /></p>
 <div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="資料視覺化分析.html#cb66-1" aria-hidden="true"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> dd, <span class="kw">aes</span>(<span class="dt">x =</span> cellcode)) <span class="op">+</span></span>
 <span id="cb66-2"><a href="資料視覺化分析.html#cb66-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">treat =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span><span class="st"> </span></span>

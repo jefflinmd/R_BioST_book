@@ -17,6 +17,8 @@ description: "R 資料科學與統計"
 
 
 ```{r echo=FALSE, message=FALSE, results='hide'}
+# library(bookdown)
+# bookdown::publish_book(render = 'local')
 library(knitr)
 opts_chunk$set(tidy.opts=list(width.cutoff=80, tidy=TRUE, highlight=FALSE, collapse=TRUE), fig.width = 4.5, fig.height = 3.5)
 # show text in hook1

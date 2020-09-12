@@ -544,8 +544,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb50-18"><a href="多維度資料物件.html#cb50-18" aria-hidden="true"></a><span class="co">##         12   14   16</span></span>
 <span id="cb50-19"><a href="多維度資料物件.html#cb50-19" aria-hidden="true"></a><span class="co">## x.vec    1    2    3</span></span>
 <span id="cb50-20"><a href="多維度資料物件.html#cb50-20" aria-hidden="true"></a><span class="kw">cbind</span>(x.mat, y.vec) <span class="co"># warning</span></span>
-<span id="cb50-21"><a href="多維度資料物件.html#cb50-21" aria-hidden="true"></a><span class="co">## Warning in cbind(x.mat, y.vec): number of rows of result is not a multiple of</span></span>
-<span id="cb50-22"><a href="多維度資料物件.html#cb50-22" aria-hidden="true"></a><span class="co">## vector length (arg 2)</span></span>
+<span id="cb50-21"><a href="多維度資料物件.html#cb50-21" aria-hidden="true"></a><span class="co">## Warning in cbind(x.mat, y.vec): number of rows of result is not a multiple of vector</span></span>
+<span id="cb50-22"><a href="多維度資料物件.html#cb50-22" aria-hidden="true"></a><span class="co">## length (arg 2)</span></span>
 <span id="cb50-23"><a href="多維度資料物件.html#cb50-23" aria-hidden="true"></a><span class="co">##               y.vec</span></span>
 <span id="cb50-24"><a href="多維度資料物件.html#cb50-24" aria-hidden="true"></a><span class="co">## [1,] 11 13 15     8</span></span>
 <span id="cb50-25"><a href="多維度資料物件.html#cb50-25" aria-hidden="true"></a><span class="co">## [2,] 12 14 16     9</span></span>
@@ -579,8 +579,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb50-53"><a href="多維度資料物件.html#cb50-53" aria-hidden="true"></a><span class="co">## x.vec    1    2</span></span>
 <span id="cb50-54"><a href="多維度資料物件.html#cb50-54" aria-hidden="true"></a><span class="co">## y.vec    8    9</span></span>
 <span id="cb50-55"><a href="多維度資料物件.html#cb50-55" aria-hidden="true"></a><span class="kw">cbind</span>(z.mat, y.vec) <span class="co"># warning</span></span>
-<span id="cb50-56"><a href="多維度資料物件.html#cb50-56" aria-hidden="true"></a><span class="co">## Warning in cbind(z.mat, y.vec): number of rows of result is not a multiple of</span></span>
-<span id="cb50-57"><a href="多維度資料物件.html#cb50-57" aria-hidden="true"></a><span class="co">## vector length (arg 2)</span></span>
+<span id="cb50-56"><a href="多維度資料物件.html#cb50-56" aria-hidden="true"></a><span class="co">## Warning in cbind(z.mat, y.vec): number of rows of result is not a multiple of vector</span></span>
+<span id="cb50-57"><a href="多維度資料物件.html#cb50-57" aria-hidden="true"></a><span class="co">## length (arg 2)</span></span>
 <span id="cb50-58"><a href="多維度資料物件.html#cb50-58" aria-hidden="true"></a><span class="co">##             y.vec</span></span>
 <span id="cb50-59"><a href="多維度資料物件.html#cb50-59" aria-hidden="true"></a><span class="co">##       11 13     8</span></span>
 <span id="cb50-60"><a href="多維度資料物件.html#cb50-60" aria-hidden="true"></a><span class="co">##       12 14     9</span></span>
@@ -1048,50 +1048,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb56-26"><a href="多維度資料物件.html#cb56-26" aria-hidden="true"></a><span class="co">## 22 0.56  158 untreated</span></span>
 <span id="cb56-27"><a href="多維度資料物件.html#cb56-27" aria-hidden="true"></a><span class="co">## 23 1.10  160 untreated</span></span>
 <span id="cb56-28"><a href="多維度資料物件.html#cb56-28" aria-hidden="true"></a>Puromycin<span class="op">$</span>rate</span>
-<span id="cb56-29"><a href="多維度資料物件.html#cb56-29" aria-hidden="true"></a><span class="co">##  [1]  76  47  97 107 123 139 159 152 191 201 207 200  67  51  84  86  98 115 131</span></span>
-<span id="cb56-30"><a href="多維度資料物件.html#cb56-30" aria-hidden="true"></a><span class="co">## [20] 124 144 158 160</span></span>
+<span id="cb56-29"><a href="多維度資料物件.html#cb56-29" aria-hidden="true"></a><span class="co">##  [1]  76  47  97 107 123 139 159 152 191 201 207 200  67  51  84  86  98 115 131 124</span></span>
+<span id="cb56-30"><a href="多維度資料物件.html#cb56-30" aria-hidden="true"></a><span class="co">## [21] 144 158 160</span></span>
 <span id="cb56-31"><a href="多維度資料物件.html#cb56-31" aria-hidden="true"></a>Puromycin<span class="op">$</span>state</span>
-<span id="cb56-32"><a href="多維度資料物件.html#cb56-32" aria-hidden="true"></a><span class="co">##  [1] treated   treated   treated   treated   treated   treated   treated  </span></span>
-<span id="cb56-33"><a href="多維度資料物件.html#cb56-33" aria-hidden="true"></a><span class="co">##  [8] treated   treated   treated   treated   treated   untreated untreated</span></span>
-<span id="cb56-34"><a href="多維度資料物件.html#cb56-34" aria-hidden="true"></a><span class="co">## [15] untreated untreated untreated untreated untreated untreated untreated</span></span>
-<span id="cb56-35"><a href="多維度資料物件.html#cb56-35" aria-hidden="true"></a><span class="co">## [22] untreated untreated</span></span>
-<span id="cb56-36"><a href="多維度資料物件.html#cb56-36" aria-hidden="true"></a><span class="co">## Levels: treated untreated</span></span>
-<span id="cb56-37"><a href="多維度資料物件.html#cb56-37" aria-hidden="true"></a>Puromycin[<span class="dv">1</span>]</span>
-<span id="cb56-38"><a href="多維度資料物件.html#cb56-38" aria-hidden="true"></a><span class="co">##    conc</span></span>
-<span id="cb56-39"><a href="多維度資料物件.html#cb56-39" aria-hidden="true"></a><span class="co">## 1  0.02</span></span>
-<span id="cb56-40"><a href="多維度資料物件.html#cb56-40" aria-hidden="true"></a><span class="co">## 2  0.02</span></span>
-<span id="cb56-41"><a href="多維度資料物件.html#cb56-41" aria-hidden="true"></a><span class="co">## 3  0.06</span></span>
-<span id="cb56-42"><a href="多維度資料物件.html#cb56-42" aria-hidden="true"></a><span class="co">## 4  0.06</span></span>
-<span id="cb56-43"><a href="多維度資料物件.html#cb56-43" aria-hidden="true"></a><span class="co">## 5  0.11</span></span>
-<span id="cb56-44"><a href="多維度資料物件.html#cb56-44" aria-hidden="true"></a><span class="co">## 6  0.11</span></span>
-<span id="cb56-45"><a href="多維度資料物件.html#cb56-45" aria-hidden="true"></a><span class="co">## 7  0.22</span></span>
-<span id="cb56-46"><a href="多維度資料物件.html#cb56-46" aria-hidden="true"></a><span class="co">## 8  0.22</span></span>
-<span id="cb56-47"><a href="多維度資料物件.html#cb56-47" aria-hidden="true"></a><span class="co">## 9  0.56</span></span>
-<span id="cb56-48"><a href="多維度資料物件.html#cb56-48" aria-hidden="true"></a><span class="co">## 10 0.56</span></span>
-<span id="cb56-49"><a href="多維度資料物件.html#cb56-49" aria-hidden="true"></a><span class="co">## 11 1.10</span></span>
-<span id="cb56-50"><a href="多維度資料物件.html#cb56-50" aria-hidden="true"></a><span class="co">## 12 1.10</span></span>
-<span id="cb56-51"><a href="多維度資料物件.html#cb56-51" aria-hidden="true"></a><span class="co">## 13 0.02</span></span>
-<span id="cb56-52"><a href="多維度資料物件.html#cb56-52" aria-hidden="true"></a><span class="co">## 14 0.02</span></span>
-<span id="cb56-53"><a href="多維度資料物件.html#cb56-53" aria-hidden="true"></a><span class="co">## 15 0.06</span></span>
-<span id="cb56-54"><a href="多維度資料物件.html#cb56-54" aria-hidden="true"></a><span class="co">## 16 0.06</span></span>
-<span id="cb56-55"><a href="多維度資料物件.html#cb56-55" aria-hidden="true"></a><span class="co">## 17 0.11</span></span>
-<span id="cb56-56"><a href="多維度資料物件.html#cb56-56" aria-hidden="true"></a><span class="co">## 18 0.11</span></span>
-<span id="cb56-57"><a href="多維度資料物件.html#cb56-57" aria-hidden="true"></a><span class="co">## 19 0.22</span></span>
-<span id="cb56-58"><a href="多維度資料物件.html#cb56-58" aria-hidden="true"></a><span class="co">## 20 0.22</span></span>
-<span id="cb56-59"><a href="多維度資料物件.html#cb56-59" aria-hidden="true"></a><span class="co">## 21 0.56</span></span>
-<span id="cb56-60"><a href="多維度資料物件.html#cb56-60" aria-hidden="true"></a><span class="co">## 22 0.56</span></span>
-<span id="cb56-61"><a href="多維度資料物件.html#cb56-61" aria-hidden="true"></a><span class="co">## 23 1.10</span></span>
-<span id="cb56-62"><a href="多維度資料物件.html#cb56-62" aria-hidden="true"></a>Puromycin[<span class="dv">1</span>][[<span class="dv">1</span>]]</span>
-<span id="cb56-63"><a href="多維度資料物件.html#cb56-63" aria-hidden="true"></a><span class="co">##  [1] 0.02 0.02 0.06 0.06 0.11 0.11 0.22 0.22 0.56 0.56 1.10 1.10 0.02 0.02 0.06</span></span>
-<span id="cb56-64"><a href="多維度資料物件.html#cb56-64" aria-hidden="true"></a><span class="co">## [16] 0.06 0.11 0.11 0.22 0.22 0.56 0.56 1.10</span></span>
-<span id="cb56-65"><a href="多維度資料物件.html#cb56-65" aria-hidden="true"></a>Puromycin<span class="op">$</span>state[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</span>
-<span id="cb56-66"><a href="多維度資料物件.html#cb56-66" aria-hidden="true"></a><span class="co">## [1] treated treated treated</span></span>
-<span id="cb56-67"><a href="多維度資料物件.html#cb56-67" aria-hidden="true"></a><span class="co">## Levels: treated untreated</span></span>
-<span id="cb56-68"><a href="多維度資料物件.html#cb56-68" aria-hidden="true"></a>Puromycin[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</span>
-<span id="cb56-69"><a href="多維度資料物件.html#cb56-69" aria-hidden="true"></a><span class="co">##   conc rate</span></span>
-<span id="cb56-70"><a href="多維度資料物件.html#cb56-70" aria-hidden="true"></a><span class="co">## 1 0.02   76</span></span>
-<span id="cb56-71"><a href="多維度資料物件.html#cb56-71" aria-hidden="true"></a><span class="co">## 2 0.02   47</span></span>
-<span id="cb56-72"><a href="多維度資料物件.html#cb56-72" aria-hidden="true"></a><span class="co">## 3 0.06   97</span></span></code></pre></div>
+<span id="cb56-32"><a href="多維度資料物件.html#cb56-32" aria-hidden="true"></a><span class="co">##  [1] treated   treated   treated   treated   treated   treated   treated   treated  </span></span>
+<span id="cb56-33"><a href="多維度資料物件.html#cb56-33" aria-hidden="true"></a><span class="co">##  [9] treated   treated   treated   treated   untreated untreated untreated untreated</span></span>
+<span id="cb56-34"><a href="多維度資料物件.html#cb56-34" aria-hidden="true"></a><span class="co">## [17] untreated untreated untreated untreated untreated untreated untreated</span></span>
+<span id="cb56-35"><a href="多維度資料物件.html#cb56-35" aria-hidden="true"></a><span class="co">## Levels: treated untreated</span></span>
+<span id="cb56-36"><a href="多維度資料物件.html#cb56-36" aria-hidden="true"></a>Puromycin[<span class="dv">1</span>]</span>
+<span id="cb56-37"><a href="多維度資料物件.html#cb56-37" aria-hidden="true"></a><span class="co">##    conc</span></span>
+<span id="cb56-38"><a href="多維度資料物件.html#cb56-38" aria-hidden="true"></a><span class="co">## 1  0.02</span></span>
+<span id="cb56-39"><a href="多維度資料物件.html#cb56-39" aria-hidden="true"></a><span class="co">## 2  0.02</span></span>
+<span id="cb56-40"><a href="多維度資料物件.html#cb56-40" aria-hidden="true"></a><span class="co">## 3  0.06</span></span>
+<span id="cb56-41"><a href="多維度資料物件.html#cb56-41" aria-hidden="true"></a><span class="co">## 4  0.06</span></span>
+<span id="cb56-42"><a href="多維度資料物件.html#cb56-42" aria-hidden="true"></a><span class="co">## 5  0.11</span></span>
+<span id="cb56-43"><a href="多維度資料物件.html#cb56-43" aria-hidden="true"></a><span class="co">## 6  0.11</span></span>
+<span id="cb56-44"><a href="多維度資料物件.html#cb56-44" aria-hidden="true"></a><span class="co">## 7  0.22</span></span>
+<span id="cb56-45"><a href="多維度資料物件.html#cb56-45" aria-hidden="true"></a><span class="co">## 8  0.22</span></span>
+<span id="cb56-46"><a href="多維度資料物件.html#cb56-46" aria-hidden="true"></a><span class="co">## 9  0.56</span></span>
+<span id="cb56-47"><a href="多維度資料物件.html#cb56-47" aria-hidden="true"></a><span class="co">## 10 0.56</span></span>
+<span id="cb56-48"><a href="多維度資料物件.html#cb56-48" aria-hidden="true"></a><span class="co">## 11 1.10</span></span>
+<span id="cb56-49"><a href="多維度資料物件.html#cb56-49" aria-hidden="true"></a><span class="co">## 12 1.10</span></span>
+<span id="cb56-50"><a href="多維度資料物件.html#cb56-50" aria-hidden="true"></a><span class="co">## 13 0.02</span></span>
+<span id="cb56-51"><a href="多維度資料物件.html#cb56-51" aria-hidden="true"></a><span class="co">## 14 0.02</span></span>
+<span id="cb56-52"><a href="多維度資料物件.html#cb56-52" aria-hidden="true"></a><span class="co">## 15 0.06</span></span>
+<span id="cb56-53"><a href="多維度資料物件.html#cb56-53" aria-hidden="true"></a><span class="co">## 16 0.06</span></span>
+<span id="cb56-54"><a href="多維度資料物件.html#cb56-54" aria-hidden="true"></a><span class="co">## 17 0.11</span></span>
+<span id="cb56-55"><a href="多維度資料物件.html#cb56-55" aria-hidden="true"></a><span class="co">## 18 0.11</span></span>
+<span id="cb56-56"><a href="多維度資料物件.html#cb56-56" aria-hidden="true"></a><span class="co">## 19 0.22</span></span>
+<span id="cb56-57"><a href="多維度資料物件.html#cb56-57" aria-hidden="true"></a><span class="co">## 20 0.22</span></span>
+<span id="cb56-58"><a href="多維度資料物件.html#cb56-58" aria-hidden="true"></a><span class="co">## 21 0.56</span></span>
+<span id="cb56-59"><a href="多維度資料物件.html#cb56-59" aria-hidden="true"></a><span class="co">## 22 0.56</span></span>
+<span id="cb56-60"><a href="多維度資料物件.html#cb56-60" aria-hidden="true"></a><span class="co">## 23 1.10</span></span>
+<span id="cb56-61"><a href="多維度資料物件.html#cb56-61" aria-hidden="true"></a>Puromycin[<span class="dv">1</span>][[<span class="dv">1</span>]]</span>
+<span id="cb56-62"><a href="多維度資料物件.html#cb56-62" aria-hidden="true"></a><span class="co">##  [1] 0.02 0.02 0.06 0.06 0.11 0.11 0.22 0.22 0.56 0.56 1.10 1.10 0.02 0.02 0.06 0.06</span></span>
+<span id="cb56-63"><a href="多維度資料物件.html#cb56-63" aria-hidden="true"></a><span class="co">## [17] 0.11 0.11 0.22 0.22 0.56 0.56 1.10</span></span>
+<span id="cb56-64"><a href="多維度資料物件.html#cb56-64" aria-hidden="true"></a>Puromycin<span class="op">$</span>state[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</span>
+<span id="cb56-65"><a href="多維度資料物件.html#cb56-65" aria-hidden="true"></a><span class="co">## [1] treated treated treated</span></span>
+<span id="cb56-66"><a href="多維度資料物件.html#cb56-66" aria-hidden="true"></a><span class="co">## Levels: treated untreated</span></span>
+<span id="cb56-67"><a href="多維度資料物件.html#cb56-67" aria-hidden="true"></a>Puromycin[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</span>
+<span id="cb56-68"><a href="多維度資料物件.html#cb56-68" aria-hidden="true"></a><span class="co">##   conc rate</span></span>
+<span id="cb56-69"><a href="多維度資料物件.html#cb56-69" aria-hidden="true"></a><span class="co">## 1 0.02   76</span></span>
+<span id="cb56-70"><a href="多維度資料物件.html#cb56-70" aria-hidden="true"></a><span class="co">## 2 0.02   47</span></span>
+<span id="cb56-71"><a href="多維度資料物件.html#cb56-71" aria-hidden="true"></a><span class="co">## 3 0.06   97</span></span></code></pre></div>
 
 </div>
 </div>
