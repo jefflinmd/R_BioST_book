@@ -1,4 +1,4 @@
-# 資料視覺化分析
+# Data Visualization 資料視覺化分析
 
 
 
@@ -195,12 +195,12 @@ pie(cellcode.tab)
 library(ggplot2)
 ## bar chart
 ggplot(data = dd, aes(x = cellcode)) +
-  geom_bar(treat = "blue")
+  geom_bar()
 ggplot(data = dd, aes(x = cellcode)) +
-  geom_bar(treat = "blue") + 
+  geom_bar(fill = "blue") + 
   coord_flip()
 ggplot(data = dd, aes(y = cellcode)) +
-  geom_bar(treat = "blue") 
+  geom_bar(fill = "red") 
 # pie chart: no simple solution
 clar.freq <- data.frame(cellcode.tab)
 names(clar.freq)[1] <- "cellcode"
@@ -209,7 +209,7 @@ ggplot(data = clar.freq, aes(x = "", y = Freq, fill = cellcode)) +
   geom_bar(width = 1, stat = "identity") + 
   coord_polar("y", start = 0)
 ggplot(data = clar.freq, aes(x = "", y = Freq, fill = cellcode)) +
-  geom_bar(stat = "identity", width = 1, treat = "white") +
+  geom_bar(stat = "identity", width = 1) +
   coord_polar(theta = "y", start = 0) +
   theme_void() # remove background
 ```
@@ -438,7 +438,7 @@ ggplot(data = dd, aes(x = diagtime, y = time, color = treat)) +
 ggplot(data = dd, aes(x = diagtime, y = time, color = treat)) + 
   geom_jitter(size = 4)
 ggplot(data = dd, aes(x = diagtime, y = time, 
-                      color = treat, shape = treat, size = treat)) + 
+                      color = treat, shape = treat)) + 
   geom_jitter(alpha = 1/2) 
 # add linear line or smoothing line
 ggplot(data = dd, aes(x = diagtime, y = time, 
@@ -515,8 +515,8 @@ corrgram(x = dd,
 my_fn <- function(data, mapping, ...){
   p <- ggplot(data = data, mapping = mapping) + 
     geom_point() + 
-    geom_smooth(method = loess, se = FALSE, fill = "red", treat = "red", ...) +
-    geom_smooth(method = lm, se = FALSE, fill = "blue", treat = "blue", ...)
+    geom_smooth(method = loess, se = FALSE, fill = "red", color = "red", ...) +
+    geom_smooth(method = lm, se = FALSE, fill = "blue", color = "blue", ...)
   p
 }
 GGally::ggpairs(data = con.df, 
@@ -529,10 +529,10 @@ GGally::ggpairs(data = con.df,
 ## Bubble plot
 ggplot(data = dd, aes(x = diagtime, y = time, size = age)) + 
   geom_point(alpha = 0.3) + 
-  scale_size(range = c(.1, 15), name="Age Bubbles")
+  scale_size(range = c(.1, 15), name = "Age Bubbles")
 ggplot(data = dd, aes(x = diagtime, y = time, size = age)) + 
   geom_point(alpha = 0.3) + 
-  scale_size(range = c(.1, 15), name="Age Bubbles")
+  scale_size(range = c(.1, 15), name = "Age Bubbles")
 ggplot(data = dd, aes(x = diagtime, y = time, size = age, color = treat)) + 
   geom_point(alpha = 0.3) + 
 scale_size(range = c(.1, 24), name = "")
@@ -547,7 +547,7 @@ scale_size(range = c(.1, 24), name = "")
 * 將每個子資料集繪製在不同的圖格
 * 將所有子資料集的圖格合併呈現
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # plot by treat
 ggplot(data = dd, aes(x = diagtime, y = time)) + geom_jitter() + 
   facet_grid(. ~ treat)
@@ -559,6 +559,5 @@ ggplot(data = dd, aes(x = diagtime, y = time)) + geom_jitter() +
 # two factors
 ggplot(data = dd, aes(x = diagtime, y = time)) + geom_jitter() + 
   facet_grid(treat ~ cellcode)
-
 ```
 

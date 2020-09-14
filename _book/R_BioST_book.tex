@@ -116,7 +116,7 @@
 
 \title{R 資料科學與統計}
 \author{Jeff Lin}
-\date{2020-09-12}
+\date{2020-09-14}
 
 \begin{document}
 \maketitle
@@ -137,7 +137,7 @@ R 由一群跨國際的志工人員組成的 \{R\} 核心發展組織 (R core-de
 目前對初學者的 R 入門學習有二大主要論點,
 一為學習使用 R Base 原始語言與原始套件,
 二為直接學習外部套件, 如 ggplot2, tidyverse 系統.
-無論哪一種方式亙有其優缺點.
+無論哪一種方式各有其優缺點.
 個人認為對未來必須經常性使用 R 進行資料分析工作的初學者,
 則建議先學習使用 R Base 原始語言.
 對於未來僅在少數時間必須使用 R 進行資料分析工作,
@@ -148,21 +148,21 @@ R 由一群跨國際的志工人員組成的 \{R\} 核心發展組織 (R core-de
 \href{https://www.jefflinmd.com/book/rintro/}{R 程式語言與醫學統計}.
 
 目前有許多 R 書籍, 寫作本書主要是為了個人上課方便使用,
-本書的主要寫作對象為醫師或醫學研究人員,
-以及使用 R 輔助學習統計的大學生為主,
 假設讀者沒有太多統計資料分析概念或經驗,
 也無程式語言寫作經驗.
-主要介紹使用 ggplot2, tidyverse 系統套件進資料分析工作,
-主要參考來源 \url{https://r4ds.had.co.nz/} 與 \url{https://rstudio-education.github.io/hopr/}.
-但學習歷程很難將二者完全切割,
-通常會交錯並進.
+本書的主要寫作對象為醫師或醫學研究人員,
+以及使用 R 輔助學習統計的大學生為主.
+本書使用 R \textbf{bookdown} package 寫作 \citep{R-bookdown}, 方便隨時更新內容.
 
 本書前面章節資料使用醫學相關資料或是基礎統計學相關資料,
 先降低資料的複雜性有助於了解 R 統計程式語言的核心,
 後面章節再導入大數據分析.
 本書關於 R base 多數摘取本人 R base 內容,
 \href{https://www.jefflinmd.com/book/rintro/}{R 程式語言與醫學統計},
-本書使用 R \textbf{bookdown} package 寫作 \citep{R-bookdown}, 方便隨時更新內容.
+後面章節主要介紹使用 ggplot2, tidyverse 系統套件進資料分析工作,
+主要參考來源 \url{https://r4ds.had.co.nz/} 與 \url{https://rstudio-education.github.io/hopr/}.
+但學習歷程很難將二者完全切割,
+通常會交錯並進.
 
 \hypertarget{intro}{%
 \chapter{R 語言基本概論}\label{intro}}
@@ -523,7 +523,7 @@ y <- 3 + 4
 \begin{Highlighting}[]
 \CommentTok{\#\# This is my R code}
 \KeywordTok{log}\NormalTok{(pi)}
-\CommentTok{\#\# [1] 1.14473}
+\CommentTok{\#\# [1] 1.145}
 \CommentTok{\#\# simple calculation}
 \DecValTok{3}\OperatorTok{+}\DecValTok{4} \CommentTok{\# calculator: two plus one}
 \CommentTok{\#\# [1] 7}
@@ -789,7 +789,7 @@ plot(x.vec, y.vec)\\
 \KeywordTok{var}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ x.vec)  }\CommentTok{\# function mean() calculate variance}
 \CommentTok{\#\# [1] 2.5}
 \KeywordTok{log}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ x.vec)  }\CommentTok{\# take log for all elements in vector x.vec}
-\CommentTok{\#\# [1] 0.0000000 0.6931472 1.0986123 1.3862944 1.6094379}
+\CommentTok{\#\# [1] 0.0000 0.6931 1.0986 1.3863 1.6094}
 \end{Highlighting}
 \end{Shaded}
 
@@ -836,9 +836,9 @@ log(x, base = exp(1))
 \CommentTok{\#\# log function}
 \NormalTok{x.vec \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{)}
 \KeywordTok{log}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ x.vec)}
-\CommentTok{\#\# [1] 0.0000000 0.6931472 1.0986123 1.3862944 1.6094379}
+\CommentTok{\#\# [1] 0.0000 0.6931 1.0986 1.3863 1.6094}
 \KeywordTok{log}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ x.vec, }\DataTypeTok{base =} \DecValTok{2}\NormalTok{)}
-\CommentTok{\#\# [1] 0.000000 1.000000 1.584963 2.000000 2.321928}
+\CommentTok{\#\# [1] 0.000 1.000 1.585 2.000 2.322}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1018,8 +1018,8 @@ Asia/Taipei.
 
 上述方式暫時有效, 重新啟動 \{R\} 後此設定就會消失.
 
-\hypertarget{ux5411ux91cf-vector}{%
-\chapter{向量 Vector}\label{ux5411ux91cf-vector}}
+\hypertarget{vector-ux5411ux91cf}{%
+\chapter{Vector 向量}\label{vector-ux5411ux91cf}}
 
 \{R\} 是以物件導向為主的程式語言,
 在 \{R\} 中, 資料或運算指令以具有名稱的
@@ -1037,8 +1037,8 @@ Asia/Taipei.
 \{R\} 的資料結構與程式寫作相對於目前當紅的其他程式語言較多嚴謹的要求,
 本章主要說明 \{R\} 的基本資料型式與基本運算.
 
-\hypertarget{ux5411ux91cf-vector-1}{%
-\section{向量 Vector}\label{ux5411ux91cf-vector-1}}
+\hypertarget{ux5411ux91cf-vector}{%
+\section{向量 Vector}\label{ux5411ux91cf-vector}}
 
 \{R\} 的最基本物件是向量,
 \textbf{向量}
@@ -1224,7 +1224,7 @@ Asia/Taipei.
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{Sys.Date}\NormalTok{()}
-\CommentTok{\#\# [1] "2020{-}09{-}12"}
+\CommentTok{\#\# [1] "2020{-}09{-}14"}
 \NormalTok{date1 \textless{}{-}}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020{-}09{-}17"}\NormalTok{)}
 \NormalTok{date1}
 \CommentTok{\#\# [1] "2020{-}09{-}17"}
@@ -1236,7 +1236,7 @@ Asia/Taipei.
 \KeywordTok{class}\NormalTok{(date2)}
 \CommentTok{\#\# [1] "POSIXct" "POSIXt"}
 \KeywordTok{as.numeric}\NormalTok{(date2)}
-\CommentTok{\#\# [1] 1600338600}
+\CommentTok{\#\# [1] 1.6e+09}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1257,7 +1257,7 @@ Asia/Taipei.
 \CommentTok{\#\# numerical}
 \NormalTok{x.vec \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{/}\DecValTok{1}\NormalTok{, }\DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{, }\DecValTok{1}\OperatorTok{/}\DecValTok{3}\NormalTok{, }\DecValTok{1}\OperatorTok{/}\DecValTok{4}\NormalTok{, }\DecValTok{1}\OperatorTok{/}\DecValTok{5}\NormalTok{)}
 \NormalTok{x.vec}
-\CommentTok{\#\# [1] 1.0000000 0.5000000 0.3333333 0.2500000 0.2000000}
+\CommentTok{\#\# [1] 1.0000 0.5000 0.3333 0.2500 0.2000}
 \CommentTok{\#\# integer}
 \NormalTok{x.vec \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(1L, 2L, 3L)}
 \NormalTok{x.vec}
@@ -1282,8 +1282,8 @@ Asia/Taipei.
 \NormalTok{y.vec \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{)}
 \NormalTok{z.vec \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(x.vec, }\DecValTok{11}\NormalTok{, }\DecValTok{12}\NormalTok{, y.vec)}
 \NormalTok{z.vec}
-\CommentTok{\#\#  [1]  1.0000000  0.5000000  0.3333333  0.2500000  0.2000000 11.0000000}
-\CommentTok{\#\#  [7] 12.0000000  1.0000000  2.0000000  3.0000000  4.0000000  5.0000000}
+\CommentTok{\#\#  [1]  1.0000  0.5000  0.3333  0.2500  0.2000 11.0000 12.0000  1.0000  2.0000}
+\CommentTok{\#\# [10]  3.0000  4.0000  5.0000}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1366,7 +1366,7 @@ Asia/Taipei.
 \DecValTok{4}\OperatorTok{/}\DecValTok{2}
 \CommentTok{\#\# [1] 2}
 \DecValTok{4}\OperatorTok{/}\DecValTok{3}
-\CommentTok{\#\# [1] 1.333333}
+\CommentTok{\#\# [1] 1.333}
 \DecValTok{2} \OperatorTok{*}\StringTok{ }\DecValTok{3} \OperatorTok{+}\StringTok{ }\DecValTok{4}
 \CommentTok{\#\# [1] 10}
 \DecValTok{2} \OperatorTok{*}\StringTok{ }\NormalTok{(}\DecValTok{3} \OperatorTok{+}\StringTok{ }\DecValTok{4}\NormalTok{)}
@@ -1690,7 +1690,7 @@ R 還有另外有
 \KeywordTok{is.na}\NormalTok{(z.vec)}
 \CommentTok{\#\# [1] FALSE FALSE  TRUE}
 \KeywordTok{log}\NormalTok{(z.vec)}
-\CommentTok{\#\# [1] 0.0000000 0.6931472        NA}
+\CommentTok{\#\# [1] 0.0000 0.6931     NA}
 \NormalTok{z.vec }\OperatorTok{/}\StringTok{ }\DecValTok{0}
 \CommentTok{\#\# [1] Inf Inf  NA}
 \DecValTok{0} \OperatorTok{/}\StringTok{ }\DecValTok{0}
@@ -2004,8 +2004,8 @@ factor(x = character(), levels, labels = levels,
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{ux591aux7dadux5ea6ux8cc7ux6599ux7269ux4ef6}{%
-\chapter{多維度資料物件}\label{ux591aux7dadux5ea6ux8cc7ux6599ux7269ux4ef6}}
+\hypertarget{multidimensional-data-ux591aux7dadux5ea6ux8cc7ux6599ux7269ux4ef6}{%
+\chapter{Multidimensional Data 多維度資料物件}\label{multidimensional-data-ux591aux7dadux5ea6ux8cc7ux6599ux7269ux4ef6}}
 
 \{R\} 是以物件導向為主的程式語言,
 在 \{R\} 中, 資料或運算指令以具有名稱的
@@ -3378,8 +3378,8 @@ No & age & sex & DM & DMyr & preAC & prePC & postAC & postPC & Med & SIDE & PREK
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{ux8cc7ux6599ux8996ux89baux5316ux5206ux6790}{%
-\chapter{資料視覺化分析}\label{ux8cc7ux6599ux8996ux89baux5316ux5206ux6790}}
+\hypertarget{data-visualization-ux8cc7ux6599ux8996ux89baux5316ux5206ux6790}{%
+\chapter{Data Visualization 資料視覺化分析}\label{data-visualization-ux8cc7ux6599ux8996ux89baux5316ux5206ux6790}}
 
 繪圖文法是讓一個圖形容易思考, 合理討論與溝通的抽像規則. \textbackslash{}
 Leland Wilkinson (1999),
@@ -3634,8 +3634,8 @@ prior & 先前是否接受治療; 0 = 無; 1 = 有\tabularnewline
 \CommentTok{\#\#       35       48       27       27}
 \KeywordTok{prop.table}\NormalTok{(cellcode.tab)}
 \CommentTok{\#\# }
-\CommentTok{\#\#  squamous     small     adeno     large }
-\CommentTok{\#\# 0.2554745 0.3503650 0.1970803 0.1970803}
+\CommentTok{\#\# squamous    small    adeno    large }
+\CommentTok{\#\#   0.2555   0.3504   0.1971   0.1971}
 \KeywordTok{barplot}\NormalTok{(cellcode.tab)}
 \KeywordTok{round}\NormalTok{(}\KeywordTok{barplot}\NormalTok{(cellcode.tab), }\DecValTok{4}\NormalTok{)}
 \end{Highlighting}
@@ -3659,8 +3659,7 @@ pie(cellcode.tab)
 \KeywordTok{library}\NormalTok{(ggplot2)}
 \CommentTok{\#\# bar chart}
 \KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dd, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ cellcode)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_bar}\NormalTok{(}\DataTypeTok{treat =} \StringTok{"blue"}\NormalTok{)}
-\CommentTok{\#\# Warning: Ignoring unknown parameters: treat}
+\StringTok{  }\KeywordTok{geom\_bar}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3669,9 +3668,8 @@ pie(cellcode.tab)
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dd, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ cellcode)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_bar}\NormalTok{(}\DataTypeTok{treat =} \StringTok{"blue"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom\_bar}\NormalTok{(}\DataTypeTok{fill =} \StringTok{"blue"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{coord\_flip}\NormalTok{()}
-\CommentTok{\#\# Warning: Ignoring unknown parameters: treat}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3680,8 +3678,7 @@ pie(cellcode.tab)
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dd, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ cellcode)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_bar}\NormalTok{(}\DataTypeTok{treat =} \StringTok{"blue"}\NormalTok{) }
-\CommentTok{\#\# Warning: Ignoring unknown parameters: treat}
+\StringTok{  }\KeywordTok{geom\_bar}\NormalTok{(}\DataTypeTok{fill =} \StringTok{"red"}\NormalTok{) }
 \end{Highlighting}
 \end{Shaded}
 
@@ -3709,10 +3706,9 @@ pie(cellcode.tab)
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ clar.freq, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \StringTok{""}\NormalTok{, }\DataTypeTok{y =}\NormalTok{ Freq, }\DataTypeTok{fill =}\NormalTok{ cellcode)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_bar}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"identity"}\NormalTok{, }\DataTypeTok{width =} \DecValTok{1}\NormalTok{, }\DataTypeTok{treat =} \StringTok{"white"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom\_bar}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"identity"}\NormalTok{, }\DataTypeTok{width =} \DecValTok{1}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{coord\_polar}\NormalTok{(}\DataTypeTok{theta =} \StringTok{"y"}\NormalTok{, }\DataTypeTok{start =} \DecValTok{0}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{theme\_void}\NormalTok{() }\CommentTok{\# remove background}
-\CommentTok{\#\# Warning: Ignoring unknown parameters: treat}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4217,7 +4213,7 @@ pie(cellcode.tab)
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dd, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ diagtime, }\DataTypeTok{y =}\NormalTok{ time, }
-                      \DataTypeTok{color =}\NormalTok{ treat, }\DataTypeTok{shape =}\NormalTok{ treat, }\DataTypeTok{size =}\NormalTok{ treat)) }\OperatorTok{+}\StringTok{ }
+                      \DataTypeTok{color =}\NormalTok{ treat, }\DataTypeTok{shape =}\NormalTok{ treat)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom\_jitter}\NormalTok{(}\DataTypeTok{alpha =} \DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{) }
 \end{Highlighting}
 \end{Shaded}
@@ -4376,8 +4372,8 @@ pie(cellcode.tab)
 \NormalTok{my\_fn \textless{}{-}}\StringTok{ }\ControlFlowTok{function}\NormalTok{(data, mapping, ...)\{}
 \NormalTok{  p \textless{}{-}}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ data, }\DataTypeTok{mapping =}\NormalTok{ mapping) }\OperatorTok{+}\StringTok{ }
 \StringTok{    }\KeywordTok{geom\_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
-\StringTok{    }\KeywordTok{geom\_smooth}\NormalTok{(}\DataTypeTok{method =}\NormalTok{ loess, }\DataTypeTok{se =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{fill =} \StringTok{"red"}\NormalTok{, }\DataTypeTok{treat =} \StringTok{"red"}\NormalTok{, ...) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{geom\_smooth}\NormalTok{(}\DataTypeTok{method =}\NormalTok{ lm, }\DataTypeTok{se =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{fill =} \StringTok{"blue"}\NormalTok{, }\DataTypeTok{treat =} \StringTok{"blue"}\NormalTok{, ...)}
+\StringTok{    }\KeywordTok{geom\_smooth}\NormalTok{(}\DataTypeTok{method =}\NormalTok{ loess, }\DataTypeTok{se =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{fill =} \StringTok{"red"}\NormalTok{, }\DataTypeTok{color =} \StringTok{"red"}\NormalTok{, ...) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{geom\_smooth}\NormalTok{(}\DataTypeTok{method =}\NormalTok{ lm, }\DataTypeTok{se =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{fill =} \StringTok{"blue"}\NormalTok{, }\DataTypeTok{color =} \StringTok{"blue"}\NormalTok{, ...)}
 \NormalTok{  p}
 \NormalTok{\}}
 \NormalTok{GGally}\OperatorTok{::}\KeywordTok{ggpairs}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ con.df, }
@@ -4392,7 +4388,7 @@ pie(cellcode.tab)
 \CommentTok{\#\# Bubble plot}
 \KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dd, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ diagtime, }\DataTypeTok{y =}\NormalTok{ time, }\DataTypeTok{size =}\NormalTok{ age)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom\_point}\NormalTok{(}\DataTypeTok{alpha =} \FloatTok{0.3}\NormalTok{) }\OperatorTok{+}\StringTok{ }
-\StringTok{  }\KeywordTok{scale\_size}\NormalTok{(}\DataTypeTok{range =} \KeywordTok{c}\NormalTok{(.}\DecValTok{1}\NormalTok{, }\DecValTok{15}\NormalTok{), }\DataTypeTok{name=}\StringTok{"Age Bubbles"}\NormalTok{)}
+\StringTok{  }\KeywordTok{scale\_size}\NormalTok{(}\DataTypeTok{range =} \KeywordTok{c}\NormalTok{(.}\DecValTok{1}\NormalTok{, }\DecValTok{15}\NormalTok{), }\DataTypeTok{name =} \StringTok{"Age Bubbles"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4402,7 +4398,7 @@ pie(cellcode.tab)
 \begin{Highlighting}[]
 \KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dd, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ diagtime, }\DataTypeTok{y =}\NormalTok{ time, }\DataTypeTok{size =}\NormalTok{ age)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom\_point}\NormalTok{(}\DataTypeTok{alpha =} \FloatTok{0.3}\NormalTok{) }\OperatorTok{+}\StringTok{ }
-\StringTok{  }\KeywordTok{scale\_size}\NormalTok{(}\DataTypeTok{range =} \KeywordTok{c}\NormalTok{(.}\DecValTok{1}\NormalTok{, }\DecValTok{15}\NormalTok{), }\DataTypeTok{name=}\StringTok{"Age Bubbles"}\NormalTok{)}
+\StringTok{  }\KeywordTok{scale\_size}\NormalTok{(}\DataTypeTok{range =} \KeywordTok{c}\NormalTok{(.}\DecValTok{1}\NormalTok{, }\DecValTok{15}\NormalTok{), }\DataTypeTok{name =} \StringTok{"Age Bubbles"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4469,6 +4465,2229 @@ pie(cellcode.tab)
 \end{Shaded}
 
 \includegraphics{R_BioST_book_files/figure-latex/unnamed-chunk-54-4.pdf}
+
+\hypertarget{basic-function-ux57faux672cux51fdux5f0f}{%
+\chapter{Basic Function 基本函式}\label{basic-function-ux57faux672cux51fdux5f0f}}
+
+\{R\} 有許多
+\textbf{函式}
+(\textbf{function}),
+函式是一種物件, 是指令的集合,
+執行特定功能或運算工作的指令, 資料整理, 資料分析等,
+透過函式,
+擴展了 \{R\} 在程式語言的功能性與便利性.
+函式內通常需輸入
+\textbf{引數}
+(\textbf{argument}).
+
+\{R\} 基本系統 (base) 提供了一部分常用函式,
+而更多不同類型的函式,
+則由許多不同的學者貢獻到
+\{R\} 系統 (contribution) 中,
+這些函數都是用 \{R\} 程式語言寫成的.
+例如, 統計常用函式
+\texttt{mean()}, \texttt{var()}, \texttt{sd()}, \texttt{log()} 等.
+
+\hypertarget{ux51fdux5f0fux8a9eux6cd5}{%
+\section{函式語法}\label{ux51fdux5f0fux8a9eux6cd5}}
+
+一個函式內通常需輸入
+\textbf{引數}
+(\textbf{argument})
+或是
+\textbf{統計公式},
+\textbf{統計模型},
+(\textbf{formals}).
+引數可以是一個以上,
+有些引數一定要輸入,
+稱為
+\textbf{必要引數}
+(\textbf{required argument}),
+有些引數可以不用輸入,
+稱為
+\textbf{自選引數}
+(\textbf{optional argument}),
+另外一種引數則為
+\textbf{省略引數}
+(\textbf{ellipsis argument})
+這三種引可以同時存在一個函式內,
+引數可以是數值, 文字, 資料框架或 \{R\} 的任何物件.
+例如, 函式 \texttt{log()} 指令:
+
+\begin{verbatim}
+log(x, base = exp(1))     
+\end{verbatim}
+
+\texttt{log()} 函式在 \{R\} 內設以自然數為底計算,
+其中 \texttt{x} 為必備引數,
+使用者必須自行輸入所要計算的數值作為引數值.
+而 \texttt{base\ =\ exp(1)}
+為選擇引數,
+若使用者沒有輸入引數值,
+函式 \texttt{log()} 內設以自然數 \(e\) 為底,
+當然, 使用者可以更動底數的設定值,
+例如更動為以 \(2\) 為底的獨度對數運算,
+\texttt{log(x,\ base\ =\ 2)}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\# basic function}
+\NormalTok{x.vec =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{)}
+\NormalTok{x.vec           }\CommentTok{\# show x.vec}
+\CommentTok{\#\# [1] 1 2 3 4 5}
+\KeywordTok{mean}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ x.vec) }\CommentTok{\# function mean() calculate mean, return a scalar}
+\CommentTok{\#\# [1] 3}
+\KeywordTok{var}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ x.vec)  }\CommentTok{\# function mean() calculate variance}
+\CommentTok{\#\# [1] 2.5}
+\KeywordTok{sd}\NormalTok{(x.vec)       }\CommentTok{\# function mean() calculate standard deviation}
+\CommentTok{\#\# [1] 1.581}
+\KeywordTok{summary}\NormalTok{(x.vec)  }\CommentTok{\# summarized statistics}
+\CommentTok{\#\#    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. }
+\CommentTok{\#\#       1       2       3       3       4       5}
+\KeywordTok{log}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ x.vec)  }\CommentTok{\# take log for all elements in vector x.vec}
+\CommentTok{\#\# [1] 0.0000 0.6931 1.0986 1.3863 1.6094}
+\CommentTok{\#\# log function}
+\NormalTok{x.vec \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{)}
+\KeywordTok{log}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ x.vec)}
+\CommentTok{\#\# [1] 0.0000 0.6931 1.0986 1.3863 1.6094}
+\KeywordTok{log}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ x.vec, }\DataTypeTok{base =} \DecValTok{2}\NormalTok{)}
+\CommentTok{\#\# [1] 0.000 1.000 1.585 2.000 2.322}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux6aa2ux8996ux7684ux51fdux5f0fux539fux59cbux78bcux5b9aux7fa9}{%
+\section{檢視的函式原始碼定義}\label{ux6aa2ux8996ux7684ux51fdux5f0fux539fux59cbux78bcux5b9aux7fa9}}
+
+\{R\} 函式的原始碼定義分成
+S3 classes 函式 與 S4 classes 函式,
+許多時候, 可以在 \{R\} 輸入函式名稱,
+檢視 S3 classes 的函式.
+例如,
+\texttt{function.name()},
+查看函式的原始碼內容與計算過程.
+有時必須使用 \texttt{methods("function.name")},
+\texttt{getAnywhere("function.name")},
+\texttt{stats:::function.name}
+例如,
+指令提示符號下輸入 \texttt{sd},
+查看函式 \texttt{sd} 的計算過程與引數.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\# methods()}
+\NormalTok{sd}
+\CommentTok{\#\# function (x, na.rm = FALSE) }
+\CommentTok{\#\# sqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), }
+\CommentTok{\#\#     na.rm = na.rm))}
+\CommentTok{\#\# \textless{}bytecode: 0x0000000014b1b560\textgreater{}}
+\CommentTok{\#\# \textless{}environment: namespace:stats\textgreater{}}
+\NormalTok{t}
+\CommentTok{\#\# function (x) }
+\CommentTok{\#\# UseMethod("t")}
+\CommentTok{\#\# \textless{}bytecode: 0x0000000009aa46d0\textgreater{}}
+\CommentTok{\#\# \textless{}environment: namespace:base\textgreater{}}
+\KeywordTok{methods}\NormalTok{(t)}
+\CommentTok{\#\#  [1] t,ANY{-}method            t,CsparseMatrix{-}method  t,dgCMatrix{-}method     }
+\CommentTok{\#\#  [4] t,dgeMatrix{-}method      t,diagonalMatrix{-}method t,dppMatrix{-}method     }
+\CommentTok{\#\#  [7] t,dsCMatrix{-}method      t,dspMatrix{-}method      t,dsTMatrix{-}method     }
+\CommentTok{\#\# [10] t,dsyMatrix{-}method      t,dtpMatrix{-}method      t,dtrMatrix{-}method     }
+\CommentTok{\#\# [13] t,dtTMatrix{-}method      t,indMatrix{-}method      t,lgeMatrix{-}method     }
+\CommentTok{\#\# [16] t,lspMatrix{-}method      t,lsTMatrix{-}method      t,lsyMatrix{-}method     }
+\CommentTok{\#\# [19] t,ltpMatrix{-}method      t,ltrMatrix{-}method      t,ltTMatrix{-}method     }
+\CommentTok{\#\# [22] t,Matrix{-}method         t,ngeMatrix{-}method      t,nspMatrix{-}method     }
+\CommentTok{\#\# [25] t,nsTMatrix{-}method      t,nsyMatrix{-}method      t,ntpMatrix{-}method     }
+\CommentTok{\#\# [28] t,ntrMatrix{-}method      t,ntTMatrix{-}method      t,pMatrix{-}method       }
+\CommentTok{\#\# [31] t,RsparseMatrix{-}method  t,sparseVector{-}method   t,TsparseMatrix{-}method }
+\CommentTok{\#\# [34] t.data.frame            t.default               t.fractions*           }
+\CommentTok{\#\# [37] t.gtable*               t.trellis*              t.ts*                  }
+\CommentTok{\#\# [40] t.vctrs\_sclr*           t.vctrs\_vctr*          }
+\CommentTok{\#\# see \textquotesingle{}?methods\textquotesingle{} for accessing help and source code}
+\KeywordTok{methods}\NormalTok{(}\DataTypeTok{class =} \StringTok{"ts"}\NormalTok{)}
+\CommentTok{\#\#  [1] [             [\textless{}{-}           aggregate     as.data.frame as\_tibble    }
+\CommentTok{\#\#  [6] cbind         coerce        cycle         diff          diffinv      }
+\CommentTok{\#\# [11] filter        initialize    kernapply     lines         Math         }
+\CommentTok{\#\# [16] Math2         monthplot     na.omit       Ops           plot         }
+\CommentTok{\#\# [21] print         show          slotsFromS3   t             time         }
+\CommentTok{\#\# [26] window        window\textless{}{-}     }
+\CommentTok{\#\# see \textquotesingle{}?methods\textquotesingle{} for accessing help and source code}
+\end{Highlighting}
+\end{Shaded}
+
+若要檢視 S4 classes 的函式, 可以使用
+\texttt{showClass("function.namme")},
+\texttt{showMethods("function.namme")},
+\texttt{getMethod("function.namme")},
+\texttt{selectMethod()},
+\texttt{existsMethod()},
+\texttt{hasMethod()},
+\texttt{removeClass()},
+\texttt{removeMethod()},
+\texttt{getClass()},
+\texttt{getSlots()},
+\texttt{slotNames()},
+\texttt{slot()}.
+另外一種查看函式的原始碼內容與計算過程,
+是下載原始碼使用文書處理軟體打開檔案檢視.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{download.packages}\NormalTok{(}\DataTypeTok{pkgs =} \StringTok{"package.name"}\NormalTok{,}
+                  \DataTypeTok{destdir =} \StringTok{"C:/RData"}\NormalTok{,}
+                  \DataTypeTok{type =} \StringTok{"source"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux6578ux5217ux51fdux5f0f}{%
+\section{數列函式}\label{ux6578ux5217ux51fdux5f0f}}
+
+\{R\} 有幾個產生數列的基本函式,
+包含 \texttt{:}, \texttt{sequence()}, \texttt{rep()} 等.
+
+\hypertarget{ux6578ux5217ux51fdux5f0f-seq-ux8207-sequence}{%
+\subsection{數列函式: seq() 與 sequence()}\label{ux6578ux5217ux51fdux5f0f-seq-ux8207-sequence}}
+
+在統計運算中, 常需要產生數列向量,
+例如產生
+\texttt{{[}1,2,3,4,5{]}},
+\texttt{{[}1,3,5,7,9{]}}
+等等,
+可以使用 函式
+\texttt{:} (冒號),
+\texttt{seq()}
+或
+\texttt{sequence()}
+等產生數列向量.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\# :}
+\DecValTok{1}\OperatorTok{:}\DecValTok{5}
+\CommentTok{\#\# [1] 1 2 3 4 5}
+\DecValTok{5}\OperatorTok{:}\DecValTok{1}
+\CommentTok{\#\# [1] 5 4 3 2 1}
+\OperatorTok{{-}}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{3}
+\CommentTok{\#\# [1] {-}1  0  1  2  3}
+\end{Highlighting}
+\end{Shaded}
+
+數列函式
+\texttt{seq()}
+或
+\texttt{sequence()}
+的指令, 不受限只有整數,
+可以任產生何實數數列.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{seq}\NormalTok{(}\DataTypeTok{from =} \DecValTok{1}\NormalTok{, }\DataTypeTok{to =} \DecValTok{1}\NormalTok{, }
+    \DataTypeTok{by =}\NormalTok{ ((to }\OperatorTok{{-}}\StringTok{ }\NormalTok{from)}\OperatorTok{/}\NormalTok{(length.out }\OperatorTok{{-}}\StringTok{ }\DecValTok{1}\NormalTok{)),}
+    \DataTypeTok{length.out =} \OtherTok{NULL}\NormalTok{, }
+    \DataTypeTok{along.with =} \OtherTok{NULL}\NormalTok{, ...)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{from\ =\ 1} 數列起始值
+\item
+  \texttt{to\ =\ 1} 數列結束值
+\item
+  \texttt{by} 數列每次增加值
+\item
+  \texttt{length.out} 數列長度 (元素數目)
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\# seq()}
+\KeywordTok{seq}\NormalTok{(}\DataTypeTok{from =} \DecValTok{1}\NormalTok{, }\DataTypeTok{to =} \DecValTok{5}\NormalTok{, }\DataTypeTok{by =} \FloatTok{0.5}\NormalTok{)}
+\CommentTok{\#\# [1] 1.0 1.5 2.0 2.5 3.0 3.5 4.0 4.5 5.0}
+\KeywordTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\FloatTok{0.5}\NormalTok{)}
+\CommentTok{\#\# [1] 1.0 1.5 2.0 2.5 3.0 3.5 4.0 4.5 5.0}
+\KeywordTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DataTypeTok{length =} \DecValTok{3}\NormalTok{)}
+\CommentTok{\#\# [1] 1 3 5}
+\KeywordTok{seq}\NormalTok{(}\DataTypeTok{from =} \DecValTok{0}\NormalTok{, }\DataTypeTok{to =} \DecValTok{1}\NormalTok{, }\DataTypeTok{by =} \FloatTok{0.1}\NormalTok{)}
+\CommentTok{\#\#  [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0}
+\KeywordTok{seq}\NormalTok{(}\DataTypeTok{from =} \DecValTok{0}\NormalTok{, }\DataTypeTok{to =} \DecValTok{2}\NormalTok{, }\DataTypeTok{by =} \FloatTok{0.33}\NormalTok{)}
+\CommentTok{\#\# [1] 0.00 0.33 0.66 0.99 1.32 1.65 1.98}
+\KeywordTok{sequence}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{))}
+\CommentTok{\#\#  [1] 1 2 3 1 2 3 4 1 2 3 4 5}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux91cdux8907ux5143ux7d20ux51fdux5f0f-rep}{%
+\section{重複元素函式: rep()}\label{ux91cdux8907ux5143ux7d20ux51fdux5f0f-rep}}
+
+另一個與
+\texttt{seq()} 類似的函式
+\texttt{rep()},
+可以產生相同重複元素的向量. 向量指令與其中引數分別為:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rep}\NormalTok{(x, }\DataTypeTok{times =} \DecValTok{1}\NormalTok{, }\DataTypeTok{length.out =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{each =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{x} 使用者想要相同重複元素的數值向量.
+\item
+  \texttt{times} 數值向量 \texttt{x} 重複的次數.
+\item
+  \texttt{each} 數值向量 \texttt{x} 的每個元素重複的次數.
+\item
+  \texttt{length.out\ =\ NA} 數值向量 \texttt{x} 重複後的長度.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\# rep()}
+\KeywordTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DataTypeTok{times =} \DecValTok{3}\NormalTok{)}
+\CommentTok{\#\# [1] 0 0 0}
+\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{)}
+\CommentTok{\#\# [1] 1 1 1 1 1}
+\NormalTok{x.vec \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{)}
+\KeywordTok{rep}\NormalTok{(x.vec, }\DataTypeTok{times =} \DecValTok{2}\NormalTok{)}
+\CommentTok{\#\# [1] 4 5 6 4 5 6}
+\KeywordTok{rep}\NormalTok{(x.vec, }\DataTypeTok{each =} \DecValTok{2}\NormalTok{)}
+\CommentTok{\#\# [1] 4 4 5 5 6 6}
+\KeywordTok{rep}\NormalTok{(x.vec, }\DataTypeTok{each =} \DecValTok{2}\NormalTok{, }\DataTypeTok{times =} \DecValTok{3}\NormalTok{)}
+\CommentTok{\#\#  [1] 4 4 5 5 6 6 4 4 5 5 6 6 4 4 5 5 6 6}
+\KeywordTok{rep}\NormalTok{(x.vec, }\DataTypeTok{times =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\CommentTok{\#\# [1] 4 4 5 5 6 6}
+\KeywordTok{rep}\NormalTok{(x.vec, }\DataTypeTok{times =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{))}
+\CommentTok{\#\# [1] 4 5 5 6 6 6}
+\KeywordTok{rep}\NormalTok{(x.vec, }\DataTypeTok{each =} \DecValTok{2}\NormalTok{, }\DataTypeTok{len =} \DecValTok{4}\NormalTok{)    }\CommentTok{\# first 4 only.}
+\CommentTok{\#\# [1] 4 4 5 5}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux7b97ux6578ux51fdux5f0f-arithmetic-computing-function}{%
+\section{算數函式 Arithmetic Computing Function}\label{ux7b97ux6578ux51fdux5f0f-arithmetic-computing-function}}
+
+\{R\} 有許多內建的
+\textbf{算數函式}
+(\textbf{arithmetic function}),
+包含指數, 對數,
+Gamma 函數, Beta 函數,
+三角函數, 反三角函數,
+雙曲函數, 反雙曲函數 等等.
+
+\begin{longtable}[]{@{}ll@{}}
+\caption{算數函式 Arithmetic Computing Function}\tabularnewline
+\toprule
+符號 & 定義\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+符號 & 定義\tabularnewline
+\midrule
+\endhead
+- & 減法運算 (Substraction, can be unary or binary)\tabularnewline
++ & 加法運算 (Addition, can be unary or binary)\tabularnewline
+! & 否定運算 (Unary not)\tabularnewline
+* & 乘法運算 (Multiplication, binary)\tabularnewline
+/ & 除法運算 (Division, binary)\tabularnewline
+\^{} & 指數乘冪運算 (Exponentiation, binary)\tabularnewline
+\%\% & 整數除法的餘數 (Modulus, binary)\tabularnewline
+\%/\% & 整數除法的商數 (Integer divide, binary)\tabularnewline
+\%*\% & 矩陣內積乘法 (Matrix product, binary)\tabularnewline
+\%o\% & 矩陣外積乘法 (Outer product, binary)\tabularnewline
+\%x\% & 矩陣 Kronecker 乘法 (Kronecker product, binary)\tabularnewline
+\%in\% & 配對運算 (Matching operator, binary, in model formulae: nesting)\tabularnewline
+\texttt{round(x,\ \ digits\ =\ 0)} & 設定小數位數 (數值會受到作業系統影響)\tabularnewline
+\texttt{signif(x,\ digits\ =\ 6)} & 設定實數列印出的小數位數 (數值會受到作業系統影響)\tabularnewline
+\texttt{trunc(x)} & 將 \texttt{x} 的小數截斷, 向 0 靠近\tabularnewline
+\texttt{ceiling(x)} & 大於 \texttt{x} 的最小整數\tabularnewline
+\texttt{floor(x)} & 小於 \texttt{x} 的最大整數\tabularnewline
+\texttt{sign(x)} & 求 \texttt{x} 的正負值, 回傳 1, 0, 或 -1.\tabularnewline
+\texttt{abs(x)} & 求 \texttt{x} 的絕對值\tabularnewline
+\texttt{sqrt(x)} & \(\sqrt{x}\)\tabularnewline
+\texttt{exp(x)} & \(e^x\)\tabularnewline
+\texttt{expm1(x)} & 當 \(\vert x \vert << 1\), 計算 \(e^{x}-1\)\tabularnewline
+\texttt{log(x)} & \(\log (x)\)\tabularnewline
+\texttt{log10(x)} & \(log_{10} (x)\)\tabularnewline
+\texttt{log2(x)} & \(\log_2 (x)\)\tabularnewline
+\texttt{logb(x,\ base\ =\ z)} & \(\log_z (x)\)\tabularnewline
+\texttt{log1p(x)} & 當 \(\vert x \vert << 1\), 計算 \(\log(1+x)\)\tabularnewline
+\texttt{gamma(x)} & \(\Gamma (x) = (x-1)! = \int_0^\infty t^{(x-1)} \exp (-t) d t\)\tabularnewline
+\texttt{lgamma(x)} & \(\log_e [\Gamma (x)]\)\tabularnewline
+\texttt{beta(a,\ b)} & \(B (a,b) = (\Gamma (a) \Gamma (b))\,/\, (\Gamma(a+b))\)\tabularnewline
+& \$ = \int\_0\^{}1 t\^{}\{(a-1)\} (1-t)\^{}\{(b-1)\} d t\$\tabularnewline
+\texttt{lbeta(a,\ b)} & \(\log_e [B(a, b)]\)\tabularnewline
+\texttt{digamma(x)} & \(\frac{d}{dx} \log_e [\Gamma (x)]\)\tabularnewline
+\texttt{trigamma(x)} & \(\frac{d^2}{d x^2} \log_e [\Gamma (x)]\)\tabularnewline
+\texttt{psigamma(x,\ deriv\ =\ 0)} & \(\frac{d^p}{d x^p} \log_e [\Gamma (x)]\)\tabularnewline
+\texttt{sin(x)\ cos(x)\ tan(x)} & 三角函數 (trigonometric functions)\tabularnewline
+\texttt{asin(x)\ acos(x)\ atan(x)} & 反三角函數 (inverse functions)\tabularnewline
+\texttt{sinh(x)\ cosh(x)\ tanh(x)} & 雙曲函數 (hyperbolic functionsx)\tabularnewline
+\texttt{asinh(x)\ acosh(x)\ atanh(x)} & 反雙曲函數 (inverse hyperbolic functions)\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\# Arithmetic Computing}
+\CommentTok{\#\# rounding}
+\NormalTok{(x.vec \textless{}{-}}\StringTok{ }\FloatTok{0.5} \OperatorTok{+}\StringTok{ }\KeywordTok{c}\NormalTok{(}\OperatorTok{{-}}\DecValTok{2}\OperatorTok{:}\DecValTok{2}\NormalTok{))}
+\CommentTok{\#\# [1] {-}1.5 {-}0.5  0.5  1.5  2.5}
+\KeywordTok{round}\NormalTok{(x.vec) }\CommentTok{\# IEEE rounding}
+\CommentTok{\#\# [1] {-}2  0  0  2  2}
+\NormalTok{(y.vec \textless{}{-}}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\OperatorTok{{-}}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DataTypeTok{by =} \FloatTok{0.5}\NormalTok{))}
+\CommentTok{\#\# [1] {-}2.0 {-}1.5 {-}1.0 {-}0.5  0.0  0.5  1.0  1.5  2.0}
+\NormalTok{(y.round \textless{}{-}}\StringTok{ }\KeywordTok{round}\NormalTok{(y.vec)) }\CommentTok{\# IEEE rounding}
+\CommentTok{\#\# [1] {-}2 {-}2 {-}1  0  0  0  1  2  2}
+\NormalTok{(y.trunc \textless{}{-}}\StringTok{ }\KeywordTok{trunc}\NormalTok{(y.vec))}
+\CommentTok{\#\# [1] {-}2 {-}1 {-}1  0  0  0  1  1  2}
+\NormalTok{(y.signif \textless{}{-}}\StringTok{ }\KeywordTok{signif}\NormalTok{(y.vec))}
+\CommentTok{\#\# [1] {-}2.0 {-}1.5 {-}1.0 {-}0.5  0.0  0.5  1.0  1.5  2.0}
+\NormalTok{(y.ceil \textless{}{-}}\StringTok{ }\KeywordTok{ceiling}\NormalTok{(y.vec))}
+\CommentTok{\#\# [1] {-}2 {-}1 {-}1  0  0  1  1  2  2}
+\NormalTok{(y.floor \textless{}{-}}\StringTok{ }\KeywordTok{floor}\NormalTok{(y.vec))}
+\CommentTok{\#\# [1] {-}2 {-}2 {-}1 {-}1  0  0  1  1  2}
+\KeywordTok{cbind}\NormalTok{(y.vec, y.round, y.trunc, y.signif, y.ceil, y.floor)}
+\CommentTok{\#\#       y.vec y.round y.trunc y.signif y.ceil y.floor}
+\CommentTok{\#\#  [1,]  {-}2.0      {-}2      {-}2     {-}2.0     {-}2      {-}2}
+\CommentTok{\#\#  [2,]  {-}1.5      {-}2      {-}1     {-}1.5     {-}1      {-}2}
+\CommentTok{\#\#  [3,]  {-}1.0      {-}1      {-}1     {-}1.0     {-}1      {-}1}
+\CommentTok{\#\#  [4,]  {-}0.5       0       0     {-}0.5      0      {-}1}
+\CommentTok{\#\#  [5,]   0.0       0       0      0.0      0       0}
+\CommentTok{\#\#  [6,]   0.5       0       0      0.5      1       0}
+\CommentTok{\#\#  [7,]   1.0       1       1      1.0      1       1}
+\CommentTok{\#\#  [8,]   1.5       2       1      1.5      2       1}
+\CommentTok{\#\#  [9,]   2.0       2       2      2.0      2       2}
+\CommentTok{\#}
+\NormalTok{(x.vec \textless{}{-}}\StringTok{  }\FloatTok{0.5} \OperatorTok{+}\StringTok{ }\KeywordTok{c}\NormalTok{(}\OperatorTok{{-}}\DecValTok{2}\OperatorTok{:}\DecValTok{3}\NormalTok{))}
+\CommentTok{\#\# [1] {-}1.5 {-}0.5  0.5  1.5  2.5  3.5}
+\KeywordTok{round}\NormalTok{(x.vec) }\CommentTok{\# IEEE rounding}
+\CommentTok{\#\# [1] {-}2  0  0  2  2  4}
+\NormalTok{(y.vec \textless{}{-}}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\OperatorTok{{-}}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DataTypeTok{by =} \FloatTok{0.5}\NormalTok{))}
+\CommentTok{\#\#  [1] {-}2.0 {-}1.5 {-}1.0 {-}0.5  0.0  0.5  1.0  1.5  2.0  2.5  3.0}
+\NormalTok{(y.round \textless{}{-}}\StringTok{ }\KeywordTok{round}\NormalTok{(y.vec)) }\CommentTok{\# IEEE rounding}
+\CommentTok{\#\#  [1] {-}2 {-}2 {-}1  0  0  0  1  2  2  2  3}
+\NormalTok{(y.trunc \textless{}{-}}\StringTok{ }\KeywordTok{trunc}\NormalTok{(y.vec))}
+\CommentTok{\#\#  [1] {-}2 {-}1 {-}1  0  0  0  1  1  2  2  3}
+\NormalTok{(y.signif \textless{}{-}}\StringTok{ }\KeywordTok{signif}\NormalTok{(y.vec))}
+\CommentTok{\#\#  [1] {-}2.0 {-}1.5 {-}1.0 {-}0.5  0.0  0.5  1.0  1.5  2.0  2.5  3.0}
+\NormalTok{(y.ceil \textless{}{-}}\StringTok{ }\KeywordTok{ceiling}\NormalTok{(y.vec))}
+\CommentTok{\#\#  [1] {-}2 {-}1 {-}1  0  0  1  1  2  2  3  3}
+\NormalTok{(y.floor \textless{}{-}}\StringTok{ }\KeywordTok{floor}\NormalTok{(y.vec))}
+\CommentTok{\#\#  [1] {-}2 {-}2 {-}1 {-}1  0  0  1  1  2  2  3}
+\KeywordTok{cbind}\NormalTok{(y.vec, y.round, y.trunc, y.signif, y.ceil, y.floor)}
+\CommentTok{\#\#       y.vec y.round y.trunc y.signif y.ceil y.floor}
+\CommentTok{\#\#  [1,]  {-}2.0      {-}2      {-}2     {-}2.0     {-}2      {-}2}
+\CommentTok{\#\#  [2,]  {-}1.5      {-}2      {-}1     {-}1.5     {-}1      {-}2}
+\CommentTok{\#\#  [3,]  {-}1.0      {-}1      {-}1     {-}1.0     {-}1      {-}1}
+\CommentTok{\#\#  [4,]  {-}0.5       0       0     {-}0.5      0      {-}1}
+\CommentTok{\#\#  [5,]   0.0       0       0      0.0      0       0}
+\CommentTok{\#\#  [6,]   0.5       0       0      0.5      1       0}
+\CommentTok{\#\#  [7,]   1.0       1       1      1.0      1       1}
+\CommentTok{\#\#  [8,]   1.5       2       1      1.5      2       1}
+\CommentTok{\#\#  [9,]   2.0       2       2      2.0      2       2}
+\CommentTok{\#\# [10,]   2.5       2       2      2.5      3       2}
+\CommentTok{\#\# [11,]   3.0       3       3      3.0      3       3}
+\CommentTok{\#}
+\NormalTok{(y.vec \textless{}{-}}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\OperatorTok{{-}}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DataTypeTok{by =} \FloatTok{0.5}\NormalTok{))}
+\CommentTok{\#\#  [1] {-}2.0 {-}1.5 {-}1.0 {-}0.5  0.0  0.5  1.0  1.5  2.0  2.5  3.0}
+\NormalTok{y.vec[}\KeywordTok{trunc}\NormalTok{(y.vec) }\OperatorTok{!=}\StringTok{ }\KeywordTok{floor}\NormalTok{(y.vec)]}
+\CommentTok{\#\# [1] {-}1.5 {-}0.5}
+\NormalTok{y.vec[}\KeywordTok{round}\NormalTok{(y.vec) }\OperatorTok{!=}\StringTok{ }\KeywordTok{floor}\NormalTok{(y.vec }\OperatorTok{+}\StringTok{ }\FloatTok{0.5}\NormalTok{)]}
+\CommentTok{\#\# [1] {-}1.5  0.5  2.5}
+\CommentTok{\#}
+\NormalTok{(z.vec \textless{}{-}}\StringTok{ }\NormalTok{pi }\OperatorTok{*}\StringTok{ }\DecValTok{100} \OperatorTok{\^{}}\StringTok{ }\NormalTok{(}\OperatorTok{{-}}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{))}
+\CommentTok{\#\# [1] 3.142e{-}02 3.142e+00 3.142e+02 3.142e+04 3.142e+06}
+\KeywordTok{round}\NormalTok{(z.vec, }\DecValTok{3}\NormalTok{)}
+\CommentTok{\#\# [1] 3.100e{-}02 3.142e+00 3.142e+02 3.142e+04 3.142e+06}
+\KeywordTok{signif}\NormalTok{(z.vec, }\DecValTok{3}\NormalTok{)}
+\CommentTok{\#\# [1] 3.14e{-}02 3.14e+00 3.14e+02 3.14e+04 3.14e+06}
+\CommentTok{\#}
+\CommentTok{\#\# sign() abs()}
+\KeywordTok{sign}\NormalTok{(pi) }\CommentTok{\# == 1}
+\CommentTok{\#\# [1] 1}
+\KeywordTok{sign}\NormalTok{(}\OperatorTok{{-}}\DecValTok{2}\OperatorTok{:}\DecValTok{3}\NormalTok{)}\CommentTok{\# {-}1 {-}1 0 1 1 1}
+\CommentTok{\#\# [1] {-}1 {-}1  0  1  1  1}
+\KeywordTok{abs}\NormalTok{(}\OperatorTok{{-}}\DecValTok{2}\OperatorTok{:}\DecValTok{3}\NormalTok{)}
+\CommentTok{\#\# [1] 2 1 0 1 2 3}
+\CommentTok{\#}
+\CommentTok{\#\# log(), exp() calculation}
+\NormalTok{(x.vec \textless{}{-}}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{)}
+\CommentTok{\#\# [1] 1 2 3}
+\KeywordTok{log}\NormalTok{(}\KeywordTok{exp}\NormalTok{(x.vec))}
+\CommentTok{\#\# [1] 1 2 3}
+\NormalTok{(y.vec \textless{}{-}}\StringTok{ }\DecValTok{10} \OperatorTok{\^{}}\StringTok{ }\NormalTok{(x.vec))}
+\CommentTok{\#\# [1]   10  100 1000}
+\KeywordTok{log10}\NormalTok{(y.vec)}
+\CommentTok{\#\# [1] 1 2 3}
+\KeywordTok{log10}\NormalTok{(}\FloatTok{1e7}\NormalTok{) }\CommentTok{\# = 7}
+\CommentTok{\#\# [1] 7}
+\CommentTok{\#}
+\CommentTok{\#\# options(digits, scipen)}
+\KeywordTok{options}\NormalTok{(}\DataTypeTok{digits =} \DecValTok{4}\NormalTok{, }\DataTypeTok{scipen =} \DecValTok{0}\NormalTok{)}
+\NormalTok{z.vec \textless{}{-}}\StringTok{ }\NormalTok{pi }\OperatorTok{*}\StringTok{ }\DecValTok{100}\OperatorTok{\^{}}\NormalTok{(}\OperatorTok{{-}}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{)}
+\KeywordTok{print}\NormalTok{(z.vec }\OperatorTok{/}\StringTok{ }\DecValTok{1000}\NormalTok{, }\DataTypeTok{digits =} \DecValTok{4}\NormalTok{)}
+\CommentTok{\#\# [1] 3.142e{-}05 3.142e{-}03 3.142e{-}01 3.142e+01 3.142e+03}
+\KeywordTok{options}\NormalTok{(}\DataTypeTok{digits =} \DecValTok{4}\NormalTok{, }\DataTypeTok{scipen =} \DecValTok{100}\NormalTok{)}
+\KeywordTok{print}\NormalTok{(z.vec }\OperatorTok{/}\StringTok{ }\DecValTok{1000}\NormalTok{, }\DataTypeTok{digits =} \DecValTok{4}\NormalTok{)}
+\CommentTok{\#\# [1]    0.00003142    0.00314159    0.31415927   31.41592654 3141.59265359}
+\CommentTok{\#}
+\KeywordTok{options}\NormalTok{(}\DataTypeTok{digits =} \DecValTok{4}\NormalTok{, }\DataTypeTok{scipen =} \DecValTok{100}\NormalTok{)}
+\NormalTok{x.vec \textless{}{-}}\StringTok{ }\DecValTok{100} \OperatorTok{\^{}}\StringTok{ }\OperatorTok{{-}}\NormalTok{(}\DecValTok{1} \OperatorTok{+}\StringTok{ }\DecValTok{2} \OperatorTok{*}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{)}
+\KeywordTok{cbind}\NormalTok{(}
+  \DataTypeTok{x =}\NormalTok{ x.vec,}
+  \DataTypeTok{log1px =} \KeywordTok{log}\NormalTok{(}\DecValTok{1} \OperatorTok{+}\StringTok{ }\NormalTok{x.vec),}
+  \DataTypeTok{log1p  =} \KeywordTok{log1p}\NormalTok{(x.vec),}
+  \DataTypeTok{exp    =} \KeywordTok{exp}\NormalTok{(x.vec) }\OperatorTok{{-}}\StringTok{ }\DecValTok{1}\NormalTok{,}
+  \DataTypeTok{expm1  =} \KeywordTok{expm1}\NormalTok{(x.vec)}
+\NormalTok{)}
+\CommentTok{\#\#                     x               log1px            log1p}
+\CommentTok{\#\# [1,] 0.00000100000000 0.000000999999499918 0.00000099999950}
+\CommentTok{\#\# [2,] 0.00000000010000 0.000000000100000008 0.00000000010000}
+\CommentTok{\#\# [3,] 0.00000000000001 0.000000000000009992 0.00000000000001}
+\CommentTok{\#\#                       exp            expm1}
+\CommentTok{\#\# [1,] 0.000001000000499962 0.00000100000050}
+\CommentTok{\#\# [2,] 0.000000000100000008 0.00000000010000}
+\CommentTok{\#\# [3,] 0.000000000000009992 0.00000000000001}
+\CommentTok{\#}
+\KeywordTok{options}\NormalTok{(}\DataTypeTok{digits =} \DecValTok{4}\NormalTok{, }\DataTypeTok{scipen =} \DecValTok{0}\NormalTok{)}
+\NormalTok{x.vec \textless{}{-}}\StringTok{ }\DecValTok{100}\OperatorTok{\^{}}\NormalTok{(}\OperatorTok{{-}}\NormalTok{(}\DecValTok{1} \OperatorTok{+}\StringTok{ }\DecValTok{2} \OperatorTok{*}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{))}
+\KeywordTok{cbind}\NormalTok{(}
+  \DataTypeTok{x =}\NormalTok{ x.vec,}
+  \DataTypeTok{log1px =} \KeywordTok{log}\NormalTok{(}\DecValTok{1} \OperatorTok{+}\StringTok{ }\NormalTok{x.vec),}
+  \DataTypeTok{log1p  =} \KeywordTok{log1p}\NormalTok{(x.vec),}
+  \DataTypeTok{exp    =} \KeywordTok{exp}\NormalTok{(x.vec) }\OperatorTok{{-}}\StringTok{ }\DecValTok{1}\NormalTok{,}
+  \DataTypeTok{expm1  =} \KeywordTok{expm1}\NormalTok{(x.vec)}
+\NormalTok{)}
+\CommentTok{\#\#          x    log1px log1p       exp expm1}
+\CommentTok{\#\# [1,] 1e{-}06 1.000e{-}06 1e{-}06 1.000e{-}06 1e{-}06}
+\CommentTok{\#\# [2,] 1e{-}10 1.000e{-}10 1e{-}10 1.000e{-}10 1e{-}10}
+\CommentTok{\#\# [3,] 1e{-}14 9.992e{-}15 1e{-}14 9.992e{-}15 1e{-}14}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux7d44ux5408ux8207ux968eux4e58ux51fdux5f0f-choose-ux8207-factorial}{%
+\section{組合與階乘函式: choose() 與 factorial()}\label{ux7d44ux5408ux8207ux968eux4e58ux51fdux5f0f-choose-ux8207-factorial}}
+
+\{R\} 內建的組合與階乘函式
+\texttt{choose()},
+\texttt{lchoose()},
+\texttt{factorial()},
+\texttt{lfactorial()},
+其用法類似.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{choose(n,\ k)} = \(\binom{n}{k}\)
+\item
+  \texttt{fractorial(x)} = \(x!\)
+\item
+  \texttt{k} 為正整數.
+\item
+  \texttt{x} 與 \texttt{n} 為數值向量.
+\item
+  \texttt{factorial()}, \texttt{lfactorial()} 回傳原始結果取對數值.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\# combination}
+\CommentTok{\#\# choose()}
+\KeywordTok{choose}\NormalTok{(}\DataTypeTok{n =} \DecValTok{5}\NormalTok{, }\DataTypeTok{k =} \DecValTok{2}\NormalTok{)}
+\CommentTok{\#\# [1] 10}
+\KeywordTok{log}\NormalTok{(}\KeywordTok{choose}\NormalTok{(}\DataTypeTok{n =} \DecValTok{5}\NormalTok{, }\DataTypeTok{k =} \DecValTok{2}\NormalTok{))}
+\CommentTok{\#\# [1] 2.303}
+\KeywordTok{lchoose}\NormalTok{(}\DataTypeTok{n =} \DecValTok{5}\NormalTok{, }\DataTypeTok{k =} \DecValTok{2}\NormalTok{)}
+\CommentTok{\#\# [1] 2.303}
+\ControlFlowTok{for}\NormalTok{ (n }\ControlFlowTok{in} \DecValTok{0}\OperatorTok{:}\DecValTok{5}\NormalTok{)}
+  \KeywordTok{print}\NormalTok{(}\KeywordTok{choose}\NormalTok{(n, }\DataTypeTok{k =} \DecValTok{0}\OperatorTok{:}\NormalTok{n))}
+\CommentTok{\#\# [1] 1}
+\CommentTok{\#\# [1] 1 1}
+\CommentTok{\#\# [1] 1 2 1}
+\CommentTok{\#\# [1] 1 3 3 1}
+\CommentTok{\#\# [1] 1 4 6 4 1}
+\CommentTok{\#\# [1]  1  5 10 10  5  1}
+\CommentTok{\#\# factorial}
+\KeywordTok{factorial}\NormalTok{(}\DataTypeTok{x =} \DecValTok{100}\NormalTok{)}
+\CommentTok{\#\# [1] 9.333e+157}
+\KeywordTok{log}\NormalTok{(}\KeywordTok{factorial}\NormalTok{(}\DataTypeTok{x =} \DecValTok{100}\NormalTok{))}
+\CommentTok{\#\# [1] 363.7}
+\KeywordTok{lfactorial}\NormalTok{(}\DataTypeTok{x =} \DecValTok{100}\NormalTok{)}
+\CommentTok{\#\# [1] 363.7}
+\KeywordTok{lfactorial}\NormalTok{(}\DataTypeTok{x =} \DecValTok{10000}\NormalTok{)}
+\CommentTok{\#\# [1] 82109}
+\KeywordTok{factorial}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{))}
+\CommentTok{\#\# [1]   1   6 120}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux9078ux64c7ux8cc7ux6599ux51fdux5f0f-all-any-which}{%
+\section{選擇資料函式: all(), any(), which()}\label{ux9078ux64c7ux8cc7ux6599ux51fdux5f0f-all-any-which}}
+
+函式
+\texttt{all(x)} 與
+\texttt{any(x)}
+可以用來查看特定向量物件 \texttt{obj.vec} 的元素是否符合某些特定條件,
+回傳邏輯純量 \texttt{TRUE} 或 \texttt{FALSE}.
+函式
+\texttt{which()}
+查看特定向量物件 \texttt{obj.vec} 的元素是否符合某些特定條件,
+然後回傳一個下標向量, 紀錄向量物件符合某些特定條件的元素位置.
+函式指令
+\texttt{which.max()}
+與
+\texttt{which.min()}
+是函式指令
+\texttt{which()}
+的延伸.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{all}\NormalTok{(..., }\DataTypeTok{na.rm =} \OtherTok{FALSE}\NormalTok{)}
+\KeywordTok{any}\NormalTok{(..., }\DataTypeTok{na.rm =} \OtherTok{FALSE}\NormalTok{)}
+\KeywordTok{which}\NormalTok{(x, }\DataTypeTok{arr.ind =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{useNames =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+其中 \texttt{...} 為輸入向量物件的條件判斷.
+\texttt{all(x)}
+與
+\texttt{any(x)}
+回傳一個純量 (scalar) 代表 \texttt{TRUE} 或 \texttt{FALSE}.
+使用函式
+\texttt{all(x)}
+用來檢查邏輯向量 \(\mathbf{x}\) 的所有元素是否都是 \texttt{TRUE}?
+另一方面,
+使用函式
+\texttt{any(x)}
+用來檢查 邏輯向量 \(\mathbf{x}\) 的任一元素是否為 \texttt{TRUE}?
+使用函式指令
+\texttt{which(x)}
+則回傳一個向量,
+是邏輯向量 \(\mathbf{x}\) 中的元素為 \texttt{TRUE} 所在的下標位置 (index).
+\texttt{which(x)} 可使用引數 \texttt{arr.ind\ =\ TRUE} 是當 \(\mathbf{x}\) 為 array (matrix) 時,
+回傳 array (matrix) 的下標位置.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\# all(), any(), which()}
+\NormalTok{(x.vec \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\OperatorTok{{-}}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{))}
+\CommentTok{\#\# [1] {-}1  0  1  2}
+\KeywordTok{all}\NormalTok{(x.vec }\OperatorTok{\textgreater{}}\StringTok{ }\DecValTok{0}\NormalTok{)}
+\CommentTok{\#\# [1] FALSE}
+\KeywordTok{any}\NormalTok{(x.vec }\OperatorTok{\textgreater{}}\StringTok{ }\DecValTok{0}\NormalTok{)}
+\CommentTok{\#\# [1] TRUE}
+\KeywordTok{which}\NormalTok{(x.vec }\OperatorTok{\textgreater{}}\StringTok{ }\DecValTok{0}\NormalTok{)}
+\CommentTok{\#\# [1] 3 4}
+\KeywordTok{which.max}\NormalTok{(x.vec)}
+\CommentTok{\#\# [1] 4}
+\KeywordTok{which.min}\NormalTok{(x.vec)}
+\CommentTok{\#\# [1] 1}
+\CommentTok{\#}
+\NormalTok{(x.mat \textless{}{-}}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{{-}1}\NormalTok{, }\DecValTok{{-}3}\NormalTok{,}
+                   \DecValTok{{-}1}\NormalTok{,  }\DecValTok{2}\NormalTok{,  }\DecValTok{4}\NormalTok{,}
+                   \DecValTok{{-}3}\NormalTok{,  }\DecValTok{4}\NormalTok{,  }\DecValTok{9}\NormalTok{),}
+                 \DataTypeTok{nrow =} \DecValTok{3}\NormalTok{, }\DataTypeTok{byrow =}\NormalTok{ T))}
+\CommentTok{\#\#      [,1] [,2] [,3]}
+\CommentTok{\#\# [1,]    2   {-}1   {-}3}
+\CommentTok{\#\# [2,]   {-}1    2    4}
+\CommentTok{\#\# [3,]   {-}3    4    9}
+\KeywordTok{all}\NormalTok{(x.mat }\OperatorTok{\textgreater{}}\StringTok{ }\DecValTok{0}\NormalTok{)}
+\CommentTok{\#\# [1] FALSE}
+\KeywordTok{any}\NormalTok{(x.mat }\OperatorTok{\textgreater{}}\StringTok{ }\DecValTok{0}\NormalTok{)}
+\CommentTok{\#\# [1] TRUE}
+\KeywordTok{which}\NormalTok{(x.mat }\OperatorTok{\textgreater{}}\StringTok{ }\DecValTok{0}\NormalTok{)}
+\CommentTok{\#\# [1] 1 5 6 8 9}
+\CommentTok{\#}
+\KeywordTok{which}\NormalTok{(x.mat }\OperatorTok{\%\%}\StringTok{ }\DecValTok{2} \OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{)}
+\CommentTok{\#\# [1] 1 5 6 8}
+\KeywordTok{which}\NormalTok{(x.mat }\OperatorTok{\%\%}\StringTok{ }\DecValTok{2} \OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{, }\DataTypeTok{arr.ind =} \OtherTok{TRUE}\NormalTok{)}
+\CommentTok{\#\#      row col}
+\CommentTok{\#\# [1,]   1   1}
+\CommentTok{\#\# [2,]   2   2}
+\CommentTok{\#\# [3,]   3   2}
+\CommentTok{\#\# [4,]   2   3}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux6392ux5e8fux51fdux5f0f-ranking-and-sorting}{%
+\section{排序函式 Ranking and Sorting}\label{ux6392ux5e8fux51fdux5f0f-ranking-and-sorting}}
+
+在 \{R\} 中有數個與排序相關的函式,
+如
+\texttt{rev()},
+\texttt{sort()},
+\texttt{order()}
+與
+\texttt{rank()}.
+
+\begin{longtable}[]{@{}ll@{}}
+\caption{常見之排序函式}\tabularnewline
+\toprule
+函式 & 說明\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+函式 & 說明\tabularnewline
+\midrule
+\endhead
+\texttt{rev(x)} & 將向量 \(\mathbf{x}\) 元素反轉列出 (reverse order)\tabularnewline
+\texttt{rank(x)} & 向量 \(\mathbf{x}\) 元素的對應排序 (returns the sample ranks of the values)\tabularnewline
+& 相同數值內設排序方式 \texttt{ties.method\ =\ "average"}\tabularnewline
+\texttt{sort(x)} & 向量 \(\mathbf{x}\) 從小到大列出 (sort a vector or factor, partially)\tabularnewline
+& into ascending or descending order).\tabularnewline
+\texttt{order(x)} & 將向量 \(\mathbf{x}\) 從小到大排序後的向量之元素\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rev}\NormalTok{(x)}
+\KeywordTok{sort}\NormalTok{(x, }\DataTypeTok{decreasing =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{na.last =} \OtherTok{NA}\NormalTok{, ...)}
+\KeywordTok{rank}\NormalTok{(x, }\DataTypeTok{na.last =} \OtherTok{TRUE}\NormalTok{,}
+     \DataTypeTok{ties.method =} \KeywordTok{c}\NormalTok{(}\StringTok{"average"}\NormalTok{, }\StringTok{"first"}\NormalTok{, }\StringTok{"last"}\NormalTok{, }\StringTok{"random"}\NormalTok{, }\StringTok{"max"}\NormalTok{, }\StringTok{"min"}\NormalTok{))}
+\KeywordTok{order}\NormalTok{(x, ..., }\DataTypeTok{na.last =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{decreasing =} \OtherTok{FALSE}\NormalTok{,}
+        \DataTypeTok{method =} \KeywordTok{c}\NormalTok{(}\StringTok{"shell"}\NormalTok{, }\StringTok{"radix"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+這些函式的共用引數為:
+
+\begin{itemize}
+\item
+  引數 \texttt{x} 為向量 \(\mathbf{x}\).
+\item
+  引數 \texttt{decreasing}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{decreasing\ =\ FALSE} 為 \{R\} 內設從小到大排序.
+  \item
+    \texttt{decreasing\ =\ TRUE} 則從大到小排序.
+  \end{itemize}
+\item
+  引數 \texttt{na.last}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{na.last\ =\ TRUE} 為 \{R\} 內設將 NA 排序在最大.
+  \item
+    \texttt{na.last\ =\ FALSE} 為 \{R\} 內設將 NA 排序在最小.
+  \item
+    \texttt{na.last\ =\ NA} 為 \{R\} 內設將 NA 排除.
+  \end{itemize}
+\item
+  函式
+  \texttt{rev(x)}
+  回傳一個向量 \(\mathbf{z}\), 是將向量 \(\mathbf{x}\) 元素反轉.
+\item
+  函式
+  \texttt{sort(x)}
+  回傳一個向量 \(\mathbf{z}\),
+  是將向量 \(\mathbf{x}\) 的元素從小到大排序的結果列出.
+\item
+  函式 \%使用函式指令
+  \texttt{rank(x)}
+  回傳一個向量 \(\mathbf{z}\), 是將向量
+  \(\mathbf{x}\) 每一個元素從小到大排序之後, \(\mathbf{x}\) 元素之相對順序 (rank).
+\item
+  \texttt{"average"}: 相同數值都是回傳平均排序值.
+\item
+  \texttt{"first"}: 相同數值都是回傳依序由小到大不同排序值.
+\item
+  \texttt{"last"}: 相同數值都是回傳依序由大到小排序值.
+\item
+  \texttt{"random"}: 相同數值回傳隨機排序值.
+\item
+  \texttt{"max"}: 相同數值回傳最大排序值.
+\item
+  \texttt{"min"}: 相同數值回傳最小排序值.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\# reverse, rank, sort and order}
+\CommentTok{\#\# rev(): reverse elements}
+\NormalTok{x.vec \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{9}\NormalTok{, }\OtherTok{NA}\NormalTok{, }\DecValTok{8}\NormalTok{)}
+\KeywordTok{rev}\NormalTok{(x.vec)}
+\CommentTok{\#\#  [1]  8 NA  9  9  9 10  6  7  7  7}
+\CommentTok{\#\# sort(): from the smallest to the largest}
+\KeywordTok{sort}\NormalTok{(x.vec)}
+\CommentTok{\#\# [1]  6  7  7  7  8  9  9  9 10}
+\CommentTok{\#\# rank():}
+\KeywordTok{rank}\NormalTok{(x.vec, }\DataTypeTok{na.last =} \OtherTok{TRUE}\NormalTok{)}
+\CommentTok{\#\#  [1]  3  3  3  1  9  7  7  7 10  5}
+\KeywordTok{rank}\NormalTok{(x.vec, }\DataTypeTok{na.last =} \OtherTok{FALSE}\NormalTok{)}
+\CommentTok{\#\#  [1]  4  4  4  2 10  8  8  8  1  6}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\KeywordTok{rank}\NormalTok{(x.vec, }\DataTypeTok{ties.method =} \StringTok{"average"}\NormalTok{)}
+\CommentTok{\#\#  [1]  3  3  3  1  9  7  7  7 10  5}
+\KeywordTok{rank}\NormalTok{(x.vec, }\DataTypeTok{ties.method =} \StringTok{"first"}\NormalTok{)}
+\CommentTok{\#\#  [1]  2  3  4  1  9  6  7  8 10  5}
+\KeywordTok{rank}\NormalTok{(x.vec, }\DataTypeTok{ties.method =} \StringTok{"last"}\NormalTok{)}
+\CommentTok{\#\#  [1]  4  3  2  1  9  8  7  6 10  5}
+\KeywordTok{rank}\NormalTok{(x.vec, }\DataTypeTok{ties.method =} \StringTok{"random"}\NormalTok{)}
+\CommentTok{\#\#  [1]  2  3  4  1  9  7  8  6 10  5}
+\KeywordTok{rank}\NormalTok{(x.vec, }\DataTypeTok{ties.method =} \StringTok{"max"}\NormalTok{)}
+\CommentTok{\#\#  [1]  4  4  4  1  9  8  8  8 10  5}
+\KeywordTok{rank}\NormalTok{(x.vec, }\DataTypeTok{ties.method =} \StringTok{"min"}\NormalTok{)}
+\CommentTok{\#\#  [1]  2  2  2  1  9  6  6  6 10  5}
+\CommentTok{\#\# order(): retrun index}
+\CommentTok{\#\# x.vec[] is the smallest one}
+\KeywordTok{order}\NormalTok{(x.vec)}
+\CommentTok{\#\#  [1]  4  1  2  3 10  6  7  8  5  9}
+\NormalTok{x.vec[}\KeywordTok{order}\NormalTok{(x.vec)]}
+\CommentTok{\#\#  [1]  6  7  7  7  8  9  9  9 10 NA}
+\CommentTok{\#\# rank(): ties.method = "average"}
+\NormalTok{x \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{, }\OtherTok{NA}\NormalTok{)}
+\KeywordTok{sort}\NormalTok{(x, }\DataTypeTok{na.last =} \OtherTok{FALSE}\NormalTok{)}
+\CommentTok{\#\# [1] NA  6  7  7  8  9}
+\KeywordTok{rank}\NormalTok{(x, }\DataTypeTok{ties.method =} \StringTok{"average"}\NormalTok{, }\DataTypeTok{na.last =} \OtherTok{TRUE}\NormalTok{)}
+\CommentTok{\#\# [1] 2.5 5.0 1.0 2.5 4.0 6.0}
+\NormalTok{(x.ord \textless{}{-}}\StringTok{ }\KeywordTok{order}\NormalTok{(x, }\DataTypeTok{na.last =} \OtherTok{FALSE}\NormalTok{))}
+\CommentTok{\#\# [1] 6 3 1 4 5 2}
+\NormalTok{x[x.ord] }\CommentTok{\# = sort(x)}
+\CommentTok{\#\# [1] NA  6  7  7  8  9}
+\end{Highlighting}
+\end{Shaded}
+
+\{R\} 排序對缺失值 NA 處理要非常小心,
+引數 \texttt{na.last\ =\ TRUE} 為 \{R\} 內設,
+但在比較關係上, 對缺失值 NA 可有不同處理.
+
+\hypertarget{ux7269ux4ef6ux67e5ux770bux8207ux5f37ux5236ux8f49ux63dbux51fdux5f0f}{%
+\section{物件查看與強制轉換函式}\label{ux7269ux4ef6ux67e5ux770bux8207ux5f37ux5236ux8f49ux63dbux51fdux5f0f}}
+
+\{R\} 的許多函式型式為
+\texttt{is.object()},
+例如函式
+\texttt{is.na()},
+\texttt{is.vector()}
+等,
+可以用來查看某一特定物件是否屬於某一類別.
+
+\{R\} 的許多函式型式為
+\texttt{as.object()},
+例如函式
+\texttt{as.vector()},
+\texttt{as.matrix(()}
+等,
+可以用來某強制轉換一特定物件到所指定的物件類別.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\# is() and as()}
+\CommentTok{\# vector}
+\NormalTok{x.vec \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1} \OperatorTok{/}\StringTok{ }\DecValTok{1}\NormalTok{, }\DecValTok{1} \OperatorTok{/}\StringTok{ }\DecValTok{2}\NormalTok{, }\DecValTok{1} \OperatorTok{/}\StringTok{ }\DecValTok{3}\NormalTok{, }\DecValTok{1} \OperatorTok{/}\StringTok{ }\DecValTok{4}\NormalTok{, }\DecValTok{1} \OperatorTok{/}\StringTok{ }\DecValTok{5}\NormalTok{)}
+\NormalTok{x.vec}
+\CommentTok{\#\# [1] 1.0000 0.5000 0.3333 0.2500 0.2000}
+\KeywordTok{is.vector}\NormalTok{(x.vec)}
+\CommentTok{\#\# [1] TRUE}
+\KeywordTok{is.character}\NormalTok{(x.vec)}
+\CommentTok{\#\# [1] FALSE}
+\NormalTok{x.vec \textless{}{-}}\StringTok{ }\KeywordTok{as.character}\NormalTok{(x.vec)}
+\NormalTok{x.vec}
+\CommentTok{\#\# [1] "1"                 "0.5"               "0.333333333333333"}
+\CommentTok{\#\# [4] "0.25"              "0.2"}
+\CommentTok{\#\#}
+\NormalTok{b.df \textless{}{-}}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(}\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{24}\NormalTok{), }\DataTypeTok{nrow =} \DecValTok{6}\NormalTok{, }\DataTypeTok{byrow =}\NormalTok{ T))}
+\KeywordTok{is.matrix}\NormalTok{(b.df)}
+\CommentTok{\#\# [1] FALSE}
+\NormalTok{b.mat \textless{}{-}}\StringTok{ }\KeywordTok{as.matrix}\NormalTok{(b.df)}
+\NormalTok{b.mat}
+\CommentTok{\#\#      V1 V2 V3 V4}
+\CommentTok{\#\# [1,]  1  2  3  4}
+\CommentTok{\#\# [2,]  5  6  7  8}
+\CommentTok{\#\# [3,]  9 10 11 12}
+\CommentTok{\#\# [4,] 13 14 15 16}
+\CommentTok{\#\# [5,] 17 18 19 20}
+\CommentTok{\#\# [6,] 21 22 23 24}
+\NormalTok{b.mat \textless{}{-}}\StringTok{ }\KeywordTok{as.vector}\NormalTok{(b.mat)}
+\NormalTok{b.mat}
+\CommentTok{\#\#  [1]  1  5  9 13 17 21  2  6 10 14 18 22  3  7 11 15 19 23  4  8 12 16 20 24}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux57faux672cux7d71ux8a08ux51fdux5f0f}{%
+\chapter{基本統計函式}\label{ux57faux672cux7d71ux8a08ux51fdux5f0f}}
+
+\{R\} 有許多統計函式,
+可以對向量物件進行統計分析,
+\{R\} 內建所有常見的基礎敘述統計量,
+例如累加與乘積函式,
+\texttt{sum()},
+\texttt{cumsum()},
+\texttt{diff()},
+\texttt{prod()},
+\texttt{cumprod()};
+樣本統計量函式,
+例如,
+\texttt{mean()},
+\texttt{median()},
+\texttt{var()},
+\texttt{sd()},
+\texttt{range()},
+\texttt{min()},
+\texttt{max()},
+\texttt{quantile()},
+\texttt{sample()} 等.
+
+使用 \{R\} 的統計函式進行資料分析時,
+須可別注意缺失值,
+若資料物件中有缺失值,
+一些 \{R\} 的統計函式須另外做特別處裡,
+可以對資料物件中的缺失值,
+先使用函式
+\texttt{na.omit()}
+處理,
+然後再進行資料分析,
+例如,
+\texttt{mean(na.omit(x))}.
+另外,
+可使用統計函式內的通用引數,
+\texttt{na.rm\ =\ T},
+例如,
+\texttt{mean(x,\ na.rm\ =\ T)}
+然後再進行資料分析,
+對矩陣或資料框架物件做運算,
+若資料物件中有缺失值,
+常會有不可預期的結果必須小心.
+
+\begin{longtable}[]{@{}lll@{}}
+\caption{基本統計函式}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.19\columnwidth}\raggedright
+格式\strut
+\end{minipage} & \begin{minipage}[b]{0.21\columnwidth}\raggedright
+說明\strut
+\end{minipage} & \begin{minipage}[b]{0.51\columnwidth}\raggedright
+\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.19\columnwidth}\raggedright
+格式\strut
+\end{minipage} & \begin{minipage}[b]{0.21\columnwidth}\raggedright
+說明\strut
+\end{minipage} & \begin{minipage}[b]{0.51\columnwidth}\raggedright
+\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{sum(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright
+加總和 (scalar)\strut
+\end{minipage} & \begin{minipage}[t]{0.51\columnwidth}\raggedright
+\(y = \sum_i x_i\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{cumsum(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright
+累計加總和 (vector)\strut
+\end{minipage} & \begin{minipage}[t]{0.51\columnwidth}\raggedright
+\(z_j = \sum_{i \le j} x_i\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{diff(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright
+\texttt{x{[}i+1{]}-x{[}i{]}}\strut
+\end{minipage} & \begin{minipage}[t]{0.51\columnwidth}\raggedright
+\(z_i = x_{i+1} - x_i\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{lag(x,\ k)}\strut
+\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright
+\texttt{x{[}i-k{]}}\strut
+\end{minipage} & \begin{minipage}[t]{0.51\columnwidth}\raggedright
+\(z_i = x_{i-k}\), 對應 \texttt{x{[}i{]}} 回傳 \texttt{x{[}i-k{]}}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{lead(x,\ k)}\strut
+\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright
+\texttt{x{[}i+k{]}}\strut
+\end{minipage} & \begin{minipage}[t]{0.51\columnwidth}\raggedright
+\(z_i = x_{i+k}\), 對應 \texttt{x{[}i{]}} 回傳 \texttt{x{[}i+k{]}}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{prod(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright
+乘積 (product)\strut
+\end{minipage} & \begin{minipage}[t]{0.51\columnwidth}\raggedright
+\(y = \prod_i x_i\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{cumprod(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright
+累計乘積\strut
+\end{minipage} & \begin{minipage}[t]{0.51\columnwidth}\raggedright
+\$z\_j = \prod\_\{i \le j\} x\_i\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{mean(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright
+平均值 (mean)\strut
+\end{minipage} & \begin{minipage}[t]{0.51\columnwidth}\raggedright
+\(\bar{x} = \frac{1}{n} \sum_i x_i\))\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{median(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright
+中位數 (median)\strut
+\end{minipage} & \begin{minipage}[t]{0.51\columnwidth}\raggedright
+\(0.5\) quantile, \(50^{th}\) percentile\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{var(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright
+變異數, 共變異數\strut
+\end{minipage} & \begin{minipage}[t]{0.51\columnwidth}\raggedright
+\(s^2 = \frac{1}{n-1} \sum_i (x_i - \bar{x})^2\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{sd(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright
+標準差 (SD)\strut
+\end{minipage} & \begin{minipage}[t]{0.51\columnwidth}\raggedright
+\(s = \sqrt{s^2}\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{range(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright
+範圍 (range)\strut
+\end{minipage} & \begin{minipage}[t]{0.51\columnwidth}\raggedright
+\((\min (x), \max (x))\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{min(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright
+最小值\strut
+\end{minipage} & \begin{minipage}[t]{0.51\columnwidth}\raggedright
+\(\min (x)\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{max(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright
+最大值\strut
+\end{minipage} & \begin{minipage}[t]{0.51\columnwidth}\raggedright
+\(\max (x)\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{quantile(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright
+百分位數\strut
+\end{minipage} & \begin{minipage}[t]{0.51\columnwidth}\raggedright
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{fivenum(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright
+五數摘要\strut
+\end{minipage} & \begin{minipage}[t]{0.51\columnwidth}\raggedright
+(five-number summary) \((\min, Q_1, \text{median}, Q_3, \max)\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{sample(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright
+隨機抽樣\strut
+\end{minipage} & \begin{minipage}[t]{0.51\columnwidth}\raggedright
+random sample\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{ux6558ux8ff0ux7d71ux8a08ux51fdux5f0f}{%
+\section{敘述統計函式}\label{ux6558ux8ff0ux7d71ux8a08ux51fdux5f0f}}
+
+\{R\} 內建一些基本敘述統計, 如計算平均值與變異等.
+\texttt{z\ \textless{}-\ range(x)} 函式回傳一個向量,
+二個元素 \((\min(x), \max(x))\);
+極大值與極小值分別為 \texttt{min(x)}, \texttt{max(x)};
+求取百分位值可以用 \texttt{quantile()},
+如 \texttt{quantile(x,\ probs\ =\ c(0.05,\ 0.25,\ 0.5,\ 0.75,\ 0.95)}.
+\texttt{fivenum(x)} 回傳 \(\mathbf{x}\) 向量 \((\min, Q_1, \text{median}, Q_3, \max)\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\# basic descriptive statistics}
+\NormalTok{x \textless{}{-}}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\OperatorTok{{-}}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\FloatTok{0.3}\NormalTok{)}
+\NormalTok{x}
+\CommentTok{\#\#  [1] {-}2.0 {-}1.7 {-}1.4 {-}1.1 {-}0.8 {-}0.5 {-}0.2  0.1  0.4  0.7  1.0  1.3  1.6  1.9  2.2}
+\CommentTok{\#\# [16]  2.5  2.8}
+\KeywordTok{sum}\NormalTok{(x)}
+\CommentTok{\#\# [1] 6.8}
+\KeywordTok{cumsum}\NormalTok{(x)}
+\CommentTok{\#\#  [1] {-}2.0 {-}3.7 {-}5.1 {-}6.2 {-}7.0 {-}7.5 {-}7.7 {-}7.6 {-}7.2 {-}6.5 {-}5.5 {-}4.2 {-}2.6 {-}0.7  1.5}
+\CommentTok{\#\# [16]  4.0  6.8}
+\KeywordTok{diff}\NormalTok{(x)}
+\CommentTok{\#\#  [1] 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3}
+\KeywordTok{prod}\NormalTok{(x)}
+\CommentTok{\#\# [1] {-}0.7138}
+\KeywordTok{cumprod}\NormalTok{(x)}
+\CommentTok{\#\#  [1] {-}2.00000  3.40000 {-}4.76000  5.23600 {-}4.18880  2.09440 {-}0.41888 {-}0.04189}
+\CommentTok{\#\#  [9] {-}0.01676 {-}0.01173 {-}0.01173 {-}0.01525 {-}0.02440 {-}0.04635 {-}0.10197 {-}0.25493}
+\CommentTok{\#\# [17] {-}0.71381}
+\KeywordTok{mean}\NormalTok{(x)}
+\CommentTok{\#\# [1] 0.4}
+\KeywordTok{median}\NormalTok{(x)}
+\CommentTok{\#\# [1] 0.4}
+\KeywordTok{var}\NormalTok{(x)}
+\CommentTok{\#\# [1] 2.295}
+\KeywordTok{sd}\NormalTok{(x)}
+\CommentTok{\#\# [1] 1.515}
+\KeywordTok{range}\NormalTok{(x)}
+\CommentTok{\#\# [1] {-}2.0  2.8}
+\KeywordTok{min}\NormalTok{(x)}
+\CommentTok{\#\# [1] {-}2}
+\KeywordTok{max}\NormalTok{(x)}
+\CommentTok{\#\# [1] 2.8}
+\CommentTok{\#\# quantile}
+\NormalTok{y \textless{}{-}}\StringTok{ }\KeywordTok{quantile}\NormalTok{(x, }\DataTypeTok{probs =} \KeywordTok{c}\NormalTok{(}\FloatTok{0.05}\NormalTok{, }\FloatTok{0.25}\NormalTok{, }\FloatTok{0.5}\NormalTok{, }\FloatTok{0.75}\NormalTok{, }\FloatTok{0.95}\NormalTok{))}
+\NormalTok{y}
+\CommentTok{\#\#    5\%   25\%   50\%   75\%   95\% }
+\CommentTok{\#\# {-}1.76 {-}0.80  0.40  1.60  2.56}
+\CommentTok{\# IQR: inter{-}quantile range}
+\NormalTok{iqr =}\StringTok{ }\NormalTok{y[}\DecValTok{4}\NormalTok{] }\OperatorTok{{-}}\StringTok{ }\NormalTok{y[}\DecValTok{2}\NormalTok{]}
+\NormalTok{iqr}
+\CommentTok{\#\# 75\% }
+\CommentTok{\#\# 2.4}
+\CommentTok{\#\# five numnber summary}
+\KeywordTok{fivenum}\NormalTok{(x)}
+\CommentTok{\#\# [1] {-}2.0 {-}0.8  0.4  1.6  2.8}
+\CommentTok{\# missing values}
+\NormalTok{x[}\DecValTok{3}\NormalTok{] \textless{}{-}}\StringTok{ }\OtherTok{NA}
+\NormalTok{x[}\DecValTok{7}\NormalTok{] \textless{}{-}}\StringTok{ }\OtherTok{NA}
+\NormalTok{x}
+\CommentTok{\#\#  [1] {-}2.0 {-}1.7   NA {-}1.1 {-}0.8 {-}0.5   NA  0.1  0.4  0.7  1.0  1.3  1.6  1.9  2.2}
+\CommentTok{\#\# [16]  2.5  2.8}
+\KeywordTok{mean}\NormalTok{(x)}
+\CommentTok{\#\# [1] NA}
+\KeywordTok{mean}\NormalTok{(}\KeywordTok{na.omit}\NormalTok{(x))}
+\CommentTok{\#\# [1] 0.56}
+\KeywordTok{mean}\NormalTok{(x, }\DataTypeTok{na.rm =}\NormalTok{ T)}
+\CommentTok{\#\# [1] 0.56}
+\KeywordTok{var}\NormalTok{(x, }\DataTypeTok{na.rm =}\NormalTok{ T)}
+\CommentTok{\#\# [1] 2.338}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux985eux5225ux8cc7ux6599ux8868ux683cux51fdux6578}{%
+\section{類別資料表格函數}\label{ux985eux5225ux8cc7ux6599ux8868ux683cux51fdux6578}}
+
+在類別資料分析中,
+常常會使用到
+\textbf{列聯表}
+(\textbf{contingency table}),
+在 \{R\} 中, 一些函式用來製造或操作
+\textbf{列聯表}
+(\textbf{contingency table}),
+例如,
+\texttt{table()},
+\texttt{xtabs()},
+\texttt{as.table()},
+\texttt{is.table()};
+\texttt{ftable()},
+\texttt{read.ftable()},
+\texttt{wirte.ftable()};
+\texttt{as.data.frame()};
+\texttt{margin.table()},
+\texttt{prop.table()},
+\texttt{addmargins()}
+等.
+除此之外,
+\{R\} 還有一些關於列聯表的套件,
+例如,
+\texttt{xtable},
+\texttt{vcd**,}reshape2\texttt{,}plyr\texttt{,}dplyr\texttt{,}tidyr\texttt{,}tidyverse\texttt{等,\ 將資料產生或轉換成列聯表.\ \{R\}\ 本身有一些分析列聯表的函式,\ 也有許多許多流行病學的套件與函式,\ 對\ **列聯表**\ 進行分析.\ 例如,}Epi\texttt{,}epibasix\texttt{,}epiDisplay\texttt{(之前為}epicalc\texttt{),}epifit\texttt{,}epiR\texttt{,}epitools\texttt{,}RCOR\texttt{,}pROC`
+等,
+可以進行流行病學分析,
+套件主要分析能力大至相同,
+但各別套件仍有其特徵.
+
+類別資料的輸入常見有 2 種型式,
+(a)
+\textbf{個別資料}
+(\textbf{individual data},
+\textbf{micro data},
+\textbf{case data});
+(b)
+\textbf{聚集資料}
+(\textbf{aggregated data},
+\textbf{macro data},
+\textbf{summarized data},
+\textbf{ecological data}).
+個別資料內包含每一位
+\textbf{個體}
+(\textbf{subject},
+\textbf{individual}),
+研究者為目前的研究目的所蒐集的第一手資料,
+記錄著每一為個體的測量值,
+個別資料有時稱為
+\textbf{原始資料}
+(\textbf{raw data},
+\textbf{primary data},
+\textbf{original data}).
+資料只有摘要之後的結果,
+是由其他來源所得到的資料,
+沒有每一位個體的比變數觀測值,
+例如沒有每一位個體的性別, 年紀等觀測值,
+這種整理分析候的資料有時稱為
+\textbf{二手資料}
+或
+\textbf{次級資料}
+(\textbf{secondary data}).
+
+個別資料可以經過整理成為聚集資料形態,
+但是, 若遺失每一位個體的測量值, 只有聚集資料, 則無法回復原來的個別資料.
+因此, 研究盡量使用每一位個體的測量值, 但有些時候, 無法得到每一位個體的測量值,
+若資料內全是類別變數,
+則 個別資料 與 聚集資料 分析結論部會有差別,
+但資料內若有連續變數如年紀, BMI 等,
+將連續變數轉換成類別變數, 只呈現或分析聚集資料,
+則會造成所謂的
+\textbf{生態謬誤}
+(\textbf{ecological fallacy}),
+是指由 聚集資料 (團體) 所得到的推論,
+不能反應 個別資料 (個人的真實) 所得到的推論,
+所產生研究推論的誤導.
+
+\hypertarget{ux5217ux806fux8868ux51fdux5f0f-table-xtabs}{%
+\subsection{列聯表函式: table(), xtabs()}\label{ux5217ux806fux8868ux51fdux5f0f-table-xtabs}}
+
+使用函式
+\texttt{table()},
+\texttt{xtabs()},
+可以從任何向量, 矩陣, 陣列, 資料框架
+創造一個列聯表,
+回傳一個
+\textbf{列聯表}
+物件.
+函式
+\texttt{table()}
+回傳的物件稱為
+\texttt{\_contingency\ table\_}.
+這是一個 \{R\} 物件類別 (class)
+為
+\texttt{table}
+之特殊物件.
+使用函式
+\texttt{as.table()}
+可用來強制將 矩陣 或 資料框架 形成列聯表物件.
+\texttt{as.matrix()} 強制將 列聯表物件 形成 矩陣.
+\texttt{as.data.frame()} 強制將 列聯表物件 形成 資料框架.
+\texttt{as.data.frame()} 是 \texttt{xtabs()} 的反函式.
+使用函式
+\texttt{is.table()}
+可查看物件是否為列聯表物件.
+使用函式
+\texttt{table()}
+須使用資料內個別變數或向量.
+使用函式
+\texttt{xtabs()}
+可以從資料框架中,
+利用統計模型公式 (model formula) 創造一個列聯表.
+函式 \texttt{as.data.frame()}
+則是函式
+\texttt{xtabs()}
+的反函式,
+從列聯表物件創造一個資料框架.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{table}\NormalTok{(variable\_name, ...)}
+\KeywordTok{xtabs}\NormalTok{(formula, data)}
+\end{Highlighting}
+\end{Shaded}
+
+其中常用引數如下.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{formula}: 使用統計模型公式輸入.
+\item
+  \texttt{data}: 資料框架名.
+\item
+  \texttt{na.action\ =\ "na.omit"}: 缺失值處理方式.
+\item
+  \texttt{exclude}: 排除類別水準的細項, 自動內設排除缺失值.
+\item
+  \texttt{useNA}: 處理缺失值選項.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{"no"}: 排除缺失值.
+  \item
+    \texttt{"ifany"}: 納入缺失值, 若類別水準的計數 (count) 為正整數.
+  \item
+    \texttt{"always"}: 永遠納入缺失值成為 1 類別水準. 即使類別水準的計數 (count) 為 0 仍然自成 1 個類別水準.
+  \end{itemize}
+\end{itemize}
+
+Prentice (1973) 報告一個研究,
+關於年長退伍軍人罹患肺癌, 且無法接受手術之臨床試驗,
+\%病患在 Veteran's Administration 醫院隨機接受標準治療或新的化學療法,
+病患在榮民醫院隨機接受標準治療方法或新的化學治療方法,
+比較治療的主要結果變數為死亡時間,
+變數名稱列在表.
+資料在檔案 \textbf{survVATrial.csv}.
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+變數 & 描述\tabularnewline
+\midrule
+\endhead
+treat (therapy) & 治療組別: 0 = 標準; 1 = 新治療\tabularnewline
+cellcode & 細胞型態; 1 = 鱗狀細胞; 2 = 小細胞; 3 = 腺體細胞; 4 = 大細胞\tabularnewline
+time & 存活時間, 診斷日期至死亡日期, 單位以日計\tabularnewline
+censor & 設限狀態: 0 = 設限; 1 = 死亡\tabularnewline
+diagtime & Karnofsky performance score, 診斷時身體狀態表現的分數\tabularnewline
+diagtime & 診斷到隨機分配的時間, 以月計\tabularnewline
+age & 診斷時的年齡 (以年計)\tabularnewline
+prior & 先前是否接受治療; 0 = 無; 1 = 有\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dd \textless{}{-}}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\StringTok{"./Data/survVATrial.csv"}\NormalTok{,}
+                 \DataTypeTok{header =} \OtherTok{TRUE}\NormalTok{,}
+                 \DataTypeTok{sep =} \StringTok{","}\NormalTok{,}
+                 \DataTypeTok{quote =} \StringTok{"}\CharTok{\textbackslash{}"}\StringTok{\textquotesingle{}"}\NormalTok{,}
+                 \DataTypeTok{dec =} \StringTok{"."}\NormalTok{,}
+                 \DataTypeTok{row.names =} \OtherTok{NULL}\NormalTok{,}
+                 \CommentTok{\# col.names,}
+                 \DataTypeTok{as.is =} \OtherTok{TRUE}\NormalTok{,}
+                 \CommentTok{\# as.is = !stringsAsFactors,}
+                 \DataTypeTok{na.strings =} \KeywordTok{c}\NormalTok{(}\StringTok{"."}\NormalTok{, }\StringTok{"NA"}\NormalTok{))}
+\KeywordTok{head}\NormalTok{(dd)}
+\CommentTok{\#\#   treat cellcode time censor diagtime kps age prior}
+\CommentTok{\#\# 1     0        1   72      1       60   7  69     0}
+\CommentTok{\#\# 2     0        1  411      1       70   5  64    10}
+\CommentTok{\#\# 3     0        1  228      1       60   3  38     0}
+\CommentTok{\#\# 4     0        1  126      1       60   9  63    10}
+\CommentTok{\#\# 5     0        1  118      1       70  11  65    10}
+\CommentTok{\#\# 6     0        1   10      1       20   5  49     0}
+\KeywordTok{str}\NormalTok{(dd)}
+\CommentTok{\#\# \textquotesingle{}data.frame\textquotesingle{}:	137 obs. of  8 variables:}
+\CommentTok{\#\#  $ treat   : int  0 0 0 0 0 0 0 0 0 0 ...}
+\CommentTok{\#\#  $ cellcode: int  1 1 1 1 1 1 1 1 1 1 ...}
+\CommentTok{\#\#  $ time    : int  72 411 228 126 118 10 82 110 314 100 ...}
+\CommentTok{\#\#  $ censor  : int  1 1 1 1 1 1 1 1 1 0 ...}
+\CommentTok{\#\#  $ diagtime: int  60 70 60 60 70 20 40 80 50 70 ...}
+\CommentTok{\#\#  $ kps     : int  7 5 3 9 11 5 10 29 18 6 ...}
+\CommentTok{\#\#  $ age     : int  69 64 38 63 65 49 69 68 43 70 ...}
+\CommentTok{\#\#  $ prior   : int  0 10 0 10 10 0 10 0 0 0 ...}
+\NormalTok{dd}\OperatorTok{$}\NormalTok{treat \textless{}{-}}\StringTok{ }\KeywordTok{factor}\NormalTok{(dd}\OperatorTok{$}\NormalTok{treat, }\DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"placebo"}\NormalTok{, }\StringTok{"test"}\NormalTok{))}
+\NormalTok{dd}\OperatorTok{$}\NormalTok{cellcode \textless{}{-}}\StringTok{ }\KeywordTok{factor}\NormalTok{(dd}\OperatorTok{$}\NormalTok{cellcode, }
+                      \DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"squamous"}\NormalTok{, }\StringTok{"small"}\NormalTok{, }\StringTok{"adeno"}\NormalTok{, }\StringTok{"large"}\NormalTok{))}
+\NormalTok{dd}\OperatorTok{$}\NormalTok{censor \textless{}{-}}\StringTok{ }\KeywordTok{factor}\NormalTok{(dd}\OperatorTok{$}\NormalTok{censor, }\DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"survival"}\NormalTok{, }\StringTok{"dead"}\NormalTok{))}
+\NormalTok{dd}\OperatorTok{$}\NormalTok{prior \textless{}{-}}\StringTok{ }\KeywordTok{factor}\NormalTok{(dd}\OperatorTok{$}\NormalTok{prior, }\DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"no"}\NormalTok{, }\StringTok{"yes"}\NormalTok{))}
+\KeywordTok{head}\NormalTok{(dd)}
+\CommentTok{\#\#     treat cellcode time censor diagtime kps age prior}
+\CommentTok{\#\# 1 placebo squamous   72   dead       60   7  69    no}
+\CommentTok{\#\# 2 placebo squamous  411   dead       70   5  64   yes}
+\CommentTok{\#\# 3 placebo squamous  228   dead       60   3  38    no}
+\CommentTok{\#\# 4 placebo squamous  126   dead       60   9  63   yes}
+\CommentTok{\#\# 5 placebo squamous  118   dead       70  11  65   yes}
+\CommentTok{\#\# 6 placebo squamous   10   dead       20   5  49    no}
+\KeywordTok{str}\NormalTok{(dd)}
+\CommentTok{\#\# \textquotesingle{}data.frame\textquotesingle{}:	137 obs. of  8 variables:}
+\CommentTok{\#\#  $ treat   : Factor w/ 2 levels "placebo","test": 1 1 1 1 1 1 1 1 1 1 ...}
+\CommentTok{\#\#  $ cellcode: Factor w/ 4 levels "squamous","small",..: 1 1 1 1 1 1 1 1 1 1 ...}
+\CommentTok{\#\#  $ time    : int  72 411 228 126 118 10 82 110 314 100 ...}
+\CommentTok{\#\#  $ censor  : Factor w/ 2 levels "survival","dead": 2 2 2 2 2 2 2 2 2 1 ...}
+\CommentTok{\#\#  $ diagtime: int  60 70 60 60 70 20 40 80 50 70 ...}
+\CommentTok{\#\#  $ kps     : int  7 5 3 9 11 5 10 29 18 6 ...}
+\CommentTok{\#\#  $ age     : int  69 64 38 63 65 49 69 68 43 70 ...}
+\CommentTok{\#\#  $ prior   : Factor w/ 2 levels "no","yes": 1 2 1 2 2 1 2 1 1 1 ...}
+\CommentTok{\#\# one{-}way table}
+\CommentTok{\#\# table()}
+\KeywordTok{table}\NormalTok{(dd}\OperatorTok{$}\NormalTok{censor)}
+\CommentTok{\#\# }
+\CommentTok{\#\# survival     dead }
+\CommentTok{\#\#        9      128}
+\KeywordTok{table}\NormalTok{(dd}\OperatorTok{$}\NormalTok{cellcode)}
+\CommentTok{\#\# }
+\CommentTok{\#\# squamous    small    adeno    large }
+\CommentTok{\#\#       35       48       27       27}
+\CommentTok{\#\# xtabs()}
+\KeywordTok{xtabs}\NormalTok{(}\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{censor, }\DataTypeTok{data =}\NormalTok{ dd)}
+\CommentTok{\#\# censor}
+\CommentTok{\#\# survival     dead }
+\CommentTok{\#\#        9      128}
+\CommentTok{\#\# two{-}way table()}
+\CommentTok{\#\# table()}
+\NormalTok{dd}\FloatTok{.2}\NormalTok{tab =}\StringTok{ }\KeywordTok{table}\NormalTok{(dd}\OperatorTok{$}\NormalTok{cellcode, dd}\OperatorTok{$}\NormalTok{censor)}
+\NormalTok{dd}\FloatTok{.2}\NormalTok{tab }
+\CommentTok{\#\#           }
+\CommentTok{\#\#            survival dead}
+\CommentTok{\#\#   squamous        4   31}
+\CommentTok{\#\#   small           3   45}
+\CommentTok{\#\#   adeno           1   26}
+\CommentTok{\#\#   large           1   26}
+\KeywordTok{class}\NormalTok{(dd}\FloatTok{.2}\NormalTok{tab)}
+\CommentTok{\#\# [1] "table"}
+\CommentTok{\#\# xtabs()}
+\NormalTok{dd}\FloatTok{.2}\NormalTok{xtabs =}\StringTok{ }\KeywordTok{xtabs}\NormalTok{(}\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{cellcode }\OperatorTok{+}\StringTok{ }\NormalTok{censor, }\DataTypeTok{data =}\NormalTok{ dd)}
+\NormalTok{dd}\FloatTok{.2}\NormalTok{xtabs}
+\CommentTok{\#\#           censor}
+\CommentTok{\#\# cellcode   survival dead}
+\CommentTok{\#\#   squamous        4   31}
+\CommentTok{\#\#   small           3   45}
+\CommentTok{\#\#   adeno           1   26}
+\CommentTok{\#\#   large           1   26}
+\KeywordTok{class}\NormalTok{(dd}\FloatTok{.2}\NormalTok{xtabs)}
+\CommentTok{\#\# [1] "xtabs" "table"}
+\CommentTok{\#\# three{-}way table()}
+\CommentTok{\#\# table()}
+\NormalTok{dd}\FloatTok{.3}\NormalTok{tab =}\StringTok{ }\KeywordTok{table}\NormalTok{(dd}\OperatorTok{$}\NormalTok{treat, dd}\OperatorTok{$}\NormalTok{censor, dd}\OperatorTok{$}\NormalTok{cellcode)}
+\NormalTok{dd}\FloatTok{.3}\NormalTok{tab }
+\CommentTok{\#\# , ,  = squamous}
+\CommentTok{\#\# }
+\CommentTok{\#\#          }
+\CommentTok{\#\#           survival dead}
+\CommentTok{\#\#   placebo        2   13}
+\CommentTok{\#\#   test           2   18}
+\CommentTok{\#\# }
+\CommentTok{\#\# , ,  = small}
+\CommentTok{\#\# }
+\CommentTok{\#\#          }
+\CommentTok{\#\#           survival dead}
+\CommentTok{\#\#   placebo        2   28}
+\CommentTok{\#\#   test           1   17}
+\CommentTok{\#\# }
+\CommentTok{\#\# , ,  = adeno}
+\CommentTok{\#\# }
+\CommentTok{\#\#          }
+\CommentTok{\#\#           survival dead}
+\CommentTok{\#\#   placebo        0    9}
+\CommentTok{\#\#   test           1   17}
+\CommentTok{\#\# }
+\CommentTok{\#\# , ,  = large}
+\CommentTok{\#\# }
+\CommentTok{\#\#          }
+\CommentTok{\#\#           survival dead}
+\CommentTok{\#\#   placebo        1   14}
+\CommentTok{\#\#   test           0   12}
+\CommentTok{\#\# xtabs()}
+\NormalTok{dd}\FloatTok{.3}\NormalTok{xtabs =}\StringTok{ }\KeywordTok{xtabs}\NormalTok{(}\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{treat }\OperatorTok{+}\StringTok{ }\NormalTok{censor }\OperatorTok{+}\StringTok{ }\NormalTok{cellcode, }\DataTypeTok{data =}\NormalTok{ dd)}
+\NormalTok{dd}\FloatTok{.3}\NormalTok{xtabs}
+\CommentTok{\#\# , , cellcode = squamous}
+\CommentTok{\#\# }
+\CommentTok{\#\#          censor}
+\CommentTok{\#\# treat     survival dead}
+\CommentTok{\#\#   placebo        2   13}
+\CommentTok{\#\#   test           2   18}
+\CommentTok{\#\# }
+\CommentTok{\#\# , , cellcode = small}
+\CommentTok{\#\# }
+\CommentTok{\#\#          censor}
+\CommentTok{\#\# treat     survival dead}
+\CommentTok{\#\#   placebo        2   28}
+\CommentTok{\#\#   test           1   17}
+\CommentTok{\#\# }
+\CommentTok{\#\# , , cellcode = adeno}
+\CommentTok{\#\# }
+\CommentTok{\#\#          censor}
+\CommentTok{\#\# treat     survival dead}
+\CommentTok{\#\#   placebo        0    9}
+\CommentTok{\#\#   test           1   17}
+\CommentTok{\#\# }
+\CommentTok{\#\# , , cellcode = large}
+\CommentTok{\#\# }
+\CommentTok{\#\#          censor}
+\CommentTok{\#\# treat     survival dead}
+\CommentTok{\#\#   placebo        1   14}
+\CommentTok{\#\#   test           0   12}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux5217ux806fux8868ux51fdux5f0f-ftable}{%
+\subsection{列聯表函式: ftable()}\label{ux5217ux806fux8868ux51fdux5f0f-ftable}}
+
+函式
+\texttt{table()}
+或
+\texttt{xtabs()}
+對高維度列聯表的呈現類似 list 形式,
+較不方便操作,
+改使用函式
+\texttt{ftable()},
+可以從任何向量, 矩陣, 陣列, 資料框架
+創造一個
+\textbf{扁平列聯表}
+(\textbf{flat contingency table}),
+\textbf{扁平列聯表}
+是一個
+\texttt{ftalbe}
+類別 (class) 的矩陣物件,
+其中變數 (欄位, column) 為分類因子變數,
+另外再加上各組頻率數目,
+每一列 (row) 代表每一種分類的類別水準 (level).
+使用函式
+\texttt{ftable()}
+得到
+\texttt{ftable} 物件,
+在 \{R\} 的列印上,
+會比
+\texttt{table()}
+或
+\texttt{xtabs()}
+得到
+\texttt{\_contingency\ table\_} 物件
+好看.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\# three{-}way table()}
+\CommentTok{\#\# ftable()}
+\NormalTok{dd}\FloatTok{.3}\NormalTok{ftab =}\StringTok{ }\KeywordTok{ftable}\NormalTok{(dd}\OperatorTok{$}\NormalTok{cellcode, dd}\OperatorTok{$}\NormalTok{treat, dd}\OperatorTok{$}\NormalTok{censor)}
+\NormalTok{dd}\FloatTok{.3}\NormalTok{ftab}
+\CommentTok{\#\#                   survival dead}
+\CommentTok{\#\#                                }
+\CommentTok{\#\# squamous placebo         2   13}
+\CommentTok{\#\#          test            2   18}
+\CommentTok{\#\# small    placebo         2   28}
+\CommentTok{\#\#          test            1   17}
+\CommentTok{\#\# adeno    placebo         0    9}
+\CommentTok{\#\#          test            1   17}
+\CommentTok{\#\# large    placebo         1   14}
+\CommentTok{\#\#          test            0   12}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux5217ux806fux8868ux51fdux5f0f-margin.table-prop.table}{%
+\subsection{列聯表函式: margin.table(), prop.table()}\label{ux5217ux806fux8868ux51fdux5f0f-margin.table-prop.table}}
+
+使用函式
+\texttt{margin.table()}
+可以使用類別 (class) 為 \texttt{table} 的列聯表物件,
+或是使用陣列型式 (array, matrix) 的列聯表物件
+計算
+\textbf{邊際總合}
+(\textbf{marginal total}).
+函式
+\texttt{prop.table()}
+從陣列型式 (array, matrix) 之列聯表物件,
+計算列聯表物件的
+\textbf{相對頻率}
+(\textbf{relative frequency}).
+函式
+\texttt{addmargins()}
+對列聯表物件進行邊際維度計算總和.
+
+函式
+\texttt{margin.table()}
+與
+函式
+\texttt{prop.table()}
+無法對
+類別 (class) 為 \texttt{ftable} 的列聯表物件進行操作.
+函式
+\texttt{addmargins()}
+可以對
+類別 (class) 為 \texttt{table} 或 \texttt{ftable} 的列聯表物件進行操作.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{margin.table}\NormalTok{(x, }\DataTypeTok{margin =} \OtherTok{NULL}\NormalTok{)}
+\KeywordTok{prop.table}\NormalTok{(x, }\DataTypeTok{margin =} \OtherTok{NULL}\NormalTok{)}
+\KeywordTok{addmargins}\NormalTok{(A, margin, ...)}
+\end{Highlighting}
+\end{Shaded}
+
+其中引數
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{x}: \texttt{table} 物件.
+\item
+  \texttt{A}: \texttt{table} 或 \texttt{ftable} 物件.
+\item
+  \texttt{margin}: 維度下標或向量 (index/vector), 設定計算的邊際維度.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{margin\ =\ NULL}: 計算列聯表內總和或個別空格分率 (cell count/proportion).
+  \item
+    \texttt{margin\ =\ 1}: 計算列聯表的列位 (row) 邊際總和或分率 (row marginal total/proportion).
+  \end{itemize}
+\item
+  \texttt{margin\ =\ 2}: 計算列聯表的欄位 (column) 邊際總和或分率 (column marginal total/proportion).
+\item
+  \texttt{margin\ =\ k}: 其餘維度則依此列推.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\# one{-}way table}
+\CommentTok{\#\# table()}
+\NormalTok{dd}\FloatTok{.1}\NormalTok{tab =}\StringTok{ }\KeywordTok{table}\NormalTok{(dd}\OperatorTok{$}\NormalTok{cellcode)}
+\NormalTok{dd}\FloatTok{.1}\NormalTok{tab}
+\CommentTok{\#\# }
+\CommentTok{\#\# squamous    small    adeno    large }
+\CommentTok{\#\#       35       48       27       27}
+\KeywordTok{margin.table}\NormalTok{(dd}\FloatTok{.1}\NormalTok{tab)}
+\CommentTok{\#\# [1] 137}
+\KeywordTok{prop.table}\NormalTok{(dd}\FloatTok{.1}\NormalTok{tab)}
+\CommentTok{\#\# }
+\CommentTok{\#\# squamous    small    adeno    large }
+\CommentTok{\#\#   0.2555   0.3504   0.1971   0.1971}
+\CommentTok{\#\# xtabs()}
+\NormalTok{dd}\FloatTok{.1}\NormalTok{xtabs =}\StringTok{ }\KeywordTok{xtabs}\NormalTok{(}\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{censor, }\DataTypeTok{data =}\NormalTok{ dd)}
+\KeywordTok{margin.table}\NormalTok{(dd}\FloatTok{.1}\NormalTok{xtabs)}
+\CommentTok{\#\# [1] 137}
+\KeywordTok{prop.table}\NormalTok{(dd}\FloatTok{.1}\NormalTok{xtabs)}
+\CommentTok{\#\# censor}
+\CommentTok{\#\# survival     dead }
+\CommentTok{\#\#  0.06569  0.93431}
+\CommentTok{\#\# two{-}way table()}
+\CommentTok{\#\# table()}
+\NormalTok{dd}\FloatTok{.2}\NormalTok{tab =}\StringTok{ }\KeywordTok{table}\NormalTok{(dd}\OperatorTok{$}\NormalTok{cellcode, dd}\OperatorTok{$}\NormalTok{censor)}
+\NormalTok{dd}\FloatTok{.2}\NormalTok{tab }
+\CommentTok{\#\#           }
+\CommentTok{\#\#            survival dead}
+\CommentTok{\#\#   squamous        4   31}
+\CommentTok{\#\#   small           3   45}
+\CommentTok{\#\#   adeno           1   26}
+\CommentTok{\#\#   large           1   26}
+\CommentTok{\#\# cell count total and proportion }
+\KeywordTok{margin.table}\NormalTok{(dd}\FloatTok{.2}\NormalTok{tab)}
+\CommentTok{\#\# [1] 137}
+\KeywordTok{prop.table}\NormalTok{(dd}\FloatTok{.2}\NormalTok{tab)}
+\CommentTok{\#\#           }
+\CommentTok{\#\#            survival     dead}
+\CommentTok{\#\#   squamous 0.029197 0.226277}
+\CommentTok{\#\#   small    0.021898 0.328467}
+\CommentTok{\#\#   adeno    0.007299 0.189781}
+\CommentTok{\#\#   large    0.007299 0.189781}
+\CommentTok{\#\# condition on row}
+\KeywordTok{margin.table}\NormalTok{(dd}\FloatTok{.2}\NormalTok{tab, }\DataTypeTok{margin =} \DecValTok{1}\NormalTok{)}
+\CommentTok{\#\# }
+\CommentTok{\#\# squamous    small    adeno    large }
+\CommentTok{\#\#       35       48       27       27}
+\KeywordTok{prop.table}\NormalTok{(dd}\FloatTok{.2}\NormalTok{tab, }\DataTypeTok{margin =} \DecValTok{1}\NormalTok{)}
+\CommentTok{\#\#           }
+\CommentTok{\#\#            survival    dead}
+\CommentTok{\#\#   squamous  0.11429 0.88571}
+\CommentTok{\#\#   small     0.06250 0.93750}
+\CommentTok{\#\#   adeno     0.03704 0.96296}
+\CommentTok{\#\#   large     0.03704 0.96296}
+\CommentTok{\#\# condition on column}
+\KeywordTok{margin.table}\NormalTok{(dd}\FloatTok{.2}\NormalTok{tab, }\DataTypeTok{margin =} \DecValTok{2}\NormalTok{)}
+\CommentTok{\#\# }
+\CommentTok{\#\# survival     dead }
+\CommentTok{\#\#        9      128}
+\KeywordTok{prop.table}\NormalTok{(dd}\FloatTok{.2}\NormalTok{tab, }\DataTypeTok{margin =} \DecValTok{2}\NormalTok{)}
+\CommentTok{\#\#           }
+\CommentTok{\#\#            survival   dead}
+\CommentTok{\#\#   squamous   0.4444 0.2422}
+\CommentTok{\#\#   small      0.3333 0.3516}
+\CommentTok{\#\#   adeno      0.1111 0.2031}
+\CommentTok{\#\#   large      0.1111 0.2031}
+\CommentTok{\#\# xtabs()}
+\NormalTok{dd}\FloatTok{.2}\NormalTok{xtabs =}\StringTok{ }\KeywordTok{xtabs}\NormalTok{(}\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{cellcode }\OperatorTok{+}\StringTok{ }\NormalTok{censor, }\DataTypeTok{data =}\NormalTok{ dd)}
+\NormalTok{dd}\FloatTok{.2}\NormalTok{xtabs}
+\CommentTok{\#\#           censor}
+\CommentTok{\#\# cellcode   survival dead}
+\CommentTok{\#\#   squamous        4   31}
+\CommentTok{\#\#   small           3   45}
+\CommentTok{\#\#   adeno           1   26}
+\CommentTok{\#\#   large           1   26}
+\CommentTok{\#\# cell count total and proportion }
+\KeywordTok{margin.table}\NormalTok{(dd}\FloatTok{.2}\NormalTok{xtabs)}
+\CommentTok{\#\# [1] 137}
+\KeywordTok{prop.table}\NormalTok{(dd}\FloatTok{.2}\NormalTok{xtabs)}
+\CommentTok{\#\#           censor}
+\CommentTok{\#\# cellcode   survival     dead}
+\CommentTok{\#\#   squamous 0.029197 0.226277}
+\CommentTok{\#\#   small    0.021898 0.328467}
+\CommentTok{\#\#   adeno    0.007299 0.189781}
+\CommentTok{\#\#   large    0.007299 0.189781}
+\CommentTok{\#\# condition on row}
+\KeywordTok{margin.table}\NormalTok{(dd}\FloatTok{.2}\NormalTok{xtabs, }\DataTypeTok{margin =} \DecValTok{1}\NormalTok{)}
+\CommentTok{\#\# cellcode}
+\CommentTok{\#\# squamous    small    adeno    large }
+\CommentTok{\#\#       35       48       27       27}
+\KeywordTok{prop.table}\NormalTok{(dd}\FloatTok{.2}\NormalTok{xtabs, }\DataTypeTok{margin =} \DecValTok{1}\NormalTok{)}
+\CommentTok{\#\#           censor}
+\CommentTok{\#\# cellcode   survival    dead}
+\CommentTok{\#\#   squamous  0.11429 0.88571}
+\CommentTok{\#\#   small     0.06250 0.93750}
+\CommentTok{\#\#   adeno     0.03704 0.96296}
+\CommentTok{\#\#   large     0.03704 0.96296}
+\CommentTok{\#\# condition on column}
+\KeywordTok{margin.table}\NormalTok{(dd}\FloatTok{.2}\NormalTok{xtabs, }\DataTypeTok{margin =} \DecValTok{2}\NormalTok{)}
+\CommentTok{\#\# censor}
+\CommentTok{\#\# survival     dead }
+\CommentTok{\#\#        9      128}
+\KeywordTok{prop.table}\NormalTok{(dd}\FloatTok{.2}\NormalTok{xtabs, }\DataTypeTok{margin =} \DecValTok{2}\NormalTok{)}
+\CommentTok{\#\#           censor}
+\CommentTok{\#\# cellcode   survival   dead}
+\CommentTok{\#\#   squamous   0.4444 0.2422}
+\CommentTok{\#\#   small      0.3333 0.3516}
+\CommentTok{\#\#   adeno      0.1111 0.2031}
+\CommentTok{\#\#   large      0.1111 0.2031}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux6a5fux7387ux51fdux5f0fux8207ux4e82ux6578ux751fux6210ux51fdux5f0f}{%
+\section{機率函式與亂數生成函式}\label{ux6a5fux7387ux51fdux5f0fux8207ux4e82ux6578ux751fux6210ux51fdux5f0f}}
+
+\{R\} 具有詳盡的機率函式與亂數生成函式參見表 \textbackslash ref\{tab:RDistFun**, 如令 \(X\) 為一隨機變數 (random variable), 定義如下.
+
+\[
+\begin{aligned}
+&  f = f(X = x) = \text{機率密度函數}\; F(x) = \int f(x) dx = \text{累積機率分配函數}\\
+p &  =   F(q) = P (X \le q) = \text{累積機率分配函數, cumulative distribution function}  \\
+q &  =   Q (u) = F^{-1} (p) = \text{分位數函數, quantile function}, \; \text{其中}\;  p \le P (X \le q) \\
+d &  =  f(x) = F' (x) = P (X = x) = \text{機率密度分配函數, probability density function} \\
+r &  =  R (r) = f^{-1} (x)  = \text{隨機亂數函數, random number}, 
+\end{aligned}
+\]
+
+在 \{R\} 中, 相同的機率函數 (probability function), 使用相同的機率名稱,
+\texttt{ProbFun},
+在機率名稱, \texttt{ProbFun}, 之間,
+加上 4 種不同的小寫字母, \texttt{p}, \texttt{q}, \texttt{d}, \texttt{r},
+產生不同的機率函式.
+例如, \texttt{fProbFun},
+表示用相同的機率函式定義, 產生上述不同之結果.
+非中央參數 (non-centrality parameter), \texttt{ncp} 現在僅用於累積分配函數,
+此外還有函是 \texttt{ptukey()} 和 \texttt{qtukey()} 計算
+Studentized Range Distribution.
+
+\begin{longtable}[]{@{}lll@{}}
+\caption{機率函式}\tabularnewline
+\toprule
+機率分配 & \{R\} 函式名 (ProbFun) & 引數\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+機率分配 & \{R\} 函式名 (ProbFun) & 引數\tabularnewline
+\midrule
+\endhead
+beta & \texttt{beta} & shape1, shape2, ncp\tabularnewline
+binomial & \texttt{binom} & size, prob\tabularnewline
+Cauchy & \texttt{cauchy} & location, scale\tabularnewline
+chi-squared & \texttt{chisq} & df, ncp\tabularnewline
+exponential & \texttt{exp} & rate\tabularnewline
+F & \texttt{f} & df1, df1, ncp\tabularnewline
+gamma & \texttt{gamma} & shape, scale\tabularnewline
+geometric & \texttt{geom} & prob\tabularnewline
+hypergeometric & \texttt{hyper} & m, n, k\tabularnewline
+log-normal & \texttt{lnorm} & meanlog, sdlog\tabularnewline
+logistic & \texttt{logis} & location, scale\tabularnewline
+negative binomial & & nbinom\tabularnewline
+normal & \texttt{norm} & mean, sd\tabularnewline
+Poisson & \texttt{pois} & lambda\tabularnewline
+Student's & \texttt{t} & t df, ncp\tabularnewline
+uniform & \texttt{unif} & min, max\tabularnewline
+Weibull & \texttt{weibull} & shape, scale\tabularnewline
+Wilcoxon & \texttt{wilcox} & m, n\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{p} 表示 \textbf{累積機率分配函數} (\textbf{cumulative distribution function, CDF}).
+\item
+  \texttt{q} 表示 \textbf{分位數} (\textbf{quantile}),
+  符合 \(u \le P (X < = x)\) 的最小 \(x\).
+\item
+  \texttt{d} 表示 \textbf{機率密度函數} (\textbf{probability density function, pdf}).
+\item
+  \texttt{r} 表示隨機模擬 \textbf{偽隨機亂數}, \textbf{隨機亂數}
+  生成函式 (\textbf{pseudo-random number generation function}, \textbf{random number}).
+\item
+  \texttt{dProbFun} 的第一個參數是 \(x\).
+\item
+  \texttt{pProbFun} 的第一個參數是 \(q\).
+\item
+  \texttt{qProbFun} 的第一個參數是 \(p\).
+\item
+  \texttt{rProbFun} 的的第一個參數是 \(n\), 生成亂數之數目.
+\item
+  \texttt{pProbFun} 和 \texttt{qProbFun} 函數 都有邏輯引數 \texttt{lower.tail**\ 和}log.p`.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    若 \texttt{lower.tail\ =\ TRUE} (default), 機率計算為 \(P (X < = x)\).
+  \item
+    若 \texttt{lower.tail\ =\ FALSE} 機率計算為 \(P (X > x)\).
+  \item
+    若 \texttt{log.p\ =\ TRUE}, 機率 \(p\) 是以 \texttt{log(p)} 輸入與輸出.
+  \end{itemize}
+\item
+  \texttt{dProbFun} 也有一個邏輯引數 \texttt{log}, 用來計算所要的對數機率值.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# normal distribution}
+\KeywordTok{pnorm}\NormalTok{(}\FloatTok{1.96}\NormalTok{)}
+\CommentTok{\#\# [1] 0.975}
+\KeywordTok{qnorm}\NormalTok{(}\FloatTok{0.975}\NormalTok{)}
+\CommentTok{\#\# [1] 1.96}
+\KeywordTok{dnorm}\NormalTok{(}\FloatTok{1.96}\NormalTok{)}
+\CommentTok{\#\# [1] 0.05844}
+\CommentTok{\# Poisson distribution}
+\KeywordTok{rpois}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\CommentTok{\#\#  [1] 0 0 0 1 1 2 1 1 4 1}
+\KeywordTok{rpois}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\CommentTok{\#\#  [1] 3 4 1 2 0 1 1 0 1 4}
+\KeywordTok{rpois}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{20}\NormalTok{)}
+\CommentTok{\#\#  [1] 18 21 16 23 22 24 23 20 11 22}
+\CommentTok{\#\# Cumulative distribution}
+\CommentTok{\#\# Pr(x \textless{}= 2)}
+\KeywordTok{ppois}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\CommentTok{\#\# [1] 0.6767}
+\KeywordTok{ppois}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\CommentTok{\#\# [1] 0.9473}
+\KeywordTok{ppois}\NormalTok{(}\DecValTok{6}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\CommentTok{\#\# [1] 0.9955}
+\CommentTok{\# t distribution}
+\KeywordTok{qt}\NormalTok{(}\FloatTok{0.995}\NormalTok{, }\DataTypeTok{df =} \DecValTok{2}\NormalTok{)}
+\CommentTok{\#\# [1] 9.925}
+\DecValTok{2}\OperatorTok{*}\KeywordTok{pt}\NormalTok{(}\OperatorTok{{-}}\FloatTok{1.96}\NormalTok{, }\DataTypeTok{df =} \DecValTok{2}\NormalTok{)}
+\CommentTok{\#\# [1] 0.1891}
+\DecValTok{2}\OperatorTok{*}\KeywordTok{pt}\NormalTok{(}\OperatorTok{{-}}\FloatTok{1.96}\NormalTok{, }\DataTypeTok{df =} \DecValTok{30}\NormalTok{)}
+\CommentTok{\#\# [1] 0.05934}
+\CommentTok{\# upper 1\% point for an F(1, 2) distribution}
+\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{qf}\NormalTok{(}\FloatTok{0.99}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\CommentTok{\#\# [1] 9.925}
+\end{Highlighting}
+\end{Shaded}
+
+通常產生亂數序列希望是不會重復的,
+實際上, \{R\} 在現在操作視窗下, 第一次產生時亂數時,
+從當下時間 (current time), 生成一個
+\textbf{種子}
+(\textbf{seed})
+出發,
+不斷迭代更新產生隨機均等分配亂數 (uniform random number),
+所以不同時間下執行 \{R\}, 啟用不同的種子, 隨後內部的隨機種子就已經改變了, 模擬亂數是不會重復的,
+有時我們需要模擬結果是可重復的亂數序列,
+此時需要用函式 \texttt{set.seed()},
+在每次產生偽隨機亂數之前, 把種子設定種子為某一特定正整數即可.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\# generate random number}
+\CommentTok{\#\# set.seed(): set initial value}
+\CommentTok{\#\# Caution use set.seed() everytime!}
+\CommentTok{\#\# uniform}
+\KeywordTok{runif}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\CommentTok{\#\# [1] 0.86121 0.43810 0.24480 0.07068 0.09947}
+\KeywordTok{runif}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\CommentTok{\#\# [1] 0.3163 0.5186 0.6620 0.4068 0.9129}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\KeywordTok{runif}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\CommentTok{\#\# [1] 0.50748 0.30677 0.42691 0.69310 0.08514}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\KeywordTok{runif}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\CommentTok{\#\# [1] 0.50748 0.30677 0.42691 0.69310 0.08514}
+\CommentTok{\# norm}
+\KeywordTok{rnorm}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\CommentTok{\#\# [1] {-}0.7540 {-}0.6059 {-}0.1772  0.1706  0.2428}
+\KeywordTok{rnorm}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\CommentTok{\#\# [1] {-}0.1794 {-}0.6305  0.9787  0.2933 {-}0.3703}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\KeywordTok{rnorm}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\CommentTok{\#\# [1]  0.01875 {-}0.18425 {-}1.37133 {-}0.59917  0.29455}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\KeywordTok{rnorm}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\CommentTok{\#\# [1]  0.01875 {-}0.18425 {-}1.37133 {-}0.59917  0.29455}
+\CommentTok{\#\#  normal + uniform}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\KeywordTok{runif}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\CommentTok{\#\# [1] 0.50748 0.30677 0.42691 0.69310 0.08514}
+\KeywordTok{rnorm}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\CommentTok{\#\# [1] {-}0.7540 {-}0.6059 {-}0.1772  0.1706  0.2428}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\KeywordTok{runif}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\CommentTok{\#\# [1] 0.50748 0.30677 0.42691 0.69310 0.08514}
+\KeywordTok{rnorm}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\CommentTok{\#\# [1] {-}0.7540 {-}0.6059 {-}0.1772  0.1706  0.2428}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\KeywordTok{rnorm}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\CommentTok{\#\# [1]  0.01875 {-}0.18425 {-}1.37133 {-}0.59917  0.29455}
+\KeywordTok{runif}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\CommentTok{\#\# [1] 0.6517 0.5677 0.1135 0.5959 0.3580}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux96a8ux6a5fux62bdux6a23ux51fdux5f0f-sample}{%
+\section{隨機抽樣函式 sample()}\label{ux96a8ux6a5fux62bdux6a23ux51fdux5f0f-sample}}
+
+在 \{R\} 中有一個常用的隨機抽樣函式, \texttt{sample()}, 用法如下.
+若要重覆出現相同的隨機樣本, 須設定起始的一個
+\textbf{種子}
+(\textbf{seed}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sample}\NormalTok{(x, size, }\DataTypeTok{replace =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{prob =} \OtherTok{NULL}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{x} 為一長度大於 1 的任意向量, 或是一個正整數.
+\item
+  \texttt{size\ =\ k} 設定所要抽出之樣本數.
+\item
+  \texttt{prob} 設定每一個個體被抽取之相對應機率或比率之向量,
+
+  \begin{itemize}
+  \tightlist
+  \item
+    若無設定值, 則每一個個體被抽取之相對應機率為相等.
+  \end{itemize}
+\item
+  \texttt{replace\ =\ FALSE} 邏輯指令, 設定是否可重複抽取.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\# random sampling}
+\NormalTok{letters}
+\CommentTok{\#\#  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s"}
+\CommentTok{\#\# [20] "t" "u" "v" "w" "x" "y" "z"}
+\KeywordTok{sample}\NormalTok{(letters, }\DecValTok{5}\NormalTok{)}
+\CommentTok{\#\# [1] "g" "j" "b" "m" "h"}
+\KeywordTok{sample}\NormalTok{(letters, }\DecValTok{5}\NormalTok{)}
+\CommentTok{\#\# [1] "n" "g" "f" "y" "v"}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\KeywordTok{sample}\NormalTok{(letters, }\DecValTok{5}\NormalTok{)}
+\CommentTok{\#\# [1] "y" "d" "g" "a" "b"}
+\KeywordTok{sample}\NormalTok{(letters, }\DecValTok{5}\NormalTok{)}
+\CommentTok{\#\# [1] "w" "k" "n" "r" "s"}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\KeywordTok{sample}\NormalTok{(letters, }\DecValTok{5}\NormalTok{)}
+\CommentTok{\#\# [1] "y" "d" "g" "a" "b"}
+\KeywordTok{sample}\NormalTok{(letters, }\DecValTok{5}\NormalTok{)}
+\CommentTok{\#\# [1] "w" "k" "n" "r" "s"}
+\CommentTok{\#\# sampling 5 subjects from 10 subjects}
+\CommentTok{\#\# without or with replacement}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{x \textless{}{-}}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{10}
+\KeywordTok{sample}\NormalTok{(x, }\DataTypeTok{size =} \DecValTok{5}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{FALSE}\NormalTok{) }\CommentTok{\# (a) no resampling}
+\CommentTok{\#\# [1] 9 4 7 1 2}
+\KeywordTok{sample}\NormalTok{(x, }\DataTypeTok{size =} \DecValTok{5}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{)  }\CommentTok{\# (b) resampling}
+\CommentTok{\#\# [1] 7 2 3 1 5}
+\CommentTok{\# permutation}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{x \textless{}{-}}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{10}
+\KeywordTok{sample}\NormalTok{(x, }\DataTypeTok{size =} \DecValTok{10}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{FALSE}\NormalTok{) }\CommentTok{\# no resampling}
+\CommentTok{\#\#  [1]  9  4  7  1  2  5  3 10  6  8}
+\CommentTok{\# equal probability}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{x \textless{}{-}}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{10}
+\KeywordTok{sample}\NormalTok{(x, }\DataTypeTok{size =} \DecValTok{5}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{prob =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{))}
+\CommentTok{\#\# [1]  9  8  6  2 10}
+\KeywordTok{sample}\NormalTok{(x, }\DataTypeTok{size =} \DecValTok{5}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{prob =} \KeywordTok{c}\NormalTok{(}\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{10}\NormalTok{) }\OperatorTok{/}\StringTok{ }\FloatTok{10.0}\NormalTok{))}
+\CommentTok{\#\# [1] 10  1  7  6  2}
+\CommentTok{\# unequal rpobability}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{x \textless{}{-}}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{10}
+\NormalTok{(}\DataTypeTok{prob.rs =} \KeywordTok{c}\NormalTok{(}\KeywordTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{10}\NormalTok{) }\OperatorTok{/}\StringTok{ }\KeywordTok{sum}\NormalTok{(}\KeywordTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{10}\NormalTok{))))}
+\CommentTok{\#\#  [1] 0.01818 0.03636 0.05455 0.07273 0.09091 0.10909 0.12727 0.14545 0.16364}
+\CommentTok{\#\# [10] 0.18182}
+\KeywordTok{sum}\NormalTok{(prob.rs)}
+\CommentTok{\#\# [1] 1}
+\KeywordTok{sample}\NormalTok{(x, }\DataTypeTok{size =} \DecValTok{5}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{,  }\DataTypeTok{prob =} \KeywordTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{10}\NormalTok{))}
+\CommentTok{\#\# [1] 9 8 7 3 9}
+\end{Highlighting}
+\end{Shaded}
+
+在臨床試驗或實驗性研究, 通常需要產生隨機分組名單,
+可利用 \texttt{sample()}, 依照不同隨機指派方法, 產生不同隨機分組名單.
+若要重覆出現相同的隨機樣本, 須設定起始的一個
+\textbf{種子}
+(\textbf{seed}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\# clinical trials or experiments}
+\CommentTok{\#\# randomization}
+\CommentTok{\#\# random assign to two groups, total 20 subjects}
+\CommentTok{\#\# random assigning treatment groups}
+\CommentTok{\#\# 20 Bernoulli trials}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\KeywordTok{sample}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DataTypeTok{size =} \DecValTok{20}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{)}
+\CommentTok{\#\#  [1] 0 1 0 0 1 0 0 0 1 1 0 0 0 0 0 1 1 1 1 0}
+\KeywordTok{sample}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DataTypeTok{size =} \DecValTok{20}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{)}
+\CommentTok{\#\#  [1] 1 1 1 1 1 1 2 1 1 2 2 2 1 2 1 1 2 1 2 2}
+\CommentTok{\# random choose 10 subjects to group 1}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\KeywordTok{sample}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DataTypeTok{size =} \DecValTok{10}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{FALSE}\NormalTok{)}
+\CommentTok{\#\#  [1]  4  7  1  2 13 19 11 17 14  3}
+\CommentTok{\# block randomization}
+\CommentTok{\# total 5 blocks, block size 4, choose 2 subjects to group 1}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\KeywordTok{replicate}\NormalTok{(}\DecValTok{5}\NormalTok{, }\KeywordTok{sample}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{), }\DataTypeTok{size =} \DecValTok{2}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{FALSE}\NormalTok{))}
+\CommentTok{\#\#      [,1] [,2] [,3] [,4] [,5]}
+\CommentTok{\#\# [1,]    1    1    1    3    2}
+\CommentTok{\#\# [2,]    3    2    3    2    3}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux8cc7ux6599ux57faux672cux8655ux88e1}{%
+\chapter{資料基本處裡}\label{ux8cc7ux6599ux57faux672cux8655ux88e1}}
+
+\href{https://www.tidyverse.org/}{tidyverse 套件系統}
+包含許多不同套件,
+提供資料科學一些實用的函式.
+包含
+
+\begin{itemize}
+\tightlist
+\item
+  tidyverse 核心
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{ggplot2} 視覺化分析.
+  \item
+    \texttt{purrr} 執行迴圈.
+  \item
+    \texttt{tibble} 增強資料框架.
+  \item
+    \texttt{dplyr} 資料處裡.
+  \item
+    \texttt{tidyr} 精簡資料,
+  \item
+    \texttt{stringr} 字串整理.
+  \item
+    \texttt{readr} 資料輸入.
+  \item
+    `forcats 處理類別變數 (factors).
+  \end{itemize}
+\end{itemize}
+
+其他關聯套件包含
+
+\begin{itemize}
+\tightlist
+\item
+  資料輸入 import
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{readxl} 輸入 excel 關聯檔案.\\
+  \item
+    \texttt{haven} 輸入 SPSS, Stata 與 SAS 關聯檔案.
+  \item
+    \texttt{jsonlite} 輸入 JSON 關聯檔案.
+  \item
+    \texttt{xml2} 輸入 XML 關聯檔案.
+  \item
+    \texttt{httr} 輸入 web APIs 關聯檔案.
+  \item
+    \texttt{rvest} 輸入 web scraping 關聯檔案.
+  \end{itemize}
+\item
+  DBI 輸入 關聯資料庫, 協同套件有 \texttt{RSQLite}, \texttt{RPostgres} 或 \texttt{odbc}.
+\item
+  資料處理 tidy/wrangle
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{stringr} 處理字串.
+  \item
+    \texttt{lubridate} 處理日期與時間.
+  \item
+    \texttt{forcats} 處理類別變數 (factors).
+  \item
+    \texttt{hms} 處理日期與時間.
+  \item
+    \texttt{blob} 處理二元資料儲存檔案.
+  \end{itemize}
+\item
+  程式寫作 program
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{rlang} 提供寫作核心語言與 tidyverse.
+  \item
+    \texttt{magrittr} 提供資料流動通道 \texttt{\%\textgreater{}\%}.
+  \item
+    \texttt{glue} 提供字串合併.
+  \end{itemize}
+\item
+  建模 model
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{broom} 處理建模結果.
+  \item
+    \texttt{modelr} 偕同執行建模族.
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{ux8cc7ux6599ux8f38ux5165ux5957ux4ef6-readr}{%
+\section{資料輸入套件 readr}\label{ux8cc7ux6599ux8f38ux5165ux5957ux4ef6-readr}}
+
+tidyverse 套件系統中的 \texttt{readr} 套件提供一些方便資料輸入的函式.
+包含
+\texttt{read\_csv()} 輸入 \texttt{.csv} 資料檔,
+\texttt{read\_excel} 輸入 \texttt{excel} 資料檔,
+\texttt{read\_delim()} 輸入不同分隔符號資料檔.
+其中引數如下 (\texttt{help(read\_delim)}).
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{file} = 路徑與檔名
+\item
+  \texttt{delim} = 分隔符號
+\item
+  \texttt{quote} = 視同分隔符號 (資料的文字變數值常放在雙引號中)
+\item
+  \texttt{escape\_backslash} = 預設 FALSE, 是否有逃脫符號
+\item
+  \texttt{escape\_double} = 預設TRUE, 是否用引號符號作為逃脫符號
+\item
+  \texttt{col\_names} = 設定變數名 (\texttt{T} 或 \texttt{F})
+\item
+  \texttt{col\_types} = 設定變數的類型
+\item
+  \texttt{na} = 設定 NA 符號
+\item
+  \texttt{comment} = 設定注釋符號, 在注釋符號之後的文字不會被讀入
+\item
+  \texttt{trim\_ws} = 去除變數值得空白
+\item
+  \texttt{skip} = 要跳過幾行 (row) 才開始讀入資料
+\item
+  \texttt{n\_max} = 最大輸入行數
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# .csv}
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\KeywordTok{library}\NormalTok{(readr)}
+\NormalTok{dd \textless{}{-}}\StringTok{ }\NormalTok{readr}\OperatorTok{::}\KeywordTok{read\_csv}\NormalTok{(}\StringTok{"C:/RData/DMTKAInfMo.csv"}\NormalTok{)}
+\KeywordTok{print}\NormalTok{(dd, }\DataTypeTok{n =} \DecValTok{5}\NormalTok{, }\DataTypeTok{width =} \OtherTok{Inf}\NormalTok{)}
+\CommentTok{\#\# \# A tibble: 78 x 16}
+\CommentTok{\#\#      No   age   sex    DM  DMyr preAC prePC postAC postPC medication  SIDE PREKS}
+\CommentTok{\#\#   \textless{}dbl\textgreater{} \textless{}dbl\textgreater{} \textless{}dbl\textgreater{} \textless{}dbl\textgreater{} \textless{}dbl\textgreater{} \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}      \textless{}dbl\textgreater{} \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}}
+\CommentTok{\#\# 1     1    67     0     0    10   120   160    140    180          0     0    56}
+\CommentTok{\#\# 2     2    67     0     0    11   100   150    150    220          0     1    62}
+\CommentTok{\#\# 3     3    72     1     0     4   150   200    120    150          2     0    60}
+\CommentTok{\#\# 4     4    82     1     0     8   150   200    160    250          0     1    47}
+\CommentTok{\#\# 5     5    73     1     0     3    85   110    140    200          0     0    44}
+\CommentTok{\#\#   POSKS   ABS INFECT INFMO}
+\CommentTok{\#\#   \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}}
+\CommentTok{\#\# 1    92     1      0     0}
+\CommentTok{\#\# 2    62     0      1     2}
+\CommentTok{\#\# 3    94     1      0     0}
+\CommentTok{\#\# 4    90     1      0     0}
+\CommentTok{\#\# 5    88     0      0     0}
+\CommentTok{\#\# \# ... with 73 more rows}
+\CommentTok{\# .xls}
+\KeywordTok{library}\NormalTok{(readxl)}
+\NormalTok{dd \textless{}{-}}\StringTok{ }\NormalTok{readxl}\OperatorTok{::}\KeywordTok{read\_excel}\NormalTok{(}\StringTok{"C:/RData/DMTKAInfMo.xls"}\NormalTok{)}
+\KeywordTok{print}\NormalTok{(dd, }\DataTypeTok{n =} \DecValTok{5}\NormalTok{, }\DataTypeTok{width =} \OtherTok{Inf}\NormalTok{)}
+\CommentTok{\#\# \# A tibble: 78 x 16}
+\CommentTok{\#\#      No   age   sex    DM  DMyr preAC prePC postAC postPC medication  SIDE PREKS}
+\CommentTok{\#\#   \textless{}dbl\textgreater{} \textless{}dbl\textgreater{} \textless{}dbl\textgreater{} \textless{}dbl\textgreater{} \textless{}dbl\textgreater{} \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}      \textless{}dbl\textgreater{} \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}}
+\CommentTok{\#\# 1     1    67     0     0    10   120   160    140    180          0     0    56}
+\CommentTok{\#\# 2     2    67     0     0    11   100   150    150    220          0     1    62}
+\CommentTok{\#\# 3     3    72     1     0     4   150   200    120    150          2     0    60}
+\CommentTok{\#\# 4     4    82     1     0     8   150   200    160    250          0     1    47}
+\CommentTok{\#\# 5     5    73     1     0     3    85   110    140    200          0     0    44}
+\CommentTok{\#\#   POSKS   ABS INFECT I0FECTMO}
+\CommentTok{\#\#   \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}    \textless{}dbl\textgreater{}}
+\CommentTok{\#\# 1    92     1      0        0}
+\CommentTok{\#\# 2    62     0      1        2}
+\CommentTok{\#\# 3    94     1      0        0}
+\CommentTok{\#\# 4    90     1      0        0}
+\CommentTok{\#\# 5    88     0      0        0}
+\CommentTok{\#\# \# ... with 73 more rows}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux6574ux6f54ux8cc7ux6599-tidy-data}{%
+\section{整潔資料 Tidy Data}\label{ux6574ux6f54ux8cc7ux6599-tidy-data}}
+
+統計計算可以進行分析的資料,
+通常有一個的簡單的基本架構,
+在 \{R\} 稱作
+\textbf{資料框架}
+(\textbf{data frame}).
+資料框架是類似於在 \texttt{SAS}, \texttt{STATA} 等的 dataset 架構.
+資料框架通常類似矩陣,
+資料框架也類似矩形的
+\textbf{交叉列聯表}
+(\textbf{cross table}),
+稱為
+\textbf{資料表}
+(** data table\textbf{).
+套件 \texttt{tidverse} 原始套件 tidy` 強調外部資料檔案必須符合
+}整潔資料** (\textbf{tidy data}) 方便操作.
+整潔資料的基本要求特徵是
+每個變數各自形成 1 欄 (縱行, row),
+每個列 (橫列, row) 各自為一個觀測時間的測量.
+例如, 每位個體只有觀測一次,
+則每個列為一位個體的觀測值.
+若每位個體有多次觀測時間點,
+則一位個體一次觀測時間點的觀測值為一列,
+一位個體或有多列的觀測值.
+一個整潔資料的資料表包含以下重點.
+
+\begin{itemize}
+\tightlist
+\item
+  一個檔案只用一張資料表
+\item
+  一張資料表 (EXCEL 的 sheet).
+\item
+  一個欄位 (縱行, Column) 只有一個變數, 同時有清楚的變數名.
+\item
+  若完整資料包含不同資料表, 則不同資料表要有索引 (inxex) 或指標變數 (id) 可進行關聯與串聯.
+\end{itemize}
+
+\textbf{整潔資料} 指引主要提供研究者在輸入資料檔案時能夠遵循.
+例如, 一些者常將 EXCEL 一張 sheel 內混合著原始資料, 分析結果與圖形.
+也經常將二個變數放在同一個欄位, 二個變數簡單以 \texttt{/} 分隔.
+例如檔案 \textbf{DMTKAORI.xls}.
+若資料檔案不是整潔資料, 則需浩費學多時間清理, 甚至必須重新輸入到資料檔案.
+
+\hypertarget{ux8cc7ux6599ux6d41ux52d5ux7ba1ux9053ux6307ux4ee4-pipe}{%
+\section{資料流動管道指令 Pipe}\label{ux8cc7ux6599ux6d41ux52d5ux7ba1ux9053ux6307ux4ee4-pipe}}
+
+\hypertarget{ux8cc7ux6599ux6aa2ux8996}{%
+\section{資料檢視}\label{ux8cc7ux6599ux6aa2ux8996}}
+
+資料輸入到 \{R\} 後,
+必須先檢視資料內容, 比對原始資料檔案是否正確讀入資料.
+包含觀測值數目, 變數數目,
+那些變數為辨識指標,
+變數屬性, 那些變數為連續變數或類別變數,
+類別變數屬性, 名目變數或是順序變數,
+整理類別變數的類別水準名稱.
+每個變數的缺失數目與頻率,
+每個個體的缺失數目與頻率.
 
   \bibliography{book.bib,packages.bib}
 

@@ -1,0 +1,145 @@
+# 資料基本處裡
+
+
+[tidyverse 套件系統](https://www.tidyverse.org/) 
+包含許多不同套件, 
+提供資料科學一些實用的函式.
+包含  
+
+* tidyverse 核心
+  - `ggplot2` 視覺化分析.
+  - `purrr` 執行迴圈.
+  - `tibble` 增強資料框架.
+  - `dplyr` 資料處裡.
+  - `tidyr` 精簡資料, 
+  - `stringr` 字串整理. 
+  - `readr` 資料輸入. 
+  - `forcats 處理類別變數 (factors).
+  
+其他關聯套件包含
+  
+* 資料輸入 import   
+  - `readxl` 輸入 excel 關聯檔案.  
+  - `haven` 輸入 SPSS, Stata 與 SAS 關聯檔案.
+  - `jsonlite` 輸入 JSON 關聯檔案.
+  - `xml2` 輸入 XML 關聯檔案.
+  - `httr` 輸入 web APIs 關聯檔案.
+  - `rvest` 輸入 web scraping 關聯檔案.
+* DBI 輸入 關聯資料庫, 協同套件有 `RSQLite`, `RPostgres` 或 `odbc`.
+* 資料處理 tidy/wrangle
+  - `stringr` 處理字串.
+  - `lubridate` 處理日期與時間.
+  - `forcats` 處理類別變數 (factors).
+  - `hms` 處理日期與時間.
+  - `blob` 處理二元資料儲存檔案.
+* 程式寫作 program
+  - `rlang` 提供寫作核心語言與 tidyverse.
+  - `magrittr` 提供資料流動通道 `%>%`.
+  - `glue` 提供字串合併.
+* 建模 model
+  - `broom` 處理建模結果.
+  - `modelr` 偕同執行建模族.
+
+
+
+## 資料輸入套件 readr
+
+
+tidyverse 套件系統中的 `readr` 套件提供一些方便資料輸入的函式.
+包含 
+`read_csv()` 輸入 `.csv` 資料檔,
+`read_excel` 輸入 `excel` 資料檔,
+`read_delim()` 輸入不同分隔符號資料檔.
+其中引數如下 (`help(read_delim)`).
+
+* `file` = 路徑與檔名
+* `delim` = 分隔符號
+* `quote` = 視同分隔符號 (資料的文字變數值常放在雙引號中)
+* `escape_backslash` = 預設 FALSE, 是否有逃脫符號
+* `escape_double` = 預設TRUE, 是否用引號符號作為逃脫符號
+* `col_names` = 設定變數名 (`T` 或 `F`)
+* `col_types` =  設定變數的類型
+* `na` = 設定 NA 符號
+* `comment` = 設定注釋符號, 在注釋符號之後的文字不會被讀入
+* `trim_ws` = 去除變數值得空白
+* `skip` = 要跳過幾行 (row) 才開始讀入資料
+* `n_max` = 最大輸入行數
+
+
+```{r, message=FALSE}
+# .csv
+library(tidyverse)
+library(readr)
+dd <- readr::read_csv("C:/RData/DMTKAInfMo.csv")
+print(dd, n = 5, width = Inf)
+# .xls
+library(readxl)
+dd <- readxl::read_excel("C:/RData/DMTKAInfMo.xls")
+print(dd, n = 5, width = Inf)
+```
+
+
+## 整潔資料 Tidy Data
+
+
+統計計算可以進行分析的資料,
+通常有一個的簡單的基本架構,
+在 {R} 稱作
+**資料框架**
+(**data frame**).
+資料框架是類似於在 `SAS`, `STATA` 等的 dataset 架構.
+資料框架通常類似矩陣,
+資料框架也類似矩形的
+**交叉列聯表**
+(**cross table**),
+ 稱為 
+**資料表**
+(** data table**).
+套件 `tidverse` 原始套件 tidy` 強調外部資料檔案必須符合
+**整潔資料** (**tidy data**) 方便操作.
+整潔資料的基本要求特徵是
+每個變數各自形成 1 欄 (縱行, row),
+每個列 (橫列, row) 各自為一個觀測時間的測量.
+例如, 每位個體只有觀測一次,
+則每個列為一位個體的觀測值.
+若每位個體有多次觀測時間點,
+則一位個體一次觀測時間點的觀測值為一列,
+一位個體或有多列的觀測值.
+一個整潔資料的資料表包含以下重點.
+
+* 一個檔案只用一張資料表
+* 一張資料表 (EXCEL 的 sheet).
+* 一個欄位 (縱行, Column) 只有一個變數, 同時有清楚的變數名.
+* 若完整資料包含不同資料表, 則不同資料表要有索引 (inxex) 或指標變數 (id) 可進行關聯與串聯.
+
+
+**整潔資料** 指引主要提供研究者在輸入資料檔案時能夠遵循.
+例如, 一些者常將 EXCEL 一張 sheel 內混合著原始資料, 分析結果與圖形.
+也經常將二個變數放在同一個欄位, 二個變數簡單以 `/` 分隔.
+例如檔案 **DMTKAORI.xls**.
+若資料檔案不是整潔資料, 則需浩費學多時間清理, 甚至必須重新輸入到資料檔案.
+
+
+
+## 資料流動管道指令 Pipe
+
+
+
+
+
+## 資料檢視
+
+
+資料輸入到 {R} 後, 
+必須先檢視資料內容, 比對原始資料檔案是否正確讀入資料.
+包含觀測值數目, 變數數目, 
+那些變數為辨識指標,
+變數屬性, 那些變數為連續變數或類別變數,
+類別變數屬性, 名目變數或是順序變數,
+整理類別變數的類別水準名稱.
+每個變數的缺失數目與頻率,
+每個個體的缺失數目與頻率.
+
+
+
+

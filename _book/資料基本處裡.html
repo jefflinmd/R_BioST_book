@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 8 資料基本處裡 | R 資料科學與統計</title>
+  <meta name="description" content="Chapter 8 資料基本處裡 | R 資料科學與統計" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 8 資料基本處裡 | R 資料科學與統計" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://bookdown.org/jefflinmd38/R_BioST_book/" />
+  <meta property="og:image" content="https://bookdown.org/jefflinmd38/R_BioST_book/images/Andrea_HS.png" />
+  <meta property="og:description" content="Chapter 8 資料基本處裡 | R 資料科學與統計" />
+  <meta name="github-repo" content="jefflinmd/R_BioST_book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 8 資料基本處裡 | R 資料科學與統計" />
+  
+  <meta name="twitter:description" content="Chapter 8 資料基本處裡 | R 資料科學與統計" />
+  <meta name="twitter:image" content="https://bookdown.org/jefflinmd38/R_BioST_book/images/Andrea_HS.png" />
+
+<meta name="author" content="Jeff Lin" />
+
+
+<meta name="date" content="2020-09-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="基本統計函式.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>序言</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> R 語言基本概論</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#下載與安裝-r"><i class="fa fa-check"></i><b>1.1</b> 下載與安裝 R</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#下載與安裝-rsudio"><i class="fa fa-check"></i><b>1.2</b> 下載與安裝 RSudio</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#簡單實例"><i class="fa fa-check"></i><b>1.3</b> 簡單實例</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#物件-object"><i class="fa fa-check"></i><b>1.4</b> 物件 Object</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#使用指令"><i class="fa fa-check"></i><b>1.5</b> 使用指令</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#查詢顯示物件與刪除物件"><i class="fa fa-check"></i><b>1.6</b> 查詢顯示物件與刪除物件</a></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#程式中止操作"><i class="fa fa-check"></i><b>1.7</b> 程式中止操作</a></li>
+<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#工作目錄"><i class="fa fa-check"></i><b>1.8</b> 工作目錄</a></li>
+<li class="chapter" data-level="1.9" data-path="intro.html"><a href="intro.html#程式編輯軟體與整合系統-rstudio"><i class="fa fa-check"></i><b>1.9</b> 程式編輯軟體與整合系統 RStudio</a></li>
+<li class="chapter" data-level="1.10" data-path="intro.html"><a href="intro.html#函式-function"><i class="fa fa-check"></i><b>1.10</b> 函式 Function</a></li>
+<li class="chapter" data-level="1.11" data-path="intro.html"><a href="intro.html#套件-packages"><i class="fa fa-check"></i><b>1.11</b> 套件 Packages</a></li>
+<li class="chapter" data-level="1.12" data-path="intro.html"><a href="intro.html#解說與輔助文件"><i class="fa fa-check"></i><b>1.12</b> 解說與輔助文件</a></li>
+<li class="chapter" data-level="1.13" data-path="intro.html"><a href="intro.html#地區語系與時區"><i class="fa fa-check"></i><b>1.13</b> 地區語系與時區</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="vector-向量.html"><a href="vector-向量.html"><i class="fa fa-check"></i><b>2</b> Vector 向量</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="vector-向量.html"><a href="vector-向量.html#向量-vector"><i class="fa fa-check"></i><b>2.1</b> 向量 Vector</a></li>
+<li class="chapter" data-level="2.2" data-path="vector-向量.html"><a href="vector-向量.html#向量基本資料類型"><i class="fa fa-check"></i><b>2.2</b> 向量基本資料類型</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="vector-向量.html"><a href="vector-向量.html#向量產生函式-c"><i class="fa fa-check"></i><b>2.2.1</b> 向量產生函式 <code>c()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="vector-向量.html"><a href="vector-向量.html#向量基本運算操作符號"><i class="fa fa-check"></i><b>2.3</b> 向量基本運算操作符號</a></li>
+<li class="chapter" data-level="2.4" data-path="vector-向量.html"><a href="vector-向量.html#向量基本算數操作"><i class="fa fa-check"></i><b>2.4</b> 向量基本算數操作</a></li>
+<li class="chapter" data-level="2.5" data-path="vector-向量.html"><a href="vector-向量.html#向量關係比較操作"><i class="fa fa-check"></i><b>2.5</b> 向量關係比較操作</a></li>
+<li class="chapter" data-level="2.6" data-path="vector-向量.html"><a href="vector-向量.html#向量元素命名"><i class="fa fa-check"></i><b>2.6</b> 向量元素命名</a></li>
+<li class="chapter" data-level="2.7" data-path="vector-向量.html"><a href="vector-向量.html#向量下標與索引-inxex"><i class="fa fa-check"></i><b>2.7</b> 向量下標與索引 Inxex</a></li>
+<li class="chapter" data-level="2.8" data-path="vector-向量.html"><a href="vector-向量.html#遺失值-缺失值-missing-values"><i class="fa fa-check"></i><b>2.8</b> 遺失值 (缺失值) Missing Values</a></li>
+<li class="chapter" data-level="2.9" data-path="vector-向量.html"><a href="vector-向量.html#因子物件與類別變數-factor"><i class="fa fa-check"></i><b>2.9</b> 因子物件與類別變數 Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="multidimensional-data-多維度資料物件.html"><a href="multidimensional-data-多維度資料物件.html"><i class="fa fa-check"></i><b>3</b> Multidimensional Data 多維度資料物件</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="multidimensional-data-多維度資料物件.html"><a href="multidimensional-data-多維度資料物件.html#矩陣物件-matrix"><i class="fa fa-check"></i><b>3.1</b> 矩陣物件 Matrix</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="multidimensional-data-多維度資料物件.html"><a href="multidimensional-data-多維度資料物件.html#矩陣函式-matrix"><i class="fa fa-check"></i><b>3.1.1</b> 矩陣函式 matrix()</a></li>
+<li class="chapter" data-level="3.1.2" data-path="multidimensional-data-多維度資料物件.html"><a href="multidimensional-data-多維度資料物件.html#矩陣命名-dimnames"><i class="fa fa-check"></i><b>3.1.2</b> 矩陣命名 dimnames()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="multidimensional-data-多維度資料物件.html"><a href="multidimensional-data-多維度資料物件.html#矩陣的下標與索引-matrix-index"><i class="fa fa-check"></i><b>3.2</b> 矩陣的下標與索引 Matrix Index</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="multidimensional-data-多維度資料物件.html"><a href="multidimensional-data-多維度資料物件.html#向量與矩陣的合併-rbind-與-cbind"><i class="fa fa-check"></i><b>3.2.1</b> 向量與矩陣的合併: rbind() 與 cbind()</a></li>
+<li class="chapter" data-level="3.2.2" data-path="multidimensional-data-多維度資料物件.html"><a href="multidimensional-data-多維度資料物件.html#陣列物件-array"><i class="fa fa-check"></i><b>3.2.2</b> 陣列物件 Array</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="multidimensional-data-多維度資料物件.html"><a href="multidimensional-data-多維度資料物件.html#列表物件-list"><i class="fa fa-check"></i><b>3.3</b> 列表物件 List</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="multidimensional-data-多維度資料物件.html"><a href="multidimensional-data-多維度資料物件.html#列表函式-list"><i class="fa fa-check"></i><b>3.3.1</b> 列表函式 list()</a></li>
+<li class="chapter" data-level="3.3.2" data-path="multidimensional-data-多維度資料物件.html"><a href="multidimensional-data-多維度資料物件.html#列表的下標與索引-list-index"><i class="fa fa-check"></i><b>3.3.2</b> 列表的下標與索引 List Index</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="multidimensional-data-多維度資料物件.html"><a href="multidimensional-data-多維度資料物件.html#資料框架-data-frame"><i class="fa fa-check"></i><b>3.4</b> 資料框架 Data Frame</a></li>
+<li class="chapter" data-level="3.5" data-path="multidimensional-data-多維度資料物件.html"><a href="multidimensional-data-多維度資料物件.html#資料框架函式-data.frame"><i class="fa fa-check"></i><b>3.5</b> 資料框架函式 data.frame()</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="multidimensional-data-多維度資料物件.html"><a href="multidimensional-data-多維度資料物件.html#資料框架的下標與索引-data-frame-index"><i class="fa fa-check"></i><b>3.5.1</b> 資料框架的下標與索引 Data Frame Index</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="資料輸入與輸出.html"><a href="資料輸入與輸出.html"><i class="fa fa-check"></i><b>4</b> 資料輸入與輸出</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="資料輸入與輸出.html"><a href="資料輸入與輸出.html#資料框架"><i class="fa fa-check"></i><b>4.1</b> 資料框架</a></li>
+<li class="chapter" data-level="4.2" data-path="資料輸入與輸出.html"><a href="資料輸入與輸出.html#輸入外部-ascii-資料檔案至-r-資料框架-空白分隔"><i class="fa fa-check"></i><b>4.2</b> 輸入外部 ASCII 資料檔案至 R 資料框架: 空白分隔</a></li>
+<li class="chapter" data-level="4.3" data-path="資料輸入與輸出.html"><a href="資料輸入與輸出.html#輸入外部-ascii-資料檔案至-r-資料框架-逗號分隔"><i class="fa fa-check"></i><b>4.3</b> 輸入外部 ASCII 資料檔案至 R 資料框架: 逗號分隔</a></li>
+<li class="chapter" data-level="4.4" data-path="資料輸入與輸出.html"><a href="資料輸入與輸出.html#r-內建資料框架"><i class="fa fa-check"></i><b>4.4</b> R 內建資料框架</a></li>
+<li class="chapter" data-level="4.5" data-path="資料輸入與輸出.html"><a href="資料輸入與輸出.html#輸出-r-資料"><i class="fa fa-check"></i><b>4.5</b> 輸出 {R} 資料</a></li>
+<li class="chapter" data-level="4.6" data-path="資料輸入與輸出.html"><a href="資料輸入與輸出.html#儲存-r-格式資料檔"><i class="fa fa-check"></i><b>4.6</b> 儲存 {R} 格式資料檔</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-visualization-資料視覺化分析.html"><a href="data-visualization-資料視覺化分析.html"><i class="fa fa-check"></i><b>5</b> Data Visualization 資料視覺化分析</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="data-visualization-資料視覺化分析.html"><a href="data-visualization-資料視覺化分析.html#視覺化分析原則"><i class="fa fa-check"></i><b>5.1</b> 視覺化分析原則</a></li>
+<li class="chapter" data-level="5.2" data-path="data-visualization-資料視覺化分析.html"><a href="data-visualization-資料視覺化分析.html#繪圖套件-ggplot2"><i class="fa fa-check"></i><b>5.2</b> 繪圖套件 ggplot2</a></li>
+<li class="chapter" data-level="5.3" data-path="data-visualization-資料視覺化分析.html"><a href="data-visualization-資料視覺化分析.html#類別變數"><i class="fa fa-check"></i><b>5.3</b> 類別變數</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="data-visualization-資料視覺化分析.html"><a href="data-visualization-資料視覺化分析.html#單類別變數"><i class="fa fa-check"></i><b>5.3.1</b> 單類別變數</a></li>
+<li class="chapter" data-level="5.3.2" data-path="data-visualization-資料視覺化分析.html"><a href="data-visualization-資料視覺化分析.html#多類別變數"><i class="fa fa-check"></i><b>5.3.2</b> 多類別變數</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="data-visualization-資料視覺化分析.html"><a href="data-visualization-資料視覺化分析.html#連續變數"><i class="fa fa-check"></i><b>5.4</b> 連續變數</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="data-visualization-資料視覺化分析.html"><a href="data-visualization-資料視覺化分析.html#單連續變數"><i class="fa fa-check"></i><b>5.4.1</b> 單連續變數</a></li>
+<li class="chapter" data-level="5.4.2" data-path="data-visualization-資料視覺化分析.html"><a href="data-visualization-資料視覺化分析.html#二連續變數"><i class="fa fa-check"></i><b>5.4.2</b> 二連續變數</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="data-visualization-資料視覺化分析.html"><a href="data-visualization-資料視覺化分析.html#混合變數"><i class="fa fa-check"></i><b>5.5</b> 混合變數</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="data-visualization-資料視覺化分析.html"><a href="data-visualization-資料視覺化分析.html#一連續-一類別"><i class="fa fa-check"></i><b>5.5.1</b> 一連續 + 一類別</a></li>
+<li class="chapter" data-level="5.5.2" data-path="data-visualization-資料視覺化分析.html"><a href="data-visualization-資料視覺化分析.html#二連續-一類別"><i class="fa fa-check"></i><b>5.5.2</b> 二連續 + 一類別</a></li>
+<li class="chapter" data-level="5.5.3" data-path="data-visualization-資料視覺化分析.html"><a href="data-visualization-資料視覺化分析.html#三連續變數"><i class="fa fa-check"></i><b>5.5.3</b> 三連續變數</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="data-visualization-資料視覺化分析.html"><a href="data-visualization-資料視覺化分析.html#分組繪圖"><i class="fa fa-check"></i><b>5.6</b> 分組繪圖</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="basic-function-基本函式.html"><a href="basic-function-基本函式.html"><i class="fa fa-check"></i><b>6</b> Basic Function 基本函式</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="basic-function-基本函式.html"><a href="basic-function-基本函式.html#函式語法"><i class="fa fa-check"></i><b>6.1</b> 函式語法</a></li>
+<li class="chapter" data-level="6.2" data-path="basic-function-基本函式.html"><a href="basic-function-基本函式.html#檢視的函式原始碼定義"><i class="fa fa-check"></i><b>6.2</b> 檢視的函式原始碼定義</a></li>
+<li class="chapter" data-level="6.3" data-path="basic-function-基本函式.html"><a href="basic-function-基本函式.html#數列函式"><i class="fa fa-check"></i><b>6.3</b> 數列函式</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="basic-function-基本函式.html"><a href="basic-function-基本函式.html#數列函式-seq-與-sequence"><i class="fa fa-check"></i><b>6.3.1</b> 數列函式: seq() 與 sequence()</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="basic-function-基本函式.html"><a href="basic-function-基本函式.html#重複元素函式-rep"><i class="fa fa-check"></i><b>6.4</b> 重複元素函式: rep()</a></li>
+<li class="chapter" data-level="6.5" data-path="basic-function-基本函式.html"><a href="basic-function-基本函式.html#算數函式-arithmetic-computing-function"><i class="fa fa-check"></i><b>6.5</b> 算數函式 Arithmetic Computing Function</a></li>
+<li class="chapter" data-level="6.6" data-path="basic-function-基本函式.html"><a href="basic-function-基本函式.html#組合與階乘函式-choose-與-factorial"><i class="fa fa-check"></i><b>6.6</b> 組合與階乘函式: choose() 與 factorial()</a></li>
+<li class="chapter" data-level="6.7" data-path="basic-function-基本函式.html"><a href="basic-function-基本函式.html#選擇資料函式-all-any-which"><i class="fa fa-check"></i><b>6.7</b> 選擇資料函式: all(), any(), which()</a></li>
+<li class="chapter" data-level="6.8" data-path="basic-function-基本函式.html"><a href="basic-function-基本函式.html#排序函式-ranking-and-sorting"><i class="fa fa-check"></i><b>6.8</b> 排序函式 Ranking and Sorting</a></li>
+<li class="chapter" data-level="6.9" data-path="basic-function-基本函式.html"><a href="basic-function-基本函式.html#物件查看與強制轉換函式"><i class="fa fa-check"></i><b>6.9</b> 物件查看與強制轉換函式</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="基本統計函式.html"><a href="基本統計函式.html"><i class="fa fa-check"></i><b>7</b> 基本統計函式</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="基本統計函式.html"><a href="基本統計函式.html#敘述統計函式"><i class="fa fa-check"></i><b>7.1</b> 敘述統計函式</a></li>
+<li class="chapter" data-level="7.2" data-path="基本統計函式.html"><a href="基本統計函式.html#類別資料表格函數"><i class="fa fa-check"></i><b>7.2</b> 類別資料表格函數</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="基本統計函式.html"><a href="基本統計函式.html#列聯表函式-table-xtabs"><i class="fa fa-check"></i><b>7.2.1</b> 列聯表函式: table(), xtabs()</a></li>
+<li class="chapter" data-level="7.2.2" data-path="基本統計函式.html"><a href="基本統計函式.html#列聯表函式-ftable"><i class="fa fa-check"></i><b>7.2.2</b> 列聯表函式: ftable()</a></li>
+<li class="chapter" data-level="7.2.3" data-path="基本統計函式.html"><a href="基本統計函式.html#列聯表函式-margin.table-prop.table"><i class="fa fa-check"></i><b>7.2.3</b> 列聯表函式: margin.table(), prop.table()</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="基本統計函式.html"><a href="基本統計函式.html#機率函式與亂數生成函式"><i class="fa fa-check"></i><b>7.3</b> 機率函式與亂數生成函式</a></li>
+<li class="chapter" data-level="7.4" data-path="基本統計函式.html"><a href="基本統計函式.html#隨機抽樣函式-sample"><i class="fa fa-check"></i><b>7.4</b> 隨機抽樣函式 sample()</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="資料基本處裡.html"><a href="資料基本處裡.html"><i class="fa fa-check"></i><b>8</b> 資料基本處裡</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="資料基本處裡.html"><a href="資料基本處裡.html#資料輸入套件-readr"><i class="fa fa-check"></i><b>8.1</b> 資料輸入套件 readr</a></li>
+<li class="chapter" data-level="8.2" data-path="資料基本處裡.html"><a href="資料基本處裡.html#整潔資料-tidy-data"><i class="fa fa-check"></i><b>8.2</b> 整潔資料 Tidy Data</a></li>
+<li class="chapter" data-level="8.3" data-path="資料基本處裡.html"><a href="資料基本處裡.html#資料流動管道指令-pipe"><i class="fa fa-check"></i><b>8.3</b> 資料流動管道指令 Pipe</a></li>
+<li class="chapter" data-level="8.4" data-path="資料基本處裡.html"><a href="資料基本處裡.html#資料檢視"><i class="fa fa-check"></i><b>8.4</b> 資料檢視</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 資料科學與統計</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="資料基本處裡" class="section level1" number="8">
+<h1><span class="header-section-number">Chapter 8</span> 資料基本處裡</h1>
+<p><a href="https://www.tidyverse.org/">tidyverse 套件系統</a>
+包含許多不同套件,
+提供資料科學一些實用的函式.
+包含</p>
+<ul>
+<li>tidyverse 核心
+<ul>
+<li><code>ggplot2</code> 視覺化分析.</li>
+<li><code>purrr</code> 執行迴圈.</li>
+<li><code>tibble</code> 增強資料框架.</li>
+<li><code>dplyr</code> 資料處裡.</li>
+<li><code>tidyr</code> 精簡資料,</li>
+<li><code>stringr</code> 字串整理.</li>
+<li><code>readr</code> 資料輸入.</li>
+<li>`forcats 處理類別變數 (factors).</li>
+</ul></li>
+</ul>
+<p>其他關聯套件包含</p>
+<ul>
+<li>資料輸入 import
+<ul>
+<li><code>readxl</code> 輸入 excel 關聯檔案.<br />
+</li>
+<li><code>haven</code> 輸入 SPSS, Stata 與 SAS 關聯檔案.</li>
+<li><code>jsonlite</code> 輸入 JSON 關聯檔案.</li>
+<li><code>xml2</code> 輸入 XML 關聯檔案.</li>
+<li><code>httr</code> 輸入 web APIs 關聯檔案.</li>
+<li><code>rvest</code> 輸入 web scraping 關聯檔案.</li>
+</ul></li>
+<li>DBI 輸入 關聯資料庫, 協同套件有 <code>RSQLite</code>, <code>RPostgres</code> 或 <code>odbc</code>.</li>
+<li>資料處理 tidy/wrangle
+<ul>
+<li><code>stringr</code> 處理字串.</li>
+<li><code>lubridate</code> 處理日期與時間.</li>
+<li><code>forcats</code> 處理類別變數 (factors).</li>
+<li><code>hms</code> 處理日期與時間.</li>
+<li><code>blob</code> 處理二元資料儲存檔案.</li>
+</ul></li>
+<li>程式寫作 program
+<ul>
+<li><code>rlang</code> 提供寫作核心語言與 tidyverse.</li>
+<li><code>magrittr</code> 提供資料流動通道 <code>%&gt;%</code>.</li>
+<li><code>glue</code> 提供字串合併.</li>
+</ul></li>
+<li>建模 model
+<ul>
+<li><code>broom</code> 處理建模結果.</li>
+<li><code>modelr</code> 偕同執行建模族.</li>
+</ul></li>
+</ul>
+<div id="資料輸入套件-readr" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> 資料輸入套件 readr</h2>
+<p>tidyverse 套件系統中的 <code>readr</code> 套件提供一些方便資料輸入的函式.
+包含
+<code>read_csv()</code> 輸入 <code>.csv</code> 資料檔,
+<code>read_excel</code> 輸入 <code>excel</code> 資料檔,
+<code>read_delim()</code> 輸入不同分隔符號資料檔.
+其中引數如下 (<code>help(read_delim)</code>).</p>
+<ul>
+<li><code>file</code> = 路徑與檔名</li>
+<li><code>delim</code> = 分隔符號</li>
+<li><code>quote</code> = 視同分隔符號 (資料的文字變數值常放在雙引號中)</li>
+<li><code>escape_backslash</code> = 預設 FALSE, 是否有逃脫符號</li>
+<li><code>escape_double</code> = 預設TRUE, 是否用引號符號作為逃脫符號</li>
+<li><code>col_names</code> = 設定變數名 (<code>T</code> 或 <code>F</code>)</li>
+<li><code>col_types</code> = 設定變數的類型</li>
+<li><code>na</code> = 設定 NA 符號</li>
+<li><code>comment</code> = 設定注釋符號, 在注釋符號之後的文字不會被讀入</li>
+<li><code>trim_ws</code> = 去除變數值得空白</li>
+<li><code>skip</code> = 要跳過幾行 (row) 才開始讀入資料</li>
+<li><code>n_max</code> = 最大輸入行數</li>
+</ul>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="資料基本處裡.html#cb152-1" aria-hidden="true"></a><span class="co"># .csv</span></span>
+<span id="cb152-2"><a href="資料基本處裡.html#cb152-2" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb152-3"><a href="資料基本處裡.html#cb152-3" aria-hidden="true"></a><span class="kw">library</span>(readr)</span>
+<span id="cb152-4"><a href="資料基本處裡.html#cb152-4" aria-hidden="true"></a>dd &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&quot;C:/RData/DMTKAInfMo.csv&quot;</span>)</span>
+<span id="cb152-5"><a href="資料基本處裡.html#cb152-5" aria-hidden="true"></a><span class="kw">print</span>(dd, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">width =</span> <span class="ot">Inf</span>)</span>
+<span id="cb152-6"><a href="資料基本處裡.html#cb152-6" aria-hidden="true"></a><span class="co">## # A tibble: 78 x 16</span></span>
+<span id="cb152-7"><a href="資料基本處裡.html#cb152-7" aria-hidden="true"></a><span class="co">##      No   age   sex    DM  DMyr preAC prePC postAC postPC medication</span></span>
+<span id="cb152-8"><a href="資料基本處裡.html#cb152-8" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;</span></span>
+<span id="cb152-9"><a href="資料基本處裡.html#cb152-9" aria-hidden="true"></a><span class="co">## 1     1    67     0     0    10   120   160    140    180          0</span></span>
+<span id="cb152-10"><a href="資料基本處裡.html#cb152-10" aria-hidden="true"></a><span class="co">## 2     2    67     0     0    11   100   150    150    220          0</span></span>
+<span id="cb152-11"><a href="資料基本處裡.html#cb152-11" aria-hidden="true"></a><span class="co">## 3     3    72     1     0     4   150   200    120    150          2</span></span>
+<span id="cb152-12"><a href="資料基本處裡.html#cb152-12" aria-hidden="true"></a><span class="co">## 4     4    82     1     0     8   150   200    160    250          0</span></span>
+<span id="cb152-13"><a href="資料基本處裡.html#cb152-13" aria-hidden="true"></a><span class="co">## 5     5    73     1     0     3    85   110    140    200          0</span></span>
+<span id="cb152-14"><a href="資料基本處裡.html#cb152-14" aria-hidden="true"></a><span class="co">##    SIDE PREKS POSKS   ABS INFECT INFMO</span></span>
+<span id="cb152-15"><a href="資料基本處裡.html#cb152-15" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb152-16"><a href="資料基本處裡.html#cb152-16" aria-hidden="true"></a><span class="co">## 1     0    56    92     1      0     0</span></span>
+<span id="cb152-17"><a href="資料基本處裡.html#cb152-17" aria-hidden="true"></a><span class="co">## 2     1    62    62     0      1     2</span></span>
+<span id="cb152-18"><a href="資料基本處裡.html#cb152-18" aria-hidden="true"></a><span class="co">## 3     0    60    94     1      0     0</span></span>
+<span id="cb152-19"><a href="資料基本處裡.html#cb152-19" aria-hidden="true"></a><span class="co">## 4     1    47    90     1      0     0</span></span>
+<span id="cb152-20"><a href="資料基本處裡.html#cb152-20" aria-hidden="true"></a><span class="co">## 5     0    44    88     0      0     0</span></span>
+<span id="cb152-21"><a href="資料基本處裡.html#cb152-21" aria-hidden="true"></a><span class="co">## # ... with 73 more rows</span></span>
+<span id="cb152-22"><a href="資料基本處裡.html#cb152-22" aria-hidden="true"></a><span class="co"># .xls</span></span>
+<span id="cb152-23"><a href="資料基本處裡.html#cb152-23" aria-hidden="true"></a><span class="kw">library</span>(readxl)</span>
+<span id="cb152-24"><a href="資料基本處裡.html#cb152-24" aria-hidden="true"></a>dd &lt;-<span class="st"> </span>readxl<span class="op">::</span><span class="kw">read_excel</span>(<span class="st">&quot;C:/RData/DMTKAInfMo.xls&quot;</span>)</span>
+<span id="cb152-25"><a href="資料基本處裡.html#cb152-25" aria-hidden="true"></a><span class="kw">print</span>(dd, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">width =</span> <span class="ot">Inf</span>)</span>
+<span id="cb152-26"><a href="資料基本處裡.html#cb152-26" aria-hidden="true"></a><span class="co">## # A tibble: 78 x 16</span></span>
+<span id="cb152-27"><a href="資料基本處裡.html#cb152-27" aria-hidden="true"></a><span class="co">##      No   age   sex    DM  DMyr preAC prePC postAC postPC medication</span></span>
+<span id="cb152-28"><a href="資料基本處裡.html#cb152-28" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;</span></span>
+<span id="cb152-29"><a href="資料基本處裡.html#cb152-29" aria-hidden="true"></a><span class="co">## 1     1    67     0     0    10   120   160    140    180          0</span></span>
+<span id="cb152-30"><a href="資料基本處裡.html#cb152-30" aria-hidden="true"></a><span class="co">## 2     2    67     0     0    11   100   150    150    220          0</span></span>
+<span id="cb152-31"><a href="資料基本處裡.html#cb152-31" aria-hidden="true"></a><span class="co">## 3     3    72     1     0     4   150   200    120    150          2</span></span>
+<span id="cb152-32"><a href="資料基本處裡.html#cb152-32" aria-hidden="true"></a><span class="co">## 4     4    82     1     0     8   150   200    160    250          0</span></span>
+<span id="cb152-33"><a href="資料基本處裡.html#cb152-33" aria-hidden="true"></a><span class="co">## 5     5    73     1     0     3    85   110    140    200          0</span></span>
+<span id="cb152-34"><a href="資料基本處裡.html#cb152-34" aria-hidden="true"></a><span class="co">##    SIDE PREKS POSKS   ABS INFECT I0FECTMO</span></span>
+<span id="cb152-35"><a href="資料基本處裡.html#cb152-35" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb152-36"><a href="資料基本處裡.html#cb152-36" aria-hidden="true"></a><span class="co">## 1     0    56    92     1      0        0</span></span>
+<span id="cb152-37"><a href="資料基本處裡.html#cb152-37" aria-hidden="true"></a><span class="co">## 2     1    62    62     0      1        2</span></span>
+<span id="cb152-38"><a href="資料基本處裡.html#cb152-38" aria-hidden="true"></a><span class="co">## 3     0    60    94     1      0        0</span></span>
+<span id="cb152-39"><a href="資料基本處裡.html#cb152-39" aria-hidden="true"></a><span class="co">## 4     1    47    90     1      0        0</span></span>
+<span id="cb152-40"><a href="資料基本處裡.html#cb152-40" aria-hidden="true"></a><span class="co">## 5     0    44    88     0      0        0</span></span>
+<span id="cb152-41"><a href="資料基本處裡.html#cb152-41" aria-hidden="true"></a><span class="co">## # ... with 73 more rows</span></span></code></pre></div>
+</div>
+<div id="整潔資料-tidy-data" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> 整潔資料 Tidy Data</h2>
+<p>統計計算可以進行分析的資料,
+通常有一個的簡單的基本架構,
+在 {R} 稱作
+<strong>資料框架</strong>
+(<strong>data frame</strong>).
+資料框架是類似於在 <code>SAS</code>, <code>STATA</code> 等的 dataset 架構.
+資料框架通常類似矩陣,
+資料框架也類似矩形的
+<strong>交叉列聯表</strong>
+(<strong>cross table</strong>),
+稱為
+<strong>資料表</strong>
+(** data table<strong>).
+套件 <code>tidverse</code> 原始套件 tidy` 強調外部資料檔案必須符合
+</strong>整潔資料** (<strong>tidy data</strong>) 方便操作.
+整潔資料的基本要求特徵是
+每個變數各自形成 1 欄 (縱行, row),
+每個列 (橫列, row) 各自為一個觀測時間的測量.
+例如, 每位個體只有觀測一次,
+則每個列為一位個體的觀測值.
+若每位個體有多次觀測時間點,
+則一位個體一次觀測時間點的觀測值為一列,
+一位個體或有多列的觀測值.
+一個整潔資料的資料表包含以下重點.</p>
+<ul>
+<li>一個檔案只用一張資料表</li>
+<li>一張資料表 (EXCEL 的 sheet).</li>
+<li>一個欄位 (縱行, Column) 只有一個變數, 同時有清楚的變數名.</li>
+<li>若完整資料包含不同資料表, 則不同資料表要有索引 (inxex) 或指標變數 (id) 可進行關聯與串聯.</li>
+</ul>
+<p><strong>整潔資料</strong> 指引主要提供研究者在輸入資料檔案時能夠遵循.
+例如, 一些者常將 EXCEL 一張 sheel 內混合著原始資料, 分析結果與圖形.
+也經常將二個變數放在同一個欄位, 二個變數簡單以 <code>/</code> 分隔.
+例如檔案 <strong>DMTKAORI.xls</strong>.
+若資料檔案不是整潔資料, 則需浩費學多時間清理, 甚至必須重新輸入到資料檔案.</p>
+</div>
+<div id="資料流動管道指令-pipe" class="section level2" number="8.3">
+<h2><span class="header-section-number">8.3</span> 資料流動管道指令 Pipe</h2>
+</div>
+<div id="資料檢視" class="section level2" number="8.4">
+<h2><span class="header-section-number">8.4</span> 資料檢視</h2>
+<p>資料輸入到 {R} 後,
+必須先檢視資料內容, 比對原始資料檔案是否正確讀入資料.
+包含觀測值數目, 變數數目,
+那些變數為辨識指標,
+變數屬性, 那些變數為連續變數或類別變數,
+類別變數屬性, 名目變數或是順序變數,
+整理類別變數的類別水準名稱.
+每個變數的缺失數目與頻率,
+每個個體的缺失數目與頻率.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="基本統計函式.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R_BioST_book.pdf", "R_BioST_book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

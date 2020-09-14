@@ -1,4 +1,4 @@
-# 多維度資料物件
+# Multidimensional Data 多維度資料物件
 
 
 {R} 是以物件導向為主的程式語言,
