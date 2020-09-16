@@ -4,9 +4,9 @@ username: jefflinmd38
 account: jefflinmd38
 server: bookdown.org
 hostUrl: https://bookdown.org/__api__
-appId: 5478
-bundleId: 28163
+appId: 5488
+bundleId: 28175
 url: https://bookdown.org/jefflinmd38/r_biost_book/
-when: 1600233567.14704
+when: 1600238647.31983
 asMultiple: FALSE
 asStatic: FALSE

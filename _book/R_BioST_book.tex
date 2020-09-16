@@ -4596,12 +4596,12 @@ S3 classes 函式 與 S4 classes 函式,
 \CommentTok{\#\# function (x, na.rm = FALSE) }
 \CommentTok{\#\# sqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), }
 \CommentTok{\#\#     na.rm = na.rm))}
-\CommentTok{\#\# \textless{}bytecode: 0x0000000011e25050\textgreater{}}
+\CommentTok{\#\# \textless{}bytecode: 0x00000000125fbaa0\textgreater{}}
 \CommentTok{\#\# \textless{}environment: namespace:stats\textgreater{}}
 \NormalTok{t}
 \CommentTok{\#\# function (x) }
 \CommentTok{\#\# UseMethod("t")}
-\CommentTok{\#\# \textless{}bytecode: 0x0000000006332d98\textgreater{}}
+\CommentTok{\#\# \textless{}bytecode: 0x000000001134a7c0\textgreater{}}
 \CommentTok{\#\# \textless{}environment: namespace:base\textgreater{}}
 \KeywordTok{methods}\NormalTok{(t)}
 \CommentTok{\#\#  [1] t,ANY{-}method            t,CsparseMatrix{-}method  t,dgCMatrix{-}method     }
@@ -6496,7 +6496,7 @@ Wilcoxon & \texttt{wilcox} & m, n\tabularnewline
   \end{itemize}
 \end{itemize}
 
-其他關聯套件包含
+tidyverse 套件系統的其他關聯套件包含
 
 \begin{itemize}
 \tightlist
@@ -6684,6 +6684,12 @@ Wilcoxon & \texttt{wilcox} & m, n\tabularnewline
   若完整資料包含不同資料表, 則不同資料表要有索引 (inxex) 或指標變數 (id) 可進行關聯與串聯.
 \end{itemize}
 
+\begin{figure}
+\centering
+\includegraphics{./images/tidydata.png}
+\caption{Tidy Data: R for Data Science, Figure 12.1}
+\end{figure}
+
 \textbf{整潔資料} 指引主要提供研究者在輸入資料檔案時能夠遵循.
 例如, 一些者常將 EXCEL 一張 sheel 內混合著原始資料, 分析結果與圖形.
 也經常將二個變數放在同一個欄位, 二個變數簡單以 \texttt{/} 分隔.
@@ -6783,8 +6789,8 @@ Wilcoxon & \texttt{wilcox} & m, n\tabularnewline
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{ux8cc7ux6599ux6aa2ux8996}{%
-\section{資料檢視}\label{ux8cc7ux6599ux6aa2ux8996}}
+\hypertarget{ux8cc7ux6599ux6aa2ux8996ux51fdux5f0f-glimpse}{%
+\section{資料檢視函式 glimpse()}\label{ux8cc7ux6599ux6aa2ux8996ux51fdux5f0f-glimpse}}
 
 資料輸入到 \{R\} 後,
 必須先檢視資料內容, 比對原始資料檔案是否正確讀入資料.
@@ -6839,6 +6845,37 @@ Wilcoxon & \texttt{wilcox} & m, n\tabularnewline
 \end{Highlighting}
 \end{Shaded}
 
+\texttt{tidyverse} 系統中的 \texttt{tibble} 套件提供一個檢視資料函式 `\texttt{glimpse()},
+類似 \{R\} base 的 \texttt{str()} 函式.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\# R base}
+\KeywordTok{str}\NormalTok{(dd)}
+\CommentTok{\#\# tibble [137 x 8] (S3: tbl\_df/tbl/data.frame)}
+\CommentTok{\#\#  $ treat   : Factor w/ 2 levels "placebo","test": 1 1 1 1 1 1 1 1 1 1 ...}
+\CommentTok{\#\#  $ cellcode: Factor w/ 4 levels "squamous","small",..: 1 1 1 1 1 1 1 1 1 1 ...}
+\CommentTok{\#\#  $ time    : int [1:137] 72 411 228 126 118 10 82 110 314 100 ...}
+\CommentTok{\#\#  $ censor  : Factor w/ 2 levels "survival","dead": 2 2 2 2 2 2 2 2 2 1 ...}
+\CommentTok{\#\#  $ diagtime: int [1:137] 60 70 60 60 70 20 40 80 50 70 ...}
+\CommentTok{\#\#  $ kps     : int [1:137] 7 5 3 9 11 5 10 29 18 6 ...}
+\CommentTok{\#\#  $ age     : int [1:137] 69 64 38 63 65 49 69 68 43 70 ...}
+\CommentTok{\#\#  $ prior   : Factor w/ 2 levels "no","yes": 1 2 1 2 2 1 2 1 1 1 ...}
+\CommentTok{\#\# glimpse()}
+\KeywordTok{glimpse}\NormalTok{(dd)}
+\CommentTok{\#\# Rows: 137}
+\CommentTok{\#\# Columns: 8}
+\CommentTok{\#\# $ treat    \textless{}fct\textgreater{} placebo, placebo, placebo, placebo, placebo, placebo, plac...}
+\CommentTok{\#\# $ cellcode \textless{}fct\textgreater{} squamous, squamous, squamous, squamous, squamous, squamous...}
+\CommentTok{\#\# $ time     \textless{}int\textgreater{} 72, 411, 228, 126, 118, 10, 82, 110, 314, 100, 42, 8, 144,...}
+\CommentTok{\#\# $ censor   \textless{}fct\textgreater{} dead, dead, dead, dead, dead, dead, dead, dead, dead, surv...}
+\CommentTok{\#\# $ diagtime \textless{}int\textgreater{} 60, 70, 60, 60, 70, 20, 40, 80, 50, 70, 60, 40, 30, 80, 70...}
+\CommentTok{\#\# $ kps      \textless{}int\textgreater{} 7, 5, 3, 9, 11, 5, 10, 29, 18, 6, 4, 58, 4, 9, 11, 3, 9, 2...}
+\CommentTok{\#\# $ age      \textless{}int\textgreater{} 69, 64, 38, 63, 65, 49, 69, 68, 43, 70, 81, 63, 63, 52, 48...}
+\CommentTok{\#\# $ prior    \textless{}fct\textgreater{} no, yes, no, yes, yes, no, yes, no, no, no, no, yes, no, y...}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{ux8cc7ux6599ux8655ux88e1-dplyr-ux5957ux4ef6}{%
 \section{資料處裡 dplyr 套件}\label{ux8cc7ux6599ux8655ux88e1-dplyr-ux5957ux4ef6}}
 
@@ -6859,6 +6896,12 @@ Wilcoxon & \texttt{wilcox} & m, n\tabularnewline
   \texttt{select()} = 選擇變數 (variables) 或欄位子集 (columns)
 \item
   \texttt{mutate()} = 變數轉換
+\item
+  \texttt{sample\_n()} 與 \texttt{sample\_frac()} = 隨機抽樣函式
+\item
+  \texttt{distinct()} 與 \texttt{n\_distinct()} = 選出明顯不同個體
+\item
+  \texttt{slice()} = 利用橫列指標 (row index) 選出個體 (row)
 \item
   \texttt{summarise()} = 計算常見統計量
 \item
@@ -6882,6 +6925,7 @@ Wilcoxon & \texttt{wilcox} & m, n\tabularnewline
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\#\# filter()}
 \NormalTok{dd }\OperatorTok{\%\textgreater{}\%}\StringTok{ }
 \StringTok{  }\KeywordTok{filter}\NormalTok{(treat }\OperatorTok{==}\StringTok{ \textquotesingle{}placebo\textquotesingle{}}\NormalTok{, cellcode }\OperatorTok{==}\StringTok{ \textquotesingle{}large\textquotesingle{}}\NormalTok{)}
 \CommentTok{\#\# \# A tibble: 15 x 8}
@@ -6942,6 +6986,7 @@ time 由大到小排序.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\#\# arrange()}
 \NormalTok{dd }\OperatorTok{\%\textgreater{}\%}\StringTok{ }
 \StringTok{  }\KeywordTok{arrange}\NormalTok{(age, }\KeywordTok{desc}\NormalTok{(time))}
 \CommentTok{\#\# \# A tibble: 137 x 8}
@@ -7003,6 +7048,7 @@ time 由大到小排序.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\#\# mutate()}
 \NormalTok{dd }\OperatorTok{\%\textgreater{}\%}\StringTok{ }
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}
     \DataTypeTok{log\_age =} \KeywordTok{log}\NormalTok{(age),}
@@ -7022,6 +7068,272 @@ time 由大到小排序.
 \CommentTok{\#\#  9 placebo squamous   314 dead           50    18    43 no       3.76     21.5}
 \CommentTok{\#\# 10 placebo squamous   100 survival       70     6    70 no       4.25     49  }
 \CommentTok{\#\# \# ... with 127 more rows}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux96a8ux6a5fux62bdux6a23ux51fdux5f0f-sample_n-ux8207-sample_frac}{%
+\subsection{\texorpdfstring{隨機抽樣函式 \texttt{sample\_n()} 與 \texttt{sample\_frac()}}{隨機抽樣函式 sample\_n() 與 sample\_frac()}}\label{ux96a8ux6a5fux62bdux6a23ux51fdux5f0f-sample_n-ux8207-sample_frac}}
+
+函式 \texttt{sample\_n()} 與 \texttt{sample\_frac()}
+可以對資料進行隨機抽樣.
+引數為
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{size\ =\ k} 設定所要抽出之樣本數或分率.
+\item
+  \texttt{weight} 抽取之相對應權重.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    若無設定值, 則每一個個體被抽取之相對應權重相等.
+  \end{itemize}
+\item
+  \texttt{replace\ =\ FALSE} 邏輯指令, 設定是否可重複抽取.
+\end{itemize}
+
+以資料在檔案第 5 章的 \textbf{survVATrial.csv} 為例,
+由資料抽樣 5 位個體.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\# sample\_n()}
+\NormalTok{dd }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{sample\_n}\NormalTok{(}\DataTypeTok{size =} \DecValTok{5}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{FALSE}\NormalTok{)}
+\CommentTok{\#\# \# A tibble: 5 x 8}
+\CommentTok{\#\#   treat   cellcode  time censor   diagtime   kps   age prior}
+\CommentTok{\#\#   \textless{}fct\textgreater{}   \textless{}fct\textgreater{}    \textless{}int\textgreater{} \textless{}fct\textgreater{}       \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}fct\textgreater{}}
+\CommentTok{\#\# 1 placebo adeno       12 dead           50     4    63 yes  }
+\CommentTok{\#\# 2 test    squamous     1 dead           50     7    35 no   }
+\CommentTok{\#\# 3 placebo small      123 survival       40     3    55 no   }
+\CommentTok{\#\# 4 test    small       51 dead           30    87    59 yes  }
+\CommentTok{\#\# 5 test    squamous   242 dead           50     1    70 no}
+\NormalTok{dd }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{sample\_n}\NormalTok{(}\DataTypeTok{size =} \DecValTok{5}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{)}
+\CommentTok{\#\# \# A tibble: 5 x 8}
+\CommentTok{\#\#   treat   cellcode  time censor   diagtime   kps   age prior}
+\CommentTok{\#\#   \textless{}fct\textgreater{}   \textless{}fct\textgreater{}    \textless{}int\textgreater{} \textless{}fct\textgreater{}       \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}fct\textgreater{}}
+\CommentTok{\#\# 1 placebo squamous    82 dead           40    10    69 yes  }
+\CommentTok{\#\# 2 test    squamous   231 survival       50     8    52 yes  }
+\CommentTok{\#\# 3 test    squamous   389 dead           90     2    62 no   }
+\CommentTok{\#\# 4 placebo small       18 dead           30     4    60 no   }
+\CommentTok{\#\# 5 test    small       80 dead           50    17    71 no}
+\NormalTok{dd }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{sample\_frac}\NormalTok{(}\DataTypeTok{size =} \FloatTok{0.1}\NormalTok{)}
+\CommentTok{\#\# \# A tibble: 14 x 8}
+\CommentTok{\#\#    treat   cellcode  time censor   diagtime   kps   age prior}
+\CommentTok{\#\#    \textless{}fct\textgreater{}   \textless{}fct\textgreater{}    \textless{}int\textgreater{} \textless{}fct\textgreater{}       \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}fct\textgreater{}}
+\CommentTok{\#\#  1 test    adeno       83 survival       99     3    57 no   }
+\CommentTok{\#\#  2 placebo small       31 dead           75     3    65 no   }
+\CommentTok{\#\#  3 test    small       51 dead           30    87    59 yes  }
+\CommentTok{\#\#  4 test    large       52 dead           60     4    45 no   }
+\CommentTok{\#\#  5 test    squamous    15 dead           50    13    40 yes  }
+\CommentTok{\#\#  6 placebo small       20 dead           30     5    65 no   }
+\CommentTok{\#\#  7 test    squamous   201 dead           80    28    52 yes  }
+\CommentTok{\#\#  8 test    squamous   999 dead           90    12    54 yes  }
+\CommentTok{\#\#  9 test    squamous   242 dead           50     1    70 no   }
+\CommentTok{\#\# 10 placebo small        7 dead           50     7    72 no   }
+\CommentTok{\#\# 11 placebo small       51 dead           60     1    67 no   }
+\CommentTok{\#\# 12 test    adeno       31 dead           80     3    39 no   }
+\CommentTok{\#\# 13 placebo small       13 dead           60     4    56 no   }
+\CommentTok{\#\# 14 placebo small       22 dead           60     4    68 no}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux9078ux51faux660eux986fux4e0dux540cux500bux9ad4ux51fdux5f0f-distinct-ux8207-n_distinct}{%
+\subsection{\texorpdfstring{選出明顯不同個體函式 \texttt{distinct()} 與 \texttt{n\_distinct()}}{選出明顯不同個體函式 distinct() 與 n\_distinct()}}\label{ux9078ux51faux660eux986fux4e0dux540cux500bux9ad4ux51fdux5f0f-distinct-ux8207-n_distinct}}
+
+資料常常重覆輸入的個體, 或是個體有重覆測量,
+\texttt{distinct()} 函式可以查詢多少明顯不同的個體,
+使用引數 \texttt{.keep\_all\ =\ TRUE} 可以保留所有變數.
+函式 \texttt{n\_distinct()} 計算明顯不同的個體數目,
+使用引數 \texttt{na.rm\ =\ FALSE} 決定是否納入缺失值.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\# distict()}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{df \textless{}{-}}\StringTok{ }\KeywordTok{tibble}\NormalTok{(}
+  \DataTypeTok{x =} \KeywordTok{sample}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{100}\NormalTok{, }\DataTypeTok{rep =} \OtherTok{TRUE}\NormalTok{),}
+  \DataTypeTok{y =} \KeywordTok{sample}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{100}\NormalTok{, }\DataTypeTok{rep =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{)}
+\NormalTok{df}
+\CommentTok{\#\# \# A tibble: 100 x 2}
+\CommentTok{\#\#        x     y}
+\CommentTok{\#\#    \textless{}int\textgreater{} \textless{}int\textgreater{}}
+\CommentTok{\#\#  1     9     3}
+\CommentTok{\#\#  2     4    10}
+\CommentTok{\#\#  3     7     3}
+\CommentTok{\#\#  4     1     1}
+\CommentTok{\#\#  5     2     6}
+\CommentTok{\#\#  6     7     6}
+\CommentTok{\#\#  7     2     4}
+\CommentTok{\#\#  8     3     9}
+\CommentTok{\#\#  9     1     5}
+\CommentTok{\#\# 10     5     1}
+\CommentTok{\#\# \# ... with 90 more rows}
+\KeywordTok{nrow}\NormalTok{(df)}
+\CommentTok{\#\# [1] 100}
+\KeywordTok{nrow}\NormalTok{(}\KeywordTok{distinct}\NormalTok{(df))}
+\CommentTok{\#\# [1] 65}
+\KeywordTok{nrow}\NormalTok{(}\KeywordTok{distinct}\NormalTok{(df, x, y))}
+\CommentTok{\#\# [1] 65}
+\KeywordTok{distinct}\NormalTok{(df, x)}
+\CommentTok{\#\# \# A tibble: 10 x 1}
+\CommentTok{\#\#        x}
+\CommentTok{\#\#    \textless{}int\textgreater{}}
+\CommentTok{\#\#  1     9}
+\CommentTok{\#\#  2     4}
+\CommentTok{\#\#  3     7}
+\CommentTok{\#\#  4     1}
+\CommentTok{\#\#  5     2}
+\CommentTok{\#\#  6     3}
+\CommentTok{\#\#  7     5}
+\CommentTok{\#\#  8    10}
+\CommentTok{\#\#  9     6}
+\CommentTok{\#\# 10     8}
+\KeywordTok{distinct}\NormalTok{(df, y)}
+\CommentTok{\#\# \# A tibble: 10 x 1}
+\CommentTok{\#\#        y}
+\CommentTok{\#\#    \textless{}int\textgreater{}}
+\CommentTok{\#\#  1     3}
+\CommentTok{\#\#  2    10}
+\CommentTok{\#\#  3     1}
+\CommentTok{\#\#  4     6}
+\CommentTok{\#\#  5     4}
+\CommentTok{\#\#  6     9}
+\CommentTok{\#\#  7     5}
+\CommentTok{\#\#  8     7}
+\CommentTok{\#\#  9     2}
+\CommentTok{\#\# 10     8}
+\KeywordTok{distinct}\NormalTok{(df, x, }\DataTypeTok{.keep\_all =} \OtherTok{TRUE}\NormalTok{)}
+\CommentTok{\#\# \# A tibble: 10 x 2}
+\CommentTok{\#\#        x     y}
+\CommentTok{\#\#    \textless{}int\textgreater{} \textless{}int\textgreater{}}
+\CommentTok{\#\#  1     9     3}
+\CommentTok{\#\#  2     4    10}
+\CommentTok{\#\#  3     7     3}
+\CommentTok{\#\#  4     1     1}
+\CommentTok{\#\#  5     2     6}
+\CommentTok{\#\#  6     3     9}
+\CommentTok{\#\#  7     5     1}
+\CommentTok{\#\#  8    10     6}
+\CommentTok{\#\#  9     6     3}
+\CommentTok{\#\# 10     8     2}
+\CommentTok{\#}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{x \textless{}{-}}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{, }\FloatTok{1e5}\NormalTok{, }\DataTypeTok{rep =} \OtherTok{TRUE}\NormalTok{)}
+\KeywordTok{length}\NormalTok{(x)}
+\CommentTok{\#\# [1] 100000}
+\KeywordTok{length}\NormalTok{(}\KeywordTok{unique}\NormalTok{(x))}
+\CommentTok{\#\# [1] 10}
+\KeywordTok{n\_distinct}\NormalTok{(x)}
+\CommentTok{\#\# [1] 10}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux5229ux7528ux6a6bux5217ux6307ux6a19ux9078ux51faux500bux9ad4ux51fdux5f0f-slice}{%
+\subsection{\texorpdfstring{利用橫列指標選出個體函式 \texttt{slice()}}{利用橫列指標選出個體函式 slice()}}\label{ux5229ux7528ux6a6bux5217ux6307ux6a19ux9078ux51faux500bux9ad4ux51fdux5f0f-slice}}
+
+\texttt{slice()} 為一系列函式可以利用橫列指標 (row index)
+選出個體 (row). 包含
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{slice()}~\\
+\item
+  \texttt{slice\_head()} 選出資料最前端的個體
+\item
+  \texttt{slice\_last()} 選出資料最末端的個體
+\item
+  \texttt{slice\_min()} 選出資料變數值最小的個體
+\item
+  \texttt{slice\_max()} 選出資料變數值最大的個體
+\item
+  \texttt{slice\_sample()} 隨機選出個體
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\# slice()}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{dd }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{slice}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\CommentTok{\#\# \# A tibble: 1 x 8}
+\CommentTok{\#\#   treat   cellcode  time censor diagtime   kps   age prior}
+\CommentTok{\#\#   \textless{}fct\textgreater{}   \textless{}fct\textgreater{}    \textless{}int\textgreater{} \textless{}fct\textgreater{}     \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}fct\textgreater{}}
+\CommentTok{\#\# 1 placebo squamous    72 dead         60     7    69 no}
+\NormalTok{dd }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{slice}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{)}
+\CommentTok{\#\# \# A tibble: 3 x 8}
+\CommentTok{\#\#   treat   cellcode  time censor diagtime   kps   age prior}
+\CommentTok{\#\#   \textless{}fct\textgreater{}   \textless{}fct\textgreater{}    \textless{}int\textgreater{} \textless{}fct\textgreater{}     \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}fct\textgreater{}}
+\CommentTok{\#\# 1 placebo squamous    72 dead         60     7    69 no   }
+\CommentTok{\#\# 2 placebo squamous   411 dead         70     5    64 yes  }
+\CommentTok{\#\# 3 placebo squamous   228 dead         60     3    38 no}
+\NormalTok{dd }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{slice}\NormalTok{(}\DecValTok{101}\OperatorTok{:}\KeywordTok{n}\NormalTok{())}
+\CommentTok{\#\# \# A tibble: 37 x 8}
+\CommentTok{\#\#    treat cellcode  time censor   diagtime   kps   age prior}
+\CommentTok{\#\#    \textless{}fct\textgreater{} \textless{}fct\textgreater{}    \textless{}int\textgreater{} \textless{}fct\textgreater{}       \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}fct\textgreater{}}
+\CommentTok{\#\#  1 test  small       99 dead           85     4    62 no   }
+\CommentTok{\#\#  2 test  small       61 dead           70     2    71 no   }
+\CommentTok{\#\#  3 test  small       25 dead           70     2    70 no   }
+\CommentTok{\#\#  4 test  small       95 dead           70     1    61 no   }
+\CommentTok{\#\#  5 test  small       80 dead           50    17    71 no   }
+\CommentTok{\#\#  6 test  small       51 dead           30    87    59 yes  }
+\CommentTok{\#\#  7 test  small       29 dead           40     8    67 no   }
+\CommentTok{\#\#  8 test  adeno       24 dead           40     2    60 no   }
+\CommentTok{\#\#  9 test  adeno       18 dead           40     5    69 yes  }
+\CommentTok{\#\# 10 test  adeno       83 survival       99     3    57 no   }
+\CommentTok{\#\# \# ... with 27 more rows}
+\NormalTok{dd }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{slice}\NormalTok{(}\OperatorTok{{-}}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{100}\NormalTok{))}
+\CommentTok{\#\# \# A tibble: 37 x 8}
+\CommentTok{\#\#    treat cellcode  time censor   diagtime   kps   age prior}
+\CommentTok{\#\#    \textless{}fct\textgreater{} \textless{}fct\textgreater{}    \textless{}int\textgreater{} \textless{}fct\textgreater{}       \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}fct\textgreater{}}
+\CommentTok{\#\#  1 test  small       99 dead           85     4    62 no   }
+\CommentTok{\#\#  2 test  small       61 dead           70     2    71 no   }
+\CommentTok{\#\#  3 test  small       25 dead           70     2    70 no   }
+\CommentTok{\#\#  4 test  small       95 dead           70     1    61 no   }
+\CommentTok{\#\#  5 test  small       80 dead           50    17    71 no   }
+\CommentTok{\#\#  6 test  small       51 dead           30    87    59 yes  }
+\CommentTok{\#\#  7 test  small       29 dead           40     8    67 no   }
+\CommentTok{\#\#  8 test  adeno       24 dead           40     2    60 no   }
+\CommentTok{\#\#  9 test  adeno       18 dead           40     5    69 yes  }
+\CommentTok{\#\# 10 test  adeno       83 survival       99     3    57 no   }
+\CommentTok{\#\# \# ... with 27 more rows}
+\NormalTok{dd }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{slice\_head}\NormalTok{(}\DataTypeTok{n =} \DecValTok{3}\NormalTok{)}
+\CommentTok{\#\# \# A tibble: 3 x 8}
+\CommentTok{\#\#   treat   cellcode  time censor diagtime   kps   age prior}
+\CommentTok{\#\#   \textless{}fct\textgreater{}   \textless{}fct\textgreater{}    \textless{}int\textgreater{} \textless{}fct\textgreater{}     \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}fct\textgreater{}}
+\CommentTok{\#\# 1 placebo squamous    72 dead         60     7    69 no   }
+\CommentTok{\#\# 2 placebo squamous   411 dead         70     5    64 yes  }
+\CommentTok{\#\# 3 placebo squamous   228 dead         60     3    38 no}
+\NormalTok{dd }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{slice\_tail}\NormalTok{(}\DataTypeTok{n =} \DecValTok{3}\NormalTok{)}
+\CommentTok{\#\# \# A tibble: 3 x 8}
+\CommentTok{\#\#   treat cellcode  time censor diagtime   kps   age prior}
+\CommentTok{\#\#   \textless{}fct\textgreater{} \textless{}fct\textgreater{}    \textless{}int\textgreater{} \textless{}fct\textgreater{}     \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}fct\textgreater{}}
+\CommentTok{\#\# 1 test  large      231 dead         70    18    67 yes  }
+\CommentTok{\#\# 2 test  large      378 dead         80     4    65 no   }
+\CommentTok{\#\# 3 test  large       49 dead         30     3    37 no}
+\NormalTok{dd }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{slice\_min}\NormalTok{(time, }\DataTypeTok{n =} \DecValTok{3}\NormalTok{)}
+\CommentTok{\#\# \# A tibble: 3 x 8}
+\CommentTok{\#\#   treat cellcode  time censor diagtime   kps   age prior}
+\CommentTok{\#\#   \textless{}fct\textgreater{} \textless{}fct\textgreater{}    \textless{}int\textgreater{} \textless{}fct\textgreater{}     \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}fct\textgreater{}}
+\CommentTok{\#\# 1 test  squamous     1 dead         20    21    65 yes  }
+\CommentTok{\#\# 2 test  squamous     1 dead         50     7    35 no   }
+\CommentTok{\#\# 3 test  small        2 dead         40    36    44 yes}
+\NormalTok{dd }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{slice\_max}\NormalTok{(time, }\DataTypeTok{n =} \DecValTok{3}\NormalTok{)}
+\CommentTok{\#\# \# A tibble: 3 x 8}
+\CommentTok{\#\#   treat cellcode  time censor diagtime   kps   age prior}
+\CommentTok{\#\#   \textless{}fct\textgreater{} \textless{}fct\textgreater{}    \textless{}int\textgreater{} \textless{}fct\textgreater{}     \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}fct\textgreater{}}
+\CommentTok{\#\# 1 test  squamous   999 dead         90    12    54 yes  }
+\CommentTok{\#\# 2 test  squamous   991 dead         70     7    50 yes  }
+\CommentTok{\#\# 3 test  squamous   587 dead         60     3    58 no}
+\NormalTok{dd }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{slice\_sample}\NormalTok{(}\DataTypeTok{n =} \DecValTok{3}\NormalTok{)}
+\CommentTok{\#\# \# A tibble: 3 x 8}
+\CommentTok{\#\#   treat   cellcode  time censor diagtime   kps   age prior}
+\CommentTok{\#\#   \textless{}fct\textgreater{}   \textless{}fct\textgreater{}    \textless{}int\textgreater{} \textless{}fct\textgreater{}     \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}fct\textgreater{}}
+\CommentTok{\#\# 1 placebo large      250 dead         70     8    53 yes  }
+\CommentTok{\#\# 2 test    large       53 dead         60    12    66 no   }
+\CommentTok{\#\# 3 placebo small       63 dead         50    11    48 no}
 \end{Highlighting}
 \end{Shaded}
 
@@ -7055,8 +7367,9 @@ time 由大到小排序.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\#\# summarise}
 \NormalTok{dd }\OperatorTok{\%\textgreater{}\%}\StringTok{ }
-\StringTok{  }\KeywordTok{summarize}\NormalTok{(}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}
     \DataTypeTok{count =} \KeywordTok{n}\NormalTok{(),}
     \DataTypeTok{age\_mean =} \KeywordTok{mean}\NormalTok{(age, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
     \DataTypeTok{age\_sd =} \KeywordTok{sd}\NormalTok{(age, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
@@ -7078,6 +7391,7 @@ time 由大到小排序.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\#\# group\_by()}
 \NormalTok{dd }\OperatorTok{\%\textgreater{}\%}\StringTok{ }
 \StringTok{  }\KeywordTok{group\_by}\NormalTok{(treat) }\OperatorTok{\%\textgreater{}\%}\StringTok{ }
 \StringTok{  }\KeywordTok{summarise}\NormalTok{(}
@@ -7089,11 +7403,29 @@ time 由大到小排序.
 \CommentTok{\#\#   \textless{}fct\textgreater{}           \textless{}dbl\textgreater{}       \textless{}dbl\textgreater{}}
 \CommentTok{\#\# 1 placebo          59.2        18.7}
 \CommentTok{\#\# 2 test             57.9        21.4}
+\NormalTok{dd }\OperatorTok{\%\textgreater{}\%}\StringTok{ }
+\StringTok{  }\KeywordTok{group\_by}\NormalTok{(treat, cellcode) }\OperatorTok{\%\textgreater{}\%}\StringTok{ }
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}
+    \DataTypeTok{diagtime\_mean =} \KeywordTok{mean}\NormalTok{(diagtime),}
+    \DataTypeTok{diagtime\_sd =} \KeywordTok{sd}\NormalTok{(diagtime)}
+\NormalTok{    )}
+\CommentTok{\#\# \# A tibble: 8 x 4}
+\CommentTok{\#\# \# Groups:   treat [2]}
+\CommentTok{\#\#   treat   cellcode diagtime\_mean diagtime\_sd}
+\CommentTok{\#\#   \textless{}fct\textgreater{}   \textless{}fct\textgreater{}            \textless{}dbl\textgreater{}       \textless{}dbl\textgreater{}}
+\CommentTok{\#\# 1 placebo squamous          57.3        17.9}
+\CommentTok{\#\# 2 placebo small             54.8        17.7}
+\CommentTok{\#\# 3 placebo adeno             58.9        24.2}
+\CommentTok{\#\# 4 placebo large             70          15.1}
+\CommentTok{\#\# 5 test    squamous          63.5        22.3}
+\CommentTok{\#\# 6 test    small             51.4        21.5}
+\CommentTok{\#\# 7 test    adeno             57.7        21.7}
+\CommentTok{\#\# 8 test    large             58.8        18.8}
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{ux591aux8b8aux6578ux8a08ux7b97ux7d71ux8a08ux91cfux51fdux5f0f}{%
-\subsection{多變數計算統計量函式}\label{ux591aux8b8aux6578ux8a08ux7b97ux7d71ux8a08ux91cfux51fdux5f0f}}
+\hypertarget{ux591aux8b8aux6578ux8a08ux7b97ux7d71ux8a08ux91cfux51fdux5f0f-summarise_all}{%
+\subsection{\texorpdfstring{多變數計算統計量函式 \texttt{summarise\_all()}}{多變數計算統計量函式 summarise\_all()}}\label{ux591aux8b8aux6578ux8a08ux7b97ux7d71ux8a08ux91cfux51fdux5f0f-summarise_all}}
 
 \texttt{summarise()} 函式只能分別對當一變數進行計算,
 若要同時對許多變數進行相同操作,
@@ -7113,6 +7445,7 @@ time 由大到小排序.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\#\# summarise\_all()}
 \NormalTok{dd }\OperatorTok{\%\textgreater{}\%}\StringTok{ }
 \StringTok{  }\KeywordTok{select}\NormalTok{(time, diagtime, kps, age) }\OperatorTok{\%\textgreater{}\%}\StringTok{ }
 \StringTok{  }\KeywordTok{summarise\_all}\NormalTok{(mean, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
@@ -7153,8 +7486,243 @@ time 由大到小排序.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{ux8cc7ux6599ux5408ux4f75}{%
-\section{資料合併}\label{ux8cc7ux6599ux5408ux4f75}}
+\hypertarget{ux8cc7ux6599ux806fux96c6ux8207ux4ea4ux96c6ux51fdux5f0f}{%
+\section{資料聯集與交集函式}\label{ux8cc7ux6599ux806fux96c6ux8207ux4ea4ux96c6ux51fdux5f0f}}
+
+若二組資料有相同的變數, 但可能僅有部分相同的個體,
+可以利用二組資料聯集與交集操作選出個體.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{intersect(x,\ y)} 選出 \texttt{x} 與 \texttt{y} 都存在的不同個體.
+\item
+  \texttt{union(x,\ y)} 選出 \texttt{x} 與 \texttt{y} 存在的不同個體.
+\item
+  \texttt{setdiff(x,\ y)} 選出存在 \texttt{x} 但不存在 \texttt{y} 的不同個體.
+\end{itemize}
+
+以資料在檔案第 5 章的 \textbf{survVATrial.csv} 為例,
+隨機從前 10 位個體重覆抽取 7 位, 進行 2 次, 得到 2 組資料.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\# set operation}
+\NormalTok{df \textless{}{-}}\StringTok{ }\NormalTok{dd }\OperatorTok{\%\textgreater{}\%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(treat, cellcode, time, censor, age) }\OperatorTok{\%\textgreater{}\%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{id =} \DecValTok{1}\OperatorTok{:}\KeywordTok{n}\NormalTok{()) }\OperatorTok{\%\textgreater{}\%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(id }\OperatorTok{\textless{}=}\StringTok{ }\DecValTok{10}\NormalTok{)}
+\NormalTok{df}
+\CommentTok{\#\# \# A tibble: 10 x 6}
+\CommentTok{\#\#    treat   cellcode  time censor     age    id}
+\CommentTok{\#\#    \textless{}fct\textgreater{}   \textless{}fct\textgreater{}    \textless{}int\textgreater{} \textless{}fct\textgreater{}    \textless{}int\textgreater{} \textless{}int\textgreater{}}
+\CommentTok{\#\#  1 placebo squamous    72 dead        69     1}
+\CommentTok{\#\#  2 placebo squamous   411 dead        64     2}
+\CommentTok{\#\#  3 placebo squamous   228 dead        38     3}
+\CommentTok{\#\#  4 placebo squamous   126 dead        63     4}
+\CommentTok{\#\#  5 placebo squamous   118 dead        65     5}
+\CommentTok{\#\#  6 placebo squamous    10 dead        49     6}
+\CommentTok{\#\#  7 placebo squamous    82 dead        69     7}
+\CommentTok{\#\#  8 placebo squamous   110 dead        68     8}
+\CommentTok{\#\#  9 placebo squamous   314 dead        43     9}
+\CommentTok{\#\# 10 placebo squamous   100 survival    70    10}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{x \textless{}{-}}\StringTok{ }\NormalTok{df }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{sample\_n}\NormalTok{(}\DataTypeTok{size =} \DecValTok{7}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{y \textless{}{-}}\StringTok{ }\NormalTok{df }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{sample\_n}\NormalTok{(}\DataTypeTok{size =} \DecValTok{7}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{x}
+\CommentTok{\#\# \# A tibble: 7 x 6}
+\CommentTok{\#\#   treat   cellcode  time censor   age    id}
+\CommentTok{\#\#   \textless{}fct\textgreater{}   \textless{}fct\textgreater{}    \textless{}int\textgreater{} \textless{}fct\textgreater{}  \textless{}int\textgreater{} \textless{}int\textgreater{}}
+\CommentTok{\#\# 1 placebo squamous   314 dead      43     9}
+\CommentTok{\#\# 2 placebo squamous   126 dead      63     4}
+\CommentTok{\#\# 3 placebo squamous    82 dead      69     7}
+\CommentTok{\#\# 4 placebo squamous    72 dead      69     1}
+\CommentTok{\#\# 5 placebo squamous   411 dead      64     2}
+\CommentTok{\#\# 6 placebo squamous    82 dead      69     7}
+\CommentTok{\#\# 7 placebo squamous   411 dead      64     2}
+\NormalTok{y}
+\CommentTok{\#\# \# A tibble: 7 x 6}
+\CommentTok{\#\#   treat   cellcode  time censor     age    id}
+\CommentTok{\#\#   \textless{}fct\textgreater{}   \textless{}fct\textgreater{}    \textless{}int\textgreater{} \textless{}fct\textgreater{}    \textless{}int\textgreater{} \textless{}int\textgreater{}}
+\CommentTok{\#\# 1 placebo squamous   228 dead        38     3}
+\CommentTok{\#\# 2 placebo squamous    72 dead        69     1}
+\CommentTok{\#\# 3 placebo squamous   118 dead        65     5}
+\CommentTok{\#\# 4 placebo squamous   118 dead        65     5}
+\CommentTok{\#\# 5 placebo squamous   100 survival    70    10}
+\CommentTok{\#\# 6 placebo squamous    10 dead        49     6}
+\CommentTok{\#\# 7 placebo squamous   100 survival    70    10}
+\KeywordTok{intersect}\NormalTok{(x, y)}
+\CommentTok{\#\# \# A tibble: 1 x 6}
+\CommentTok{\#\#   treat   cellcode  time censor   age    id}
+\CommentTok{\#\#   \textless{}fct\textgreater{}   \textless{}fct\textgreater{}    \textless{}int\textgreater{} \textless{}fct\textgreater{}  \textless{}int\textgreater{} \textless{}int\textgreater{}}
+\CommentTok{\#\# 1 placebo squamous    72 dead      69     1}
+\KeywordTok{union}\NormalTok{(x, y)}
+\CommentTok{\#\# \# A tibble: 9 x 6}
+\CommentTok{\#\#   treat   cellcode  time censor     age    id}
+\CommentTok{\#\#   \textless{}fct\textgreater{}   \textless{}fct\textgreater{}    \textless{}int\textgreater{} \textless{}fct\textgreater{}    \textless{}int\textgreater{} \textless{}int\textgreater{}}
+\CommentTok{\#\# 1 placebo squamous   314 dead        43     9}
+\CommentTok{\#\# 2 placebo squamous   126 dead        63     4}
+\CommentTok{\#\# 3 placebo squamous    82 dead        69     7}
+\CommentTok{\#\# 4 placebo squamous    72 dead        69     1}
+\CommentTok{\#\# 5 placebo squamous   411 dead        64     2}
+\CommentTok{\#\# 6 placebo squamous   228 dead        38     3}
+\CommentTok{\#\# 7 placebo squamous   118 dead        65     5}
+\CommentTok{\#\# 8 placebo squamous   100 survival    70    10}
+\CommentTok{\#\# 9 placebo squamous    10 dead        49     6}
+\KeywordTok{setdiff}\NormalTok{(x, y)}
+\CommentTok{\#\# \# A tibble: 4 x 6}
+\CommentTok{\#\#   treat   cellcode  time censor   age    id}
+\CommentTok{\#\#   \textless{}fct\textgreater{}   \textless{}fct\textgreater{}    \textless{}int\textgreater{} \textless{}fct\textgreater{}  \textless{}int\textgreater{} \textless{}int\textgreater{}}
+\CommentTok{\#\# 1 placebo squamous   314 dead      43     9}
+\CommentTok{\#\# 2 placebo squamous   126 dead      63     4}
+\CommentTok{\#\# 3 placebo squamous    82 dead      69     7}
+\CommentTok{\#\# 4 placebo squamous   411 dead      64     2}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux8cc7ux6599ux5408ux4f75ux51fdux5f0f}{%
+\section{資料合併函式}\label{ux8cc7ux6599ux5408ux4f75ux51fdux5f0f}}
+
+資料經常儲存再不同檔案,
+例如門診檔, 住院檔, 實驗室檔,
+同一位個體常須使用個體辨識碼 (id) 或姓名 (names)
+進行合併或清理.
+用來連結不同資料的個體辨識碼或變數稱為
+\textbf{關鍵碼} 或 \textbf{所引鍵}
+(\textbf{key}),
+多數為個體辨識碼, 當有時為時間, 日期, 文見編號等,
+可能同時須使用 2 個變數才能成為單一辨識碼,
+例如, 同時須使用醫院與院內病歷號,
+避免不同個體在不同醫院卻有有相同的病歷號.
+\texttt{tidyverse} 系統的有許多 \texttt{\_join\_(x,\ y)} 函式可進行各種資料合併.
+若 2 組資料包含一些相同變數, 盪不同觀測值, 此時必須小心處理.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{inner\_join(x,\ y)} 包函 \texttt{x} 與 \texttt{y} 都配對存在的 \texttt{x} 與 \texttt{y} 個體與變數
+\item
+  \texttt{left\_join(x,\ y)} 包函所有 \texttt{x} 個體與變數且在 \texttt{y} 有配對存在的 \texttt{y} 個體與變數
+\item
+  \texttt{right\_join(x,\ y)}包函所有 \texttt{y} 個體與變數且在 \texttt{x} 有配對存在的 \texttt{x} 個體與變數
+\item
+  \texttt{full\_join(x,\ y)} 包函所有 \texttt{x} 與 \texttt{y} 的個體與變數資料
+\item
+  \texttt{semi\_join(x,\ y)} 包函 \texttt{x} 在 \texttt{y} 有配對存在的 \texttt{x} 個體與變數
+\item
+  \texttt{anti\_join(x,\ y)} 包函 \texttt{x} 在 \texttt{y} 無配對存在的 \texttt{x} 個體與變數
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{./images/tidyversrejoin.png}
+\caption{\texttt{dplyr::\_join}}
+\end{figure}
+
+以資料在檔案第 5 章的 \textbf{survVATrial.csv} 為例,
+隨機從前 10 位個體抽取 7 位, 進行 2 次, 得到 2 組資料 \texttt{x} 與 \texttt{y}.
+\texttt{x} 資料包函 \texttt{id}, \texttt{treat}, time\texttt{,}age\texttt{.}y\texttt{資料包函}id\texttt{,}cellcode\texttt{,}ceosor\texttt{,}age`.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\# \_join()}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{df \textless{}{-}}\StringTok{ }\NormalTok{dd }\OperatorTok{\%\textgreater{}\%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(treat, cellcode, time, censor, age) }\OperatorTok{\%\textgreater{}\%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{id =} \DecValTok{1}\OperatorTok{:}\KeywordTok{n}\NormalTok{()) }\OperatorTok{\%\textgreater{}\%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(id }\OperatorTok{\textless{}=}\StringTok{ }\DecValTok{10}\NormalTok{) }
+\NormalTok{x \textless{}{-}}\StringTok{ }\NormalTok{df }\OperatorTok{\%\textgreater{}\%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(id, treat, time, age) }\OperatorTok{\%\textgreater{}\%}\StringTok{ }
+\StringTok{  }\KeywordTok{sample\_n}\NormalTok{(}\DataTypeTok{size =} \DecValTok{7}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{FALSE}\NormalTok{) }\OperatorTok{\%\textgreater{}\%}
+\StringTok{  }\KeywordTok{arrange}\NormalTok{(id)}
+\NormalTok{y \textless{}{-}}\StringTok{ }\NormalTok{df }\OperatorTok{\%\textgreater{}\%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(id, cellcode, censor, age) }\OperatorTok{\%\textgreater{}\%}\StringTok{ }
+\StringTok{  }\KeywordTok{sample\_n}\NormalTok{(}\DataTypeTok{size =} \DecValTok{7}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{FALSE}\NormalTok{)  }\OperatorTok{\%\textgreater{}\%}
+\StringTok{  }\KeywordTok{arrange}\NormalTok{(id)}
+\NormalTok{x}
+\CommentTok{\#\# \# A tibble: 7 x 4}
+\CommentTok{\#\#      id treat    time   age}
+\CommentTok{\#\#   \textless{}int\textgreater{} \textless{}fct\textgreater{}   \textless{}int\textgreater{} \textless{}int\textgreater{}}
+\CommentTok{\#\# 1     1 placebo    72    69}
+\CommentTok{\#\# 2     2 placebo   411    64}
+\CommentTok{\#\# 3     3 placebo   228    38}
+\CommentTok{\#\# 4     4 placebo   126    63}
+\CommentTok{\#\# 5     5 placebo   118    65}
+\CommentTok{\#\# 6     7 placebo    82    69}
+\CommentTok{\#\# 7     9 placebo   314    43}
+\NormalTok{y}
+\CommentTok{\#\# \# A tibble: 7 x 4}
+\CommentTok{\#\#      id cellcode censor     age}
+\CommentTok{\#\#   \textless{}int\textgreater{} \textless{}fct\textgreater{}    \textless{}fct\textgreater{}    \textless{}int\textgreater{}}
+\CommentTok{\#\# 1     1 squamous dead        69}
+\CommentTok{\#\# 2     2 squamous dead        64}
+\CommentTok{\#\# 3     3 squamous dead        38}
+\CommentTok{\#\# 4     5 squamous dead        65}
+\CommentTok{\#\# 5     6 squamous dead        49}
+\CommentTok{\#\# 6     7 squamous dead        69}
+\CommentTok{\#\# 7    10 squamous survival    70}
+\KeywordTok{inner\_join}\NormalTok{(x, y)}
+\CommentTok{\#\# \# A tibble: 5 x 6}
+\CommentTok{\#\#      id treat    time   age cellcode censor}
+\CommentTok{\#\#   \textless{}int\textgreater{} \textless{}fct\textgreater{}   \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}fct\textgreater{}    \textless{}fct\textgreater{} }
+\CommentTok{\#\# 1     1 placebo    72    69 squamous dead  }
+\CommentTok{\#\# 2     2 placebo   411    64 squamous dead  }
+\CommentTok{\#\# 3     3 placebo   228    38 squamous dead  }
+\CommentTok{\#\# 4     5 placebo   118    65 squamous dead  }
+\CommentTok{\#\# 5     7 placebo    82    69 squamous dead}
+\KeywordTok{left\_join}\NormalTok{(x, y) }
+\CommentTok{\#\# \# A tibble: 7 x 6}
+\CommentTok{\#\#      id treat    time   age cellcode censor}
+\CommentTok{\#\#   \textless{}int\textgreater{} \textless{}fct\textgreater{}   \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}fct\textgreater{}    \textless{}fct\textgreater{} }
+\CommentTok{\#\# 1     1 placebo    72    69 squamous dead  }
+\CommentTok{\#\# 2     2 placebo   411    64 squamous dead  }
+\CommentTok{\#\# 3     3 placebo   228    38 squamous dead  }
+\CommentTok{\#\# 4     4 placebo   126    63 \textless{}NA\textgreater{}     \textless{}NA\textgreater{}  }
+\CommentTok{\#\# 5     5 placebo   118    65 squamous dead  }
+\CommentTok{\#\# 6     7 placebo    82    69 squamous dead  }
+\CommentTok{\#\# 7     9 placebo   314    43 \textless{}NA\textgreater{}     \textless{}NA\textgreater{}}
+\KeywordTok{right\_join}\NormalTok{(x, y)}
+\CommentTok{\#\# \# A tibble: 7 x 6}
+\CommentTok{\#\#      id treat    time   age cellcode censor  }
+\CommentTok{\#\#   \textless{}int\textgreater{} \textless{}fct\textgreater{}   \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}fct\textgreater{}    \textless{}fct\textgreater{}   }
+\CommentTok{\#\# 1     1 placebo    72    69 squamous dead    }
+\CommentTok{\#\# 2     2 placebo   411    64 squamous dead    }
+\CommentTok{\#\# 3     3 placebo   228    38 squamous dead    }
+\CommentTok{\#\# 4     5 placebo   118    65 squamous dead    }
+\CommentTok{\#\# 5     7 placebo    82    69 squamous dead    }
+\CommentTok{\#\# 6     6 \textless{}NA\textgreater{}       NA    49 squamous dead    }
+\CommentTok{\#\# 7    10 \textless{}NA\textgreater{}       NA    70 squamous survival}
+\KeywordTok{full\_join}\NormalTok{(x, y) }
+\CommentTok{\#\# \# A tibble: 9 x 6}
+\CommentTok{\#\#      id treat    time   age cellcode censor  }
+\CommentTok{\#\#   \textless{}int\textgreater{} \textless{}fct\textgreater{}   \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}fct\textgreater{}    \textless{}fct\textgreater{}   }
+\CommentTok{\#\# 1     1 placebo    72    69 squamous dead    }
+\CommentTok{\#\# 2     2 placebo   411    64 squamous dead    }
+\CommentTok{\#\# 3     3 placebo   228    38 squamous dead    }
+\CommentTok{\#\# 4     4 placebo   126    63 \textless{}NA\textgreater{}     \textless{}NA\textgreater{}    }
+\CommentTok{\#\# 5     5 placebo   118    65 squamous dead    }
+\CommentTok{\#\# 6     7 placebo    82    69 squamous dead    }
+\CommentTok{\#\# 7     9 placebo   314    43 \textless{}NA\textgreater{}     \textless{}NA\textgreater{}    }
+\CommentTok{\#\# 8     6 \textless{}NA\textgreater{}       NA    49 squamous dead    }
+\CommentTok{\#\# 9    10 \textless{}NA\textgreater{}       NA    70 squamous survival}
+\KeywordTok{semi\_join}\NormalTok{(x, y) }
+\CommentTok{\#\# \# A tibble: 5 x 4}
+\CommentTok{\#\#      id treat    time   age}
+\CommentTok{\#\#   \textless{}int\textgreater{} \textless{}fct\textgreater{}   \textless{}int\textgreater{} \textless{}int\textgreater{}}
+\CommentTok{\#\# 1     1 placebo    72    69}
+\CommentTok{\#\# 2     2 placebo   411    64}
+\CommentTok{\#\# 3     3 placebo   228    38}
+\CommentTok{\#\# 4     5 placebo   118    65}
+\CommentTok{\#\# 5     7 placebo    82    69}
+\KeywordTok{anti\_join}\NormalTok{(x, y) }
+\CommentTok{\#\# \# A tibble: 2 x 4}
+\CommentTok{\#\#      id treat    time   age}
+\CommentTok{\#\#   \textless{}int\textgreater{} \textless{}fct\textgreater{}   \textless{}int\textgreater{} \textless{}int\textgreater{}}
+\CommentTok{\#\# 1     4 placebo   126    63}
+\CommentTok{\#\# 2     9 placebo   314    43}
+\end{Highlighting}
+\end{Shaded}
+
 
   \bibliography{book.bib,packages.bib}
 
