@@ -1,4 +1,4 @@
-# Vector 向量 
+# 向量 Vector 
 
 
 
@@ -303,13 +303,8 @@ y.vec %/% x.vec
 `<`,
 `<=`,
 `>`,
-`>=`,
-`&`, `&&` (AND), `|` , `||` (OR),
-以及判斷相等的
-`==` 和判斷不等的
-`!=` 等.
-
-```{r}
+`>=`.
+```{r message=FALSE}
 ## Relation/Comparison Operator
 x.vec <- 1:5
 y.vec <- (x.vec > 2)
@@ -334,7 +329,26 @@ x.vec == y.vec
 x.vec == (y.vec - 2)
 x.vec != y.vec
 x.vec != (y.vec - 2)
-#
+```
+
+## 向量邏輯操作
+
+
+在 {R} 之內, 向量之間的
+關係比較操作
+可以產生邏輯向量.
+在 {R} 中可對邏輯向量進行運算操作,
+**邏輯操作**
+(**logical operator**)
+符號包含常見的
+`!` (否定), 
+`&`, `&&` (AND), `|` , `||` (OR),
+以及判斷相等的
+`==` 和判斷不等的
+`!=` 等.
+![(R for Data Science: Section 2.5)](./static/logicplot.png){width=80%}
+
+```{r message=FALSE}
 ## Logical Operator: AND OR XOR
 x.vec <- 1:5
 y.vec <- c(0, 2, 4, 6, 8)

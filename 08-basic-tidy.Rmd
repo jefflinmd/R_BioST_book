@@ -45,7 +45,7 @@
 ## 資料輸入套件 readr
 
 
-tidyverse 套件系統中的 `readr` 套件提供一些方便資料輸入的函式.
+`tidyverse` 套件系統中的 `readr` 套件提供一些方便資料輸入的函式.
 包含 
 `read_csv()` 輸入 `.csv` 資料檔,
 `read_excel` 輸入 `excel` 資料檔,
@@ -121,8 +121,85 @@ print(dd, n = 5, width = Inf)
 
 
 
-## 資料流動管道指令 Pipe
+## Tibble 與 Data Frame
 
+`tidyverse` 系統中的 `readr` 套件輸入資料後,
+`tidyverse` 會儲存成 (tibble) 資料物件, 
+成為`tbl_df`, `tbl` 類型的資料物件, 
+主要是 `tidyverse` 系統會使用 tibble 套件進行操作.
+`tibbles` 資料物件與原有資料框架 `data.frame` 物件有相同的屬性外,
+另外多了些讓 `tidyverse` 系統容易操作的屬性.
+對初學者而言, 二者幾呼無任何差異.
+若有 {R} base 函式無法操作 `tibble` 資料物件,
+可使用 `as.data.frame()` 
+轉成 {R} base 的 `data.frame` 物件.
+同樣, 若 `tidyverse` 系統函式無法操作的 `data.frame` 物件,
+可用 ‵as_tibble()` 將`data.frame` 物件
+轉成`tibbles` 資料物件.
+以資料在檔案第 5 章的 **survVATrial.csv** 為例.
+```{r message=FALSE}
+## data frame object
+dd <- read.table("./Data/survVATrial.csv",
+                 header = TRUE,
+                 sep = ",",
+                 quote = "\"'",
+                 dec = ".",
+                 row.names = NULL,
+                 # col.names,
+                 as.is = TRUE,
+                 # as.is = !stringsAsFactors,
+                 na.strings = c(".", "NA"))
+class(dd)
+library(tibble)
+dd <- as_tibble(dd)
+class(dd)
+```
+`tibble` 套件的 `tibble()` 函式的使用如同 {R} base `data.frame()`.
+`tibble()` 函式可以使用 {R} base 不准使用的變數名.
+`tibble` 物件與 `data.frame` 物件的主要差別有 2 種情境.
+
+1. `tibble` 物件的顯示, `print()` 只用 10 rows, 變數 (columns) 只有納入符合視窗寬度的數目, 這對大數據檢視較為方便.
+且顯示 `str()` 函式可呈現變數基本模式的類別.
+可使用 `n = k` 顯示 $k$ rows,
+`width = Inf` 顯示所有變數.
+也可設定整區選項為 
+options(tibble.print_min = Inf),  顯示所有 rows,
+以及
+`options(tibble.width = Inf)` 顯示所有 columns.
+
+2. {R} base 多數容許使用部分物件名 (變數名),
+但 `tibble` 物件無法使用部分變數名.
+可能會對資深程式寫作人員些許困擾.
+
+
+## 資料流動管道運算指令 Pipe
+
+
+`tidyverse` 系統中的 `magrittr` 套件提供一個非常實用的運算指令
+`%>%` 稱為 **pipe**, **管線**, **管道** **導管**.
+此運算符號, 可將函式與運算串聯, 
+`%>%` 左側通常是資料物件, 資料框架, 矩陣, 向量等, 
+`%>%` 右側通常是函式 `fun_name()`,
+而 `%>%` 左側資料自動為函式 `fun_name()` 內的第一個引數.
+在 Unix/Linux 系統的各種指令可以運用 pipe 的方式串連執行,
+`magrittr` 套件提供類似的思維,
+且資料流動從 `%>%` 左測的資料送到 %>%` 右側的函式執行運算,
+可讓程式寫作符合文字書寫由左到右的思考邏輯.
+使用 `pipe` 並不會改變程式的執行順序,
+主要目的在於讓程式更容易寫作與閱讀, 
+降低程式寫作的錯誤與負擔.
+```{r message=FALSE}
+## short and clean 
+log(mean(c(1:10)))
+## easily read 
+x <- c(1:10)
+x.mean <- mean(x)
+log.mean <- log(x.mean)
+log.mean
+## pipe %>%
+library(magrittr)
+c(1:10) %>% mean() %>% log()
+```
 
 
 
@@ -139,7 +216,185 @@ print(dd, n = 5, width = Inf)
 整理類別變數的類別水準名稱.
 每個變數的缺失數目與頻率,
 每個個體的缺失數目與頻率.
+以資料在檔案第 5 章的 **survVATrial.csv** 為例.
+```{r message=FALSE}
+dd = dd %>% as_tibble()
+print(dd, n = 5, width = Inf)
+```
+可以看到資料有 `r dim(dd)[1]` 位個體, `r dim(dd)[2]` 個變數.
+其中`time`, `diagtime`, `kps`, `age` 為連續變數.
+ `treat`, `cellcode`, `censor`, `prior` 等為類別變數,
+但類別變數以數字輸入, 需先設定成為類別變數.
+以資料在檔案第 5 章的 **survVATrial.csv** 為例.
+```{r}
+dd$treat <- factor(dd$treat, labels = c("placebo", "test"))
+dd$cellcode <- factor(dd$cellcode, 
+                      labels = c("squamous", "small", "adeno", "large"))
+dd$censor <- factor(dd$censor, labels = c("survival", "dead"))
+dd$prior <- factor(dd$prior, labels = c("no", "yes"))
+print(dd, n = 5, width = Inf)
+```
+
+
+## 資料處裡 dplyr 套件
+
+`tidyverse` 系統中的資料處裡 `dplyr` 套件,
+有一些資料資料處裡常用函式.
+
+* `%>%` = `pipe` 指令
+* `rename()` = 變數 (column) 重新命名
+* `filter()` = 選擇個體或行位子集 (rows)
+* `arrange()` = 依據變數值排序
+* `select()` = 選擇變數 (variables) 或欄位子集 (columns)
+* `mutate()` = 變數轉換
+* `summarise()` = 計算常見統計量
+* `group_by()` = 資料分組操作
+* `%>%` = `pipe` 指令
+
+這些函式的第 1 個引數為資料物件, 
+後續只用為變數名 (不加雙引號),
+可以合併使用 `group_by()` 函式與 `%>%` 指令.
+
+
+
+### 選擇個體函式 `filter()` 
+
+資料常常需要依據納入與排除條件, 
+此時會依據變數值進行篩選.
+`filter()` 函式可協助選擇個體.
+以資料在檔案第 5 章的 **survVATrial.csv** 為例,
+選擇個體 `treat` 為 placebo, cellcode 為 large.
+```{r message=FALSE}
+dd %>% 
+  filter(treat == 'placebo', cellcode == 'large')
+```
+選擇個體 `treat` 為試驗藥組, age 大於 50, kps 小於或等於 7
+```{r message=FALSE}
+dd %>% 
+  filter(treat == 'test', age > 50, kps <= 7)
+```
+
+
+### 依據變數值排序函式 `arrange()`
+
+
+資料常常需要依據變數值排序,
+`arrange()` 函式內設依照變數在函式出現順序以及變數值由小到大排序.
+若要變數值從由大到小排序, 可使用 `desc()` 函式.
+例如, 以資料在檔案第 5 章的 **survVATrial.csv** 為例, 
+依照 age 由小到大排序, 
+time 由大到小排序.
+無論如何排序, 缺失值總是排在最後,
+這須與 {R} base 的 `order()`, `sort()` 或 `rank()` 進行比較.
+```{r}
+dd %>% 
+  arrange(age, desc(time))
+```
+
+
+
+### 選擇變數或欄位子集函式 `select()`
+
+面對大數據時, 可能有成千上萬的變數,
+但通常部不會使用到所有的變數,
+選擇所需要的變數另組成分析子集,
+可減少 RAM 的負擔並加速分析執行速度.
+以資料在檔案第 5 章的 **survVATrial.csv** 為例,
+選擇 `treat`, `cellcode`, `censor` 等變數.
+```{r message=FALSE}
+dd %>% 
+  arrange(treat, cellcode, censor)
+```
+
+
+### 變數轉換函式 `mutate()` 
+
+資料分析前常常需要變數進行轉換, 例如取對數轉換,
+標準化, 也常將二個以上不同變數進行計算, 轉換成新變數,
+例如計算 BMI (生體質量指數).
+以資料在檔案第 5 章的 **survVATrial.csv** 為例,
+對 `time` 取對數轉換, `diagtime * age / 100`.
+```{r message=FALSE}
+dd %>% 
+  mutate(
+    log_age = log(age),
+    diag_age = diagtime * age / 100
+    )
+```
 
 
 
 
+
+### 計算常見統計量函式 `summarise()`
+
+資料分析常常需要變數基本統計量,
+例如, 計算個數, 平均值, 變異數等等.
+ `summarise()` 函式可計算常見統計量,
+ 期常用引數有
+ 
+* Center: `mean()`, `median()`
+* Spread: `sd()`, `IQR()`, `mad()`. `range()`
+* Range: `min()`, `max()`, `quantile()`
+* Position: `first()`, `last()`, `nth()`
+* Count: `n()`, `n_distinct()`
+* Logical: `any()`, `all()`
+
+以資料在檔案第 5 章的 **survVATrial.csv** 為例,
+對資料計算個數 `n()`,
+對 `age` 計算平均值與標準差.
+```{r message=FALSE}
+dd %>% 
+  summarize(
+    count = n(),
+    age_mean = mean(age, na.rm = TRUE),
+    age_sd = sd(age, na.rm = TRUE)
+    )
+```
+
+### 資料分組操作函式 `group_by()`
+
+資料分析常常需要類別變數分組, 個別操作資料或進行計算統計量.
+函式 `group_by()` 引數可放入類別變數, 然後分組進行相同資料分析.
+以資料在檔案第 5 章的 **survVATrial.csv** 為例, 
+對試驗藥組與安慰劑組分別對 `diagtime` 計算計算平均值與標準差..
+```{r message=FALSE}
+dd %>% 
+  group_by(treat) %>% 
+  summarise(
+    diagtime_mean = mean(diagtime),
+    diagtime_sd = sd(diagtime)
+    )
+```
+
+### 多變數計算統計量函式
+
+`summarise()` 函式只能分別對當一變數進行計算,
+若要同時對許多變數進行相同操作,
+可使用以下函式.
+
+* `summarise_all()` 對每一個變數進行相同操作
+* `summarise_each()` 對每一個變數進行相同操作, 需加變數名
+* `summarise_at()` 對選出的變數進行相同操作 需加變數名
+* `summarise_if()` 對符合特定條件的變數進行相同操作
+
+```{r message=FALSE}
+dd %>% 
+  select(time, diagtime, kps, age) %>% 
+  summarise_all(mean, na.rm = TRUE)
+dd %>% select(time, diagtime, kps, age) %>% 
+  summarise_all(list(mean, sd), na.rm = TRUE)
+dd %>%
+  summarise_each(list(mean, sd), time, age) # not so useful
+dd %>% 
+  summarise_at(c("time", "age"), mean, na.rm = TRUE)
+dd %>% 
+  summarise_at(vars(time, age), mean, na.rm = TRUE)
+dd %>% 
+  summarise_if(is.numeric, list(mean, sd), na.rm = TRUE)
+```
+
+
+
+
+## 資料合併
